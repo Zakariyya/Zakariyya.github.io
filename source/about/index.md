@@ -7,9 +7,9 @@ sidebar: custom
 ---
 love life, love family
 
-music is not limited to the world of sound. There exists a music of the visual world.
 
-----OSKAR FISHINGER ,1951
+
+***
 
 有许多街道庇护，甚至抬头看不到光线，
 
