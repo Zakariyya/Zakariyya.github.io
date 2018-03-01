@@ -69,6 +69,29 @@ time_format: HH:mm:ss
 per_page: 10
 pagination_dir: page
 
+## feed   
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
+  hub:
+  content:
+
+## sitemap
+sitemap:
+  path: sitemap.xml
+baidusitemap:
+  path: baidusitemap.xml
+
+## hexo-generator-json-content  用于生成静态站点数据，提供搜索功能的数据源。
+jsonContent:
+  ignore:
+    - path/to/a/page
+    - url/to/one/post
+    - an-entire-category
+    - specific.file
+    - .ext # a file extension
+
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
