@@ -14,23 +14,22 @@ categories: linux
 基本装完界面后，找到竹子。在大神的帮助下，开始解决之前不能解决的问题以下的出现的问题，及解决办法：
 
 **Q：pacman -S sudo后，发现 sudo 不能用。出现提示：“不在SUDOERS文件中，此事将被报告。”**
-**A：**
 
 ```
-nano /etc/sudoers  
-找到 
+nano /etc/sudoers  找到 
 ## Same thing without a password#  %wheel ALL=(ALL) NOPASSWD:ALL
 ```
 
 取消“ #  %wheel ALL=(ALL) NOPASSWD:ALL”前面的“#”。
+
+> %wheel：表示一个组的名称
 
 前提是你必须在这个用户组，如果不是过不确定，那就改成“你的名字”
 
 **eg： “rabbit ALL=(ALL) NOPASSWD:ALL”  ，将“%wheel”改成“rabbit”，“%wheel”是一个用户组。**
 
 
-**Q：重启ARCH后不能上网**
-**A：**
+**重启ARCH后不能上网**
 ```
 sudo dhcpcd wlp3s0   ##（wlp3s0是我的无线网卡）。
 ```
@@ -45,7 +44,6 @@ sudo systemctl start NetworkManager
 
 
 **Q：添加ARCHLINUXCN源**
-**A：**
 可参考  [Archlinux CN 镜像源使用帮助](https://lug.ustc.edu.cn/wiki/mirrors/help/archlinuxcn)，[Arch Linux 中文社区仓库 / 镜像加速源](https://www.archlinuxcn.org/archlinux-cn-repo-and-mirror/)
 
 ```
@@ -69,7 +67,7 @@ pacman -S archlinuxcn-keyring　（安装archlinuxcn-keyring）
 
 
 **Q：安装YAOURT  （前提，建议先添加ARCHLINUXCN源）**
-**Ａ：**
+****
 
 ```
 sudo pacman -S yaourt
@@ -89,9 +87,9 @@ yaourt -Ｓ 包名
 
 记得“**yaourt -Syu**”一下
 
-***
+
+
 **Q： 安装CHROME　（前提，已安装YAOURT）**
-**A：**
 ```
 yaourt -S google-chrome
 ```
@@ -99,7 +97,6 @@ yaourt -S google-chrome
 
 
 **Q：安装搜狗输入法**
-**A：**
 
 ```
 yaourt sogou
@@ -128,7 +125,6 @@ export XMODIFIERS=”@im=fcitx”
 重启电脑，完成
 
 **Q：安装WINE**
-**A：**
 ```
 yaourt -S wine-staging ##（听说目前的测试版比较稳定）
 ```
@@ -136,19 +132,22 @@ yaourt -S wine-staging ##（听说目前的测试版比较稳定）
 
 
 **Q：安装WINEQQ（这里使用“百度  清风博主 WINEQQ”）参考“[https://phpcj.org/wineqq/](http://phpcj.org/wineqq/)”**
-A：
+****
 第一步，安装wine
+
 第二步，找到下载的安装包（tar.xz）的路径
+
 终端使用“cd”一直不断进入到安装包所在的文件夹下，在该文件夹下输入：
+
 ```
 tar xvf wineQQ8.1O17216.tar.xz -C ~/
 ```
 
 ***
-***原文为：“~ $tar xvf wineQQ8.1O17216.tar.xz -C ~/” 中的“～​$”为普通用户，“～#”为root下。***
+***原文为：“~ $tar xvf wineQQ8.1O17216.tar.xz -C ~/” 中的“～$”为普通用户，“～#”为root下。***
 
 **Q： 安装深度影音，深度影院**
-**A：**
+****
 ```
 yaourt deepin
 ```
@@ -169,12 +168,16 @@ google了一下这个module，加上了arch。然后搜到arch的仓库。
 yaourt -S qt5-quickcontrols
 ```
 
+
+
 **Q：修改GNOME桌面的样式，3.18已经不支持修改CSS来更换**
-**A：**
+****
 下载gnome-tweak-tools 优化工具，然后在“扩展-user them-启动”，重启优化工具，进入“外观-主题”选择你已经下载的主题
 
+
+
 **Q：字体好奇怪，装完了文泉驿字体也是好奇怪。**
-**A：**
+****
 **nano /etc/pacman.conf **把下面的内容添加进去
 
 ```
@@ -198,8 +201,11 @@ sudo pacman -Syu infinality-bundle infinality-bundle-multilib ibfonts-meta-exten
 
 因为是打补丁，所以会出现很多冲突，全部选择删除
 
+
+
 **Q：添加WIN7启动项**
-**A：**
+****
+
 ```
 yaourt -S os-prober
 sudo grub-mkconfig -o /boot/grub/grub.cfg
@@ -212,8 +218,10 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 sudo fc-cache -fsv
 ```
 
+
+
 **Q：GNOME3.18的桌面，将任务放到右上角（如UBUNTU一样）**
-**A：**
+****
 
 ```
 yaourt topicon
@@ -224,15 +232,14 @@ yaourt topicon
 **注：优化工具不会自动刷新的**
 ***
 **Q：安装DEEPIN桌面环境（参考“ WIKI.ARCHLINUX.ORG ”）搜索“ DEEPIN DESKTOP ENVIRONMENT ”**
-**A：**
+
 
 ```
 pacman -S deepin deepin-extra
 ```
 
-
-
 **注：启动Deepin 桌面环境，使用登录管理器**
+
 deepin默认lightdm greeter是lightdm-deepin-greeter，可通过pacman安装，安装后需编辑lightdm.conf:
 
 ```
@@ -264,7 +271,6 @@ nano ~/.pam_environment
 两行都要，然后注销
 
 **Q：安装ZSH**
-**A：**
 
 ```
 yaourt -S zsh oh-my-zsh-git
@@ -282,17 +288,23 @@ cp /usr/share/oh-my-zsh/zshrc ~/.zshrc
 每次进入终端，输入zsh后，会出现“ ～ ” ，说明进入zsh了，双击tab可补全命令。
 
 **Q：删除base软件包组以外的所有软件包**
-A：[参考网址](https://wiki.archlinux.org/index.php/Pacman/Tips_and_tricks_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#.E5.88.A0.E9.99.A4base.E8.BD.AF.E4.BB.B6.E5.8C.85.E7.BB.84.E4.BB.A5.E5.A4.96.E7.9A.84.E6.89.80.E6.9C.89.E8.BD.AF.E4.BB.B6.E5.8C.85)
+
+[参考网址](https://wiki.archlinux.org/index.php/Pacman/Tips_and_tricks_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#.E5.88.A0.E9.99.A4base.E8.BD.AF.E4.BB.B6.E5.8C.85.E7.BB.84.E4.BB.A5.E5.A4.96.E7.9A.84.E6.89.80.E6.9C.89.E8.BD.AF.E4.BB.B6.E5.8C.85)
 
 ```
 pacman -Rs $(comm -23 <(pacman -Qeq|sort) <((for i in $(pacman -Qqg base); do pactree -ul $i; done)|sort -u|cut -d ' ' -f 1))
 ```
 
-[帖子来源](https://bbs.archlinux.org/viewtopic.php?id=130176)
 
-**Q：激活“ KEYBOARD SHORTCUTS ”(传说中的魔术键)，参考“[HTTPS://WIKI.ARCHLINUX.ORG/INDEX.PHP/KEYBOARD_SHORTCUTS](https://wiki.archlinux.org/index.php/Keyboard_shortcuts)”**
-**A：**
+
+> [帖子来源](https://bbs.archlinux.org/viewtopic.php?id=130176)
+
+
+
+Q：激活“ KEYBOARD SHORTCUTS ”(传说中的魔术键)，参考“[HTTPS://WIKI.ARCHLINUX.ORG/INDEX.PHP/KEYBOARD_SHORTCUTS](https://wiki.archlinux.org/index.php/Keyboard_shortcuts)”**
+
 终端输入将临时启用
+
 ```
 sysctl kernel.sysrq=1
 ```
