@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 软萌π
+title: Big H
 subtitle:
 description:
 author: anan
@@ -26,6 +26,20 @@ category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
 skip_render:
+
+# Archives
+## 2: Enable pagination
+## 1: Disable pagination
+## 0: Fully Disable
+archive: 1
+category: 1
+tag: 1
+
+search:
+  path: search.json
+  zipPath: search.zip
+  versionPath: searchVersion.txt
+  field: post
 
 # Writing
 new_post_name: :title.md # File name of new posts
@@ -95,8 +109,9 @@ jsonContent:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: pure
+# theme: pure
 # theme: landscape
+theme: TKL
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
