@@ -1,9 +1,8 @@
 ---
 title: About Me
-description: about me
-layout: about
+toc: false
 comments: false
-sidebar: custom
+permalink: /about
 ---
 love life, love family
 
