@@ -1,0 +1,19 @@
+---
+title: About Me
+toc: false
+comments: false
+permalink: /about
+---
+love life, love family
+
+
+
+***
+
+有许多街道庇护，甚至抬头看不到光线，
+
+下雨的时候，它会觉得世界上所有的寂寞都在这里，
+
+而路边画廊在平常中可以看到，不起眼的店铺干净整洁，
+
+一切都是为了告诉你：这里每个人都活着。
