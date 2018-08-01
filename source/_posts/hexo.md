@@ -1,7 +1,8 @@
 ---
-title: Hexo （未整理）
+title: Hexo 的搭建过程
 date: 2018-06-28 22:30:16
-tags:
+tags: 
+categories:
 ---
 
 使用Hexo在GitHub上搭建网站

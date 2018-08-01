@@ -12,7 +12,7 @@ categories: 服务配置
 运行cmd 进入到[apache](http://www.111cn.net/list-121/)的bin目录。输入httpd.exe -w -n "Apache2.2" -k start
 看到这个哥就笑了 原来是180行有问题 找到的时候才知道 180行这个
 DocumentRoot "D:/www/demo"  就是没有这个目录
-之后哥把这个删除了 就运动正常了 后来才明白 之前服务器主人 www 目录下有demo这个文件夹 之后删除了
+之后把这个删除了 就运动正常了 后来才明白 之前服务器主人 www 目录下有demo这个文件夹 之后删除了
 就没有把http.conf 下的配置删除
 重启就没有问题了
 如果不会ddos命令的朋友我们可以进入你apache安装上当，然后打开httpd.conf，修改你写错误的地址也是可以地。
