@@ -12,23 +12,18 @@ categories: java Program
 
 ```xml
 dependencies {
-
-compile('org.mybatis.spring.boot:mybatis-spring-boot-starter:1.3.1')
-
-compile('org.springframework.boot:spring-boot-starter-web')
-
-runtime('mysql:mysql-connector-java')
-
-runtime('com.microsoft.sqlserver:mssql-jdbc')
-
-testCompile('org.springframework.boot:spring-boot-starter-test')
-
+	compile('org.mybatis.spring.boot:mybatis-spring-boot-starter:1.3.1')
+	compile('org.springframework.boot:spring-boot-starter-web')
+	runtime('mysql:mysql-connector-java')
+	runtime('com.microsoft.sqlserver:mssql-jdbc')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 ```
+***
 ## 配置数据源公用
 > 新建数据源配置类
 
-``` java
+```java
 @Configuration
 public class DataSourceProperties {
 
@@ -48,6 +43,7 @@ public class DataSourceProperties {
 
 }
 ```
+***
 
 ## application.properties配置数据源
 ```xml
@@ -60,11 +56,12 @@ datasource.mssql.username=xx
 datasource.mssql.password=xx
 datasource.mssql.driver-class-name=com.microsoft.sqlserver.jdbc.SQLServerDriver
 ```
+***
 
 ## MyBatis配置
 
-### mssql配置 
 
+### mssql配置 
 ```java
 @Configuration
 @EnableTransactionManagement
@@ -91,7 +88,6 @@ public class MssqlConfig {
 ```
 
 ### mysql配置
-
 ```java
 @Configuration
 @EnableTransactionManagement
@@ -162,8 +158,8 @@ public class MSSqlConfig {
 }
 ```
 
-### Mysql配置
 
+### Mysql配置
 ```java
 @Configuration
 @EnableTransactionManagement
