@@ -1,0 +1,89 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="难易度平衡设计与效率预测"><meta name="keywords" content="游戏"><meta name="author" content="anan,undefined"><meta name="copyright" content="anan"><title>难易度平衡设计与效率预测 | H2O2</title><link rel="shortcut icon" href="/my-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.5.6"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css?version=1.5.6"><link rel="dns-prefetch" href="https://cdn.staticfile.org"><link rel="dns-prefetch" href="https://cdn.bootcss.com"><link rel="dns-prefetch" href="https://creativecommons.org"><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json"><meta name="theme-color" content="#FF667B"><meta name="msapplication-TileColor" content="#FF667B"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#FF667B"><link rel="dns-prefetch" href="https://www.google-analytics.com"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-123397569-1', 'auto');
+ga('send', 'pageview');</script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  }
+} </script></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#平衡设计，大致有以下2点："><span class="toc-number">1.</span> <span class="toc-text">平衡设计，大致有以下2点：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#静态平衡设计"><span class="toc-number">2.</span> <span class="toc-text">静态平衡设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#动态平衡设计"><span class="toc-number">3.</span> <span class="toc-text">动态平衡设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#效率预估型的平衡设计"><span class="toc-number">4.</span> <span class="toc-text">效率预估型的平衡设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#危机"><span class="toc-number">5.</span> <span class="toc-text">危机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#风险与时间成本的权衡"><span class="toc-number">6.</span> <span class="toc-text">风险与时间成本的权衡</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#小结："><span class="toc-number">7.</span> <span class="toc-text">小结：</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="https://avatars2.githubusercontent.com/u/14139937?s=460&amp;v=4"></div><div class="author-info__name text-center">anan</div><div class="author-info__description text-center">unstable hydrogen peroxide</div><div class="follow-button"><a href="https://github.com/Zakariyya">Follow Me</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">86</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">19</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">Categories</span><span class="pull-right">14</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">Links</div><a class="author-info-links__name text-center" href="url">Name</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(/img/top.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">H2O2</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a></span></div><div id="post-info"><div id="post-title">难易度平衡设计与效率预测</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2016-06-10</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/游戏性是什么/">游戏性是什么</a><span class="post-meta__separator">|</span><i class="fa fa-comment-o post-meta__icon" aria-hidden="true"></i><a href="/2016/06/10/文集/游戏性是什么/游戏性是什么-难易度平衡设计与效率预测/#disqus_thread"><span class="disqus-comment-count" data-disqus-identifier="2016/06/10/文集/游戏性是什么/游戏性是什么-难易度平衡设计与效率预测/"></span></a><div class="post-meta-wordcount"><span>Word count: </span><span class="word-count">1,164</span><span class="post-meta__separator">|</span><span>Reading time: 3 min</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><p>人专注于游戏中的机制，与游戏设计者之间有什么关系？而这又与人类自身的何种特性息息相关？</p>
+<p>——《游戏性是什么》第10章</p>
+<h2 id="平衡设计，大致有以下2点："><a href="#平衡设计，大致有以下2点：" class="headerlink" title="平衡设计，大致有以下2点："></a>平衡设计，大致有以下2点：</h2><ul>
+<li><p>静态（固定型）平衡设计</p>
+</li>
+<li><p>动态（变动型）平衡设计</p>
+</li>
+</ul>
+<h2 id="静态平衡设计"><a href="#静态平衡设计" class="headerlink" title="静态平衡设计"></a>静态平衡设计</h2><p>是指游戏制作完成时，平衡设计就固定了。大多数小游戏都这样，如大众熟知《雷电2》、上篇文尾提到的《僵尸危机3》</p>
+<p>在游戏中的平衡设计为</p>
+<blockquote>
+<p>难度从一开始就故意降低了。</p>
+</blockquote>
+<p>利用跷跷板模式，系统通过调整阻力点，是游戏保持了平衡状态。</p>
+<p>利用这种平衡设计，可以给玩家带来“命悬一线的关头躲过了敌人的攻击”的快感。</p>
+<p>而并非为了配合玩家的技能而变更游戏的难度。</p>
+<p>每一关的难度都被固定了。<br><img src="http://upload-images.jianshu.io/upload_images/1171873-c7a2caa76dea0fe7.gif?imageMogr2/auto-orient/strip" alt=""></p>
+<h2 id="动态平衡设计"><a href="#动态平衡设计" class="headerlink" title="动态平衡设计"></a>动态平衡设计</h2><p>分以下两种类型：</p>
+<ul>
+<li><strong>任意的负荷可变型平衡设计：</strong>玩家可以任意地对平衡进行改动。</li>
+<li><strong>隐藏反馈型平衡设计：</strong>游戏自动调整平衡。游戏利用程序实时解析游戏中玩家的技能，自动，调整游戏的难易度，以匹配玩家技能水平。</li>
+</ul>
+<p>隐藏反馈型平衡设计，可以以《<a href="http://baike.baidu.com/link?url=q1K1FOsroMXxkJ6G7aAtvudxWn5papTNXA4wKr5Z3CWrEHTZAAJ6YcV-dO6toAUigCIW-saK6BPmK7Pvk3G65a#2" target="_blank" rel="noopener">山脊赛车</a>》为例。排名越靠后，车辆的控制会变得更加容易。</p>
+<p>这是为了保持败者玩家动机的一种设计方法。</p>
+<p>隐匿在游戏内部，对玩家来说是不可见的。</p>
+<h2 id="效率预估型的平衡设计"><a href="#效率预估型的平衡设计" class="headerlink" title="效率预估型的平衡设计"></a>效率预估型的平衡设计</h2><p>以《超级马里奥兄弟》中的“<strong>B dash</strong>”为例，按住B键进行移动操作可以进行更加告诉的移动。</p>
+<p>灵活使用可以在难度较高的关卡中巧妙避开敌人。</p>
+<p>并为快速通关发挥巨大作用。由于在短时间内通关得分比较高，所以也被视为一种高效率的游戏方式。</p>
+<p>另一方面，角色触碰到敌人的风险也增加了，这实际上是将难易度的设定托付给了玩家的判断。</p>
+<p>玩家在游戏设计者所赋予的幅度之内，根据自己的情况权衡风险与效率（所需时间）。</p>
+<p>为了实现这种机制，设计者还需要设计出“<strong>game over</strong>”之类的“危机”供玩家权衡。</p>
+<h2 id="危机"><a href="#危机" class="headerlink" title="危机"></a>危机</h2><p>一般的游戏中，当难度超过技能时，游戏会陷入停滞状态。</p>
+<p>通常是“回到起点”“装备减少”“重玩依旧无法通过某个场景”等情况。</p>
+<p>将因玩家的抉择而使游戏进入停滞状态的状况称之为“危机”。</p>
+<blockquote>
+<p><strong>所谓危机，对于玩家来说就是强制性地花费“时间”成本。</strong></p>
+</blockquote>
+<hr>
+<p><a href="http://7xn7w0.com1.z0.glb.clouddn.com/wp-content/uploads/2016/07/clock-650753_1280-785x510.jpg" target="_blank" rel="noopener"><img src="http://upload-images.jianshu.io/upload_images/1171873-ae702f7f6686762d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></a></p>
+<hr>
+<h2 id="风险与时间成本的权衡"><a href="#风险与时间成本的权衡" class="headerlink" title="风险与时间成本的权衡"></a>风险与时间成本的权衡</h2><p>风险和时间成本，一般是为反比关系。要是将风险规避到最小，就需要花费很高的时间成本。</p>
+<p>如上所述，危机机制的设计，是为了实现玩家的风险和时间成本的权衡。因此玩家有必要在下面两个选项中预估出哪一种平衡最合适。</p>
+<ul>
+<li>抑制陷入危机的风险，接受时间成本的增加</li>
+</ul>
+<ul>
+<li>接受陷入危机的风险，谋求时间成本的减少</li>
+</ul>
+<p>当玩家选择风险更高的方式高效达成目标时，看起来为什么会很开心？其实是：</p>
+<p><strong>“平衡难易度”的行为，正是创造出对于玩家自身而言挑战难度最恰当的机制。</strong></p>
+<p>在认为到危机的风险程度增加的同时，预估处当前技能能够跨越这个危机，在短时间内能达成通关目标，便是玩家活用了以往游戏经历中的风险控制经验。</p>
+<p>每次游戏时平衡风险与效率的经验积累，可以成为下一次游戏时的参考与指导。</p>
+<h2 id="小结："><a href="#小结：" class="headerlink" title="小结："></a>小结：</h2><ul>
+<li>游戏平衡设计，分为“静态（固定型）平衡设计”，“动态（变动型）平衡设计”“效率预估型平衡设计”3种。</li>
+<li>效率预估，依照自身技能，在“高风险短时间”和“低风险长时间”中做出恰当的判断行为。</li>
+</ul>
+<p>“你学习的时候要是有玩游戏那股冲劲和认真就好喽”<br><strong>……</strong></p>
+<hr>
+<p><img src="http://upload-images.jianshu.io/upload_images/1171873-8114c2764d17b974.gif?imageMogr2/auto-orient/strip" alt=""></p>
+<hr>
+<blockquote>
+<p>摘自《游戏性是什么》第10章（难易度平衡设计与效率预测）喜欢这本书，</p>
+<p>其中一边引导一边抛出问题和解释问题的方式很值得学习，作已记录。</p>
+</blockquote>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">anan</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://zakariyya.github.io/2016/06/10/文集/游戏性是什么/游戏性是什么-难易度平衡设计与效率预测/">https://zakariyya.github.io/2016/06/10/文集/游戏性是什么/游戏性是什么-难易度平衡设计与效率预测/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/游戏/">游戏</a></div><div class="social-share"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script><nav id="pagination"><div class="prev-post pull-left"><a href="/2016/06/11/文集/游戏性是什么/游戏性是什么-结构/"><i class="fa fa-chevron-left">  </i><span>结构</span></a></div><div class="next-post pull-right"><a href="/2016/06/08/文集/游戏性是什么/游戏性是什么-专注游戏的原因/"><span>专注游戏的原因</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="disqus_thread"></div><script>var unused = null;
+var disqus_config = function () {
+  this.page.url = 'https://zakariyya.github.io/2016/06/10/文集/游戏性是什么/游戏性是什么-难易度平衡设计与效率预测/';
+  this.page.identifier = '2016/06/10/文集/游戏性是什么/游戏性是什么-难易度平衡设计与效率预测/';
+  this.page.title = '难易度平衡设计与效率预测';
+}
+var d = document, s = d.createElement('script');
+s.src = "https://" + 'H2O2' +".disqus.com/embed.js";
+s.setAttribute('data-timestamp', '' + +new Date());
+(d.head || d.body).appendChild(s);</script><script id="dsq-count-scr" src="https://H2O2.disqus.com/count.js" async></script></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2015 - 2018 By anan</div><div class="framework-info"><span>Driven - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file-o"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="/js/third-party/anime.min.js"></script><script src="/js/third-party/jquery.min.js"></script><script src="/js/third-party/jquery.fancybox.min.js"></script><script src="/js/third-party/velocity.min.js"></script><script src="/js/third-party/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.5.6"></script><script src="/js/fancybox.js?version=1.5.6"></script><script src="/js/sidebar.js?version=1.5.6"></script><script src="/js/copy.js?version=1.5.6"></script><script src="/js/fireworks.js?version=1.5.6"></script><script src="/js/transition.js?version=1.5.6"></script><script src="/js/scroll.js?version=1.5.6"></script><script src="/js/head.js?version=1.5.6"></script></body></html>

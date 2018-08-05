@@ -1,0 +1,57 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="unstable hydrogen peroxide"><meta name="keywords" content=""><meta name="author" content="anan,undefined"><meta name="copyright" content="anan"><title>H2O2</title><link rel="shortcut icon" href="/my-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.5.6"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css?version=1.5.6"><link rel="dns-prefetch" href="https://cdn.staticfile.org"><link rel="dns-prefetch" href="https://cdn.bootcss.com"><link rel="dns-prefetch" href="https://creativecommons.org"><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json"><meta name="theme-color" content="#FF667B"><meta name="msapplication-TileColor" content="#FF667B"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#FF667B"><link rel="dns-prefetch" href="https://www.google-analytics.com"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-123397569-1', 'auto');
+ga('send', 'pageview');</script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  }
+} </script></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="https://avatars2.githubusercontent.com/u/14139937?s=460&amp;v=4"></div><div class="author-info__name text-center">anan</div><div class="author-info__description text-center">unstable hydrogen peroxide</div><div class="follow-button"><a href="https://github.com/Zakariyya">Follow Me</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">86</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">19</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">Categories</span><span class="pull-right">14</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">Links</div><a class="author-info-links__name text-center" href="url">Name</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(/img/top.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">H2O2</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a></span></div><div id="post-info"><div id="post-title">No title</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2018-08-04</time><span class="post-meta__separator">|</span><i class="fa fa-comment-o post-meta__icon" aria-hidden="true"></i><a href="/2018/08/04/搭建笔记/搭建Git服务器/#disqus_thread"><span class="disqus-comment-count" data-disqus-identifier="2018/08/04/搭建笔记/搭建Git服务器/"></span></a><div class="post-meta-wordcount"><span>Word count: </span><span class="word-count">716</span><span class="post-meta__separator">|</span><span>Reading time: 3 min</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><p>1.下载安装 git<br>任务时间：5min ~ 10min</p>
+<p>Git 是一款免费、开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。</p>
+<p>此实验以 CentOS 7.2 x64 的系统为环境，搭建 git 服务器。</p>
+<p>安装依赖库和编译工具<br>为了后续安装能正常进行，我们先来安装一些相关依赖库和编译工具</p>
+<p>yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel<br>安装编译工具</p>
+<p>yum install gcc perl-ExtUtils-MakeMaker<br>下载 git<br>选一个目录，用来放下载下来的安装包，这里将安装包放在 /usr/local/src 目录里</p>
+<p>cd /usr/local/src<br>到官网找一个新版稳定的源码包下载到 /usr/local/src 文件夹里</p>
+<p>wget <a href="https://www.kernel.org/pub/software/scm/git/git-2.10.0.tar.gz" target="_blank" rel="noopener">https://www.kernel.org/pub/software/scm/git/git-2.10.0.tar.gz</a><br>解压和编译<br>解压下载的源码包</p>
+<p>tar -zvxf git-2.10.0.tar.gz<br>解压后进入 git-2.10.0 文件夹</p>
+<p>cd git-2.10.0<br>执行编译</p>
+<p>make all prefix=/usr/local/git<br>编译完成后, 安装到 /usr/local/git 目录下</p>
+<p>make install prefix=/usr/local/git</p>
+<p>2.配置环境变量<br>任务时间：5min ~ 10min</p>
+<p>将 git 目录加入 PATH<br>将原来的 PATH 指向目录修改为现在的目录</p>
+<p>echo ‘export PATH=$PATH:/usr/local/git/bin’ &gt;&gt; /etc/bashrc<br>生效环境变量</p>
+<p>source /etc/bashrc<br>此时我们能查看 git 版本号，说明我们已经安装成功了。</p>
+<p>git –version</p>
+<p>3.创建 git 账号密码<br>任务时间：5min ~ 10min</p>
+<p>创建 git 账号<br>为我们刚刚搭建好的 git 创建一个账号</p>
+<p>useradd -m gituser<br>然后为这个账号设置密码[?]</p>
+<p>passwd gituser</p>
+<p>控制台输入创建密码后，输入您自定义的密码，并二次确认。</p>
+<p>4.初始化 git 仓库并配置用户权限<br>任务时间：5min ~ 10min</p>
+<p>创建 git 仓库并初始化<br>我们创建 /data/repositories 目录用于存放 git 仓库</p>
+<p>mkdir -p /data/repositories<br>创建好后，初始化这个仓库</p>
+<p>cd /data/repositories/ &amp;&amp; git init –bare test.git<br>配置用户权限<br>给 git 仓库目录设置用户和用户组并设置权限</p>
+<p>chown -R gituser:gituser /data/repositories<br>chmod 755 /data/repositories<br>[查找 git-shell 所在目录] , 编辑 /etc/passwd 文件，将最后一行关于 gituser 的登录 shell 配置改为 git-shell 的目录[?]如下</p>
+<p>示例代码：/etc/passwd<br>gituser:x:500:500::/home/gituser:/usr/local/git/bin/git-shell</p>
+<p>如果按照刚才的步骤执行, 这个位置应该是 /usr/local/git/bin/git-shell, 否则请通过 which git-shell 命令查看位置</p>
+<p>安全目的, 限制 git 账号的 ssh 连接只能是登录 git-shell</p>
+<p>使用搭建好的 Git 服务<br>克隆 test repo 到本地</p>
+<p>cd ~ &amp;&amp; git clone gituser@&lt;您的 CVM IP 地址&gt;:/data/repositories/test.git<br>实验完成<br>恭喜，Git 服务器搭建完成, 从此以后你可以方便地将你的本地代码提交到 Git 服务器托管了</p>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">anan</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://zakariyya.github.io/2018/08/04/搭建笔记/搭建Git服务器/">https://zakariyya.github.io/2018/08/04/搭建笔记/搭建Git服务器/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-meta__tag-list"></div><div class="social-share"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script><nav id="pagination"><div class="prev-post pull-left"><a href="/2018/08/04/搭建笔记/搭建javaweb开发环境/"><i class="fa fa-chevron-left">  </i><span></span></a></div><div class="next-post pull-right"><a href="/2018/08/04/搭建笔记/基于Ubuntu搭建FTP/"><span></span><i class="fa fa-chevron-right"></i></a></div></nav><div id="disqus_thread"></div><script>var unused = null;
+var disqus_config = function () {
+  this.page.url = 'https://zakariyya.github.io/2018/08/04/搭建笔记/搭建Git服务器/';
+  this.page.identifier = '2018/08/04/搭建笔记/搭建Git服务器/';
+  this.page.title = '';
+}
+var d = document, s = d.createElement('script');
+s.src = "https://" + 'H2O2' +".disqus.com/embed.js";
+s.setAttribute('data-timestamp', '' + +new Date());
+(d.head || d.body).appendChild(s);</script><script id="dsq-count-scr" src="https://H2O2.disqus.com/count.js" async></script></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2015 - 2018 By anan</div><div class="framework-info"><span>Driven - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file-o"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="/js/third-party/anime.min.js"></script><script src="/js/third-party/jquery.min.js"></script><script src="/js/third-party/jquery.fancybox.min.js"></script><script src="/js/third-party/velocity.min.js"></script><script src="/js/third-party/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.5.6"></script><script src="/js/fancybox.js?version=1.5.6"></script><script src="/js/sidebar.js?version=1.5.6"></script><script src="/js/copy.js?version=1.5.6"></script><script src="/js/fireworks.js?version=1.5.6"></script><script src="/js/transition.js?version=1.5.6"></script><script src="/js/scroll.js?version=1.5.6"></script><script src="/js/head.js?version=1.5.6"></script></body></html>

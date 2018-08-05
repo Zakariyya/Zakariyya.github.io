@@ -1,0 +1,56 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="unstable hydrogen peroxide"><meta name="keywords" content=""><meta name="author" content="anan,undefined"><meta name="copyright" content="anan"><title>H2O2</title><link rel="shortcut icon" href="/my-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.5.6"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css?version=1.5.6"><link rel="dns-prefetch" href="https://cdn.staticfile.org"><link rel="dns-prefetch" href="https://cdn.bootcss.com"><link rel="dns-prefetch" href="https://creativecommons.org"><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json"><meta name="theme-color" content="#FF667B"><meta name="msapplication-TileColor" content="#FF667B"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#FF667B"><link rel="dns-prefetch" href="https://www.google-analytics.com"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-123397569-1', 'auto');
+ga('send', 'pageview');</script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  }
+} </script></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="https://avatars2.githubusercontent.com/u/14139937?s=460&amp;v=4"></div><div class="author-info__name text-center">anan</div><div class="author-info__description text-center">unstable hydrogen peroxide</div><div class="follow-button"><a href="https://github.com/Zakariyya">Follow Me</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">86</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">19</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">Categories</span><span class="pull-right">14</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">Links</div><a class="author-info-links__name text-center" href="url">Name</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(/img/top.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">H2O2</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a></span></div><div id="post-info"><div id="post-title">No title</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2018-08-04</time><span class="post-meta__separator">|</span><i class="fa fa-comment-o post-meta__icon" aria-hidden="true"></i><a href="/2018/08/04/搭建笔记/搭建个人 Leanote 云笔记本/#disqus_thread"><span class="disqus-comment-count" data-disqus-identifier="2018/08/04/搭建笔记/搭建个人 Leanote 云笔记本/"></span></a><div class="post-meta-wordcount"><span>Word count: </span><span class="word-count">733</span><span class="post-meta__separator">|</span><span>Reading time: 3 min</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><p>1.下载启动 MongoDB<br>任务时间：10min ~ 15min</p>
+<p>Leanote 依赖 MongoDB 作为数据存储，下面开始安装 MongoDB：</p>
+<p>下载 MongoDB<br>进入 /home 目录，并下载 MongoDB：</p>
+<p>cd /home<br>下载源码：</p>
+<p>wget <a href="https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.0.1.tgz" target="_blank" rel="noopener">https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.0.1.tgz</a><br>解压缩源码包：</p>
+<p>tar -xzvf mongodb-linux-x86_64-3.0.1.tgz<br>创建用于存储的文件夹目录<br>mkdir -p /data/db<br>配置 MongoDB 的环境变量：</p>
+<p>编辑 /etc/profile，在文件末尾追加以下配置：</p>
+<p>示例代码：/etc/profile</p>
+<p>export PATH=$PATH:/home/mongodb-linux-x86_64-3.0.1/bin<br>并执行以下命令，使环境变量生效。</p>
+<p>source /etc/profile<br>启动 MongoDB（启动需要 3 ~ 5 分钟，耐心等待）：<br>mongod –bind_ip localhost –port 27017 –dbpath /data/db/ –logpath=/var/log/mongod.log –fork</p>
+<ol start="2">
+<li>安装 Leanote<br>任务时间：10min ~ 15min</li>
+</ol>
+<p>Leanote 是一款 Linux 下开源的软件，下面开始安装 Leanote：</p>
+<p>下载 Leanote<br>先进入 /home 目录</p>
+<p>cd /home<br>下载 Leanote 源码</p>
+<p>wget <a href="https://iweb.dl.sourceforge.net/project/leanote-bin/2.4/leanote-linux-amd64-v2.4.bin.tar.gz" target="_blank" rel="noopener">https://iweb.dl.sourceforge.net/project/leanote-bin/2.4/leanote-linux-amd64-v2.4.bin.tar.gz</a><br>解开压缩包：<br>tar -zxvf leanote-linux-amd64-v2.4.bin.tar.gz<br>编辑 Leanote 配置文件<br>编辑文件 app.conf，在文件中找到 app.secret= 项，并修改为如下内容：</p>
+<p>app.secret=qcloud666<br>初始化数据库<br>导入初始化数据：</p>
+<p>mongorestore -h localhost -d leanote –dir /home/leanote/mongodb_backup/leanote_install_data/<br>启动 Leanote 服务<br>nohup /bin/bash /home/leanote/bin/run.sh &gt;&gt; /var/log/leanote.log 2&gt;&amp;1 &amp;</p>
+<p>3.准备域名和证书<br>任务时间：15min ~ 30min</p>
+<p>注：如果您不需要通过域名访问 Leanote 云笔记本则可以直接点击“已完成，下一步”跳过域名和证书的准备环节</p>
+<p>域名注册<br>如果您还没有域名，可以在腾讯云上选购，过程可以参考下面的视频。</p>
+<p>视频 - 在腾讯云上购买域名<br>域名解析<br>域名购买完成后, 需要将域名解析到实验云主机上，实验云主机的 IP 为：</p>
+<p>&lt;您的 CVM IP 地址&gt;<br>在腾讯云购买的域名，可以到控制台添加解析记录，过程可参考下面的视频：</p>
+<p>视频 - 如何在腾讯云上解析域名<br>域名设置解析后需要过一段时间才会生效，通过 ping 命令检查域名是否生效 [?]，如：</p>
+<p>ping <a href="http://www.yourdomain.com" target="_blank" rel="noopener">www.yourdomain.com</a><br>如果 ping 命令返回的信息中含有你设置的解析的 IP 地址，说明解析成功。</p>
+<p>注意替换下面命令中的 <a href="http://www.yourmpdomain.com" target="_blank" rel="noopener">www.yourmpdomain.com</a> 为您自己的注册的域名</p>
+<p>4.访问 Leanote 云笔记本<br>任务时间：时间未知</p>
+<p>通过 ip 访问笔记本<br>通过访问 http://&lt;您的 CVM IP 地址&gt;:9000 就可以了使用自己的笔记本。</p>
+<p>初始化账户： admin<br>初始化密码： abc123<br>请务必修改密码已确保使用安全！</p>
+<p>通过域名访问笔记本<br>如果您申请了域名，可以将 Ip 地址替换为对应的域名作为访问凭据，如：<a href="http://www.yourmpdomain.com:9000" target="_blank" rel="noopener">http://www.yourmpdomain.com:9000</a> , 注：请将 <a href="http://www.yourmpdomain.com" target="_blank" rel="noopener">www.yourmpdomain.com</a> 替换为您申请的域名。</p>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">anan</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://zakariyya.github.io/2018/08/04/搭建笔记/搭建个人 Leanote 云笔记本/">https://zakariyya.github.io/2018/08/04/搭建笔记/搭建个人 Leanote 云笔记本/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-meta__tag-list"></div><div class="social-share"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script><nav id="pagination"><div class="next-post pull-right"><a href="/2018/08/04/搭建笔记/搭建javaweb开发环境/"><span></span><i class="fa fa-chevron-right"></i></a></div></nav><div id="disqus_thread"></div><script>var unused = null;
+var disqus_config = function () {
+  this.page.url = 'https://zakariyya.github.io/2018/08/04/搭建笔记/搭建个人 Leanote 云笔记本/';
+  this.page.identifier = '2018/08/04/搭建笔记/搭建个人 Leanote 云笔记本/';
+  this.page.title = '';
+}
+var d = document, s = d.createElement('script');
+s.src = "https://" + 'H2O2' +".disqus.com/embed.js";
+s.setAttribute('data-timestamp', '' + +new Date());
+(d.head || d.body).appendChild(s);</script><script id="dsq-count-scr" src="https://H2O2.disqus.com/count.js" async></script></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2015 - 2018 By anan</div><div class="framework-info"><span>Driven - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file-o"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="/js/third-party/anime.min.js"></script><script src="/js/third-party/jquery.min.js"></script><script src="/js/third-party/jquery.fancybox.min.js"></script><script src="/js/third-party/velocity.min.js"></script><script src="/js/third-party/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.5.6"></script><script src="/js/fancybox.js?version=1.5.6"></script><script src="/js/sidebar.js?version=1.5.6"></script><script src="/js/copy.js?version=1.5.6"></script><script src="/js/fireworks.js?version=1.5.6"></script><script src="/js/transition.js?version=1.5.6"></script><script src="/js/scroll.js?version=1.5.6"></script><script src="/js/head.js?version=1.5.6"></script></body></html>

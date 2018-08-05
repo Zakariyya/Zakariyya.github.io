@@ -1,0 +1,53 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="unstable hydrogen peroxide"><meta name="keywords" content=""><meta name="author" content="anan,undefined"><meta name="copyright" content="anan"><title>H2O2</title><link rel="shortcut icon" href="/my-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.5.6"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css?version=1.5.6"><link rel="dns-prefetch" href="https://cdn.staticfile.org"><link rel="dns-prefetch" href="https://cdn.bootcss.com"><link rel="dns-prefetch" href="https://creativecommons.org"><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json"><meta name="theme-color" content="#FF667B"><meta name="msapplication-TileColor" content="#FF667B"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#FF667B"><link rel="dns-prefetch" href="https://www.google-analytics.com"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-123397569-1', 'auto');
+ga('send', 'pageview');</script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  }
+} </script></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="https://avatars2.githubusercontent.com/u/14139937?s=460&amp;v=4"></div><div class="author-info__name text-center">anan</div><div class="author-info__description text-center">unstable hydrogen peroxide</div><div class="follow-button"><a href="https://github.com/Zakariyya">Follow Me</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">86</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">19</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">Categories</span><span class="pull-right">14</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">Links</div><a class="author-info-links__name text-center" href="url">Name</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(/img/top.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">H2O2</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a></span></div><div id="post-info"><div id="post-title">No title</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2018-08-04</time><span class="post-meta__separator">|</span><i class="fa fa-comment-o post-meta__icon" aria-hidden="true"></i><a href="/2018/08/04/搭建笔记/基于 Ubuntu 搭建个人网盘/#disqus_thread"><span class="disqus-comment-count" data-disqus-identifier="2018/08/04/搭建笔记/基于 Ubuntu 搭建个人网盘/"></span></a><div class="post-meta-wordcount"><span>Word count: </span><span class="word-count">681</span><span class="post-meta__separator">|</span><span>Reading time: 2 min</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><p><a href="https://cloud.tencent.com/developer/labs/lab/10134" target="_blank" rel="noopener">https://cloud.tencent.com/developer/labs/lab/10134</a></p>
+<ol>
+<li>准备域名<br>任务时间：15min ~ 20min</li>
+</ol>
+<p>域名注册<br>如果您还没有域名，可以在腾讯云上选购，过程可以参考下面的视频：</p>
+<p>视频 - 在腾讯云上购买域名<br>域名解析<br>域名购买完成后, 需要将域名解析到实验云主机上，实验云主机的 IP 为：</p>
+<p>&lt;您的 CVM IP 地址&gt;<br>在腾讯云购买的域名，可以到控制台添加解析记录，过程可参考下面的视频：</p>
+<p>视频 - 如何在腾讯云上解析域名<br>域名设置解析后需要过一段时间才会生效，通过 ping 命令检查域名是否生效 [?]，如：</p>
+<p>ping <a href="http://www.yourdomain.com" target="_blank" rel="noopener">www.yourdomain.com</a><br>如果 ping 命令返回的信息中含有你设置的解析的 IP 地址，说明解析成功。</p>
+<p>注意替换下面命令中的 <a href="http://www.yourdomain.com" target="_blank" rel="noopener">www.yourdomain.com</a> 为您自己的注册的域名</p>
+<p>2.安装 Seafile 服务器<br>任务时间：15min ~ 20min</p>
+<p>安装依赖环境<br>在 Debian/Ubuntu 系统下，可以使用以下命令安装 MySQL：</p>
+<p>sudo apt-get update<br>sudo apt-get install mysql-server<br>使用以下命令安装 Python 相关依赖：</p>
+<p>sudo apt-get install python2.7 python-setuptools python-imaging python-ldap python-mysqldb python-memcache python-urllib3<br>安装 MySQL 过程需要为 MySQL 的 root 用户设置新密码，请记住该[密码]以供后面步骤使用。</p>
+<p>为 Seafile 创建一个用户<br>创建 Seafile 用户，使用它运行 Seafile 服务：</p>
+<p>sudo useradd -m -s /bin/bash seafile<br>为该用户设置密码：</p>
+<p>sudo passwd seafile<br>下载Seafile<br>切换到新用户，需要输入你刚才为seafile用户设置的密码：</p>
+<p>su - seafile<br>切换目录：</p>
+<p>cd ~<br>这里可以查看获取最新 Seafile 下载链接，参考以下命令进行下载。</p>
+<p>wget <a href="http://seafile-downloads.oss-cn-shanghai.aliyuncs.com/seafile-server_6.1.1_i386.tar.gz" target="_blank" rel="noopener">http://seafile-downloads.oss-cn-shanghai.aliyuncs.com/seafile-server_6.1.1_i386.tar.gz</a><br>解压:</p>
+<p>tar -xzf seafile-server_<em><br>mv seafile-server-</em>/ seafile-server/<br>配置 Seafile<br>运行Seafile设置脚本，并回答预设问题：</p>
+<p>cd seafile-server*<br>./setup-seafile-mysql.sh<br>执行过程输入参数如下图：</p>
+<p>其中：</p>
+<p>[ This server’s ip or domain ] 字段输入教程第一步申请的域名或者IP地址（&lt;您的 CVM IP 地址&gt;）。<br>mysql 的 [ root password ] 字段输入数据库密码。<br>其他字段一路回车使用默认值。</p>
+<p>启动 Seafile<br>./seafile.sh start<br>./seahub.sh start<br>执行过程输入参数如截图所示，其中 [ admin email ] 设置为您登录网盘的帐号，如 <a href="mailto:admin@qcloudlab.wang" target="_blank" rel="noopener">admin@qcloudlab.wang</a>。</p>
+<p>[ admin password ] 和 [ admin password again ] 设置为登录网盘的密码，如 admin_Password：</p>
+<p>大功告成！<br>恭喜，您的 Seafile 已经部署完成，您现在拥有专属的网盘了，登录的帐号密码为您启动 Seafile 步骤中设置的邮箱和密码。</p>
+<p>可以通过 IP 访问网盘：http://&lt;您的域名&gt;:8000</p>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">anan</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://zakariyya.github.io/2018/08/04/搭建笔记/基于 Ubuntu 搭建个人网盘/">https://zakariyya.github.io/2018/08/04/搭建笔记/基于 Ubuntu 搭建个人网盘/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-meta__tag-list"></div><div class="social-share"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script><nav id="pagination"><div class="prev-post pull-left"><a href="/2018/08/04/搭建笔记/Maven 安装与入门/"><i class="fa fa-chevron-left">  </i><span></span></a></div><div class="next-post pull-right"><a href="/2018/08/04/搭建笔记/Jib构建你的第一个java镜像/"><span></span><i class="fa fa-chevron-right"></i></a></div></nav><div id="disqus_thread"></div><script>var unused = null;
+var disqus_config = function () {
+  this.page.url = 'https://zakariyya.github.io/2018/08/04/搭建笔记/基于 Ubuntu 搭建个人网盘/';
+  this.page.identifier = '2018/08/04/搭建笔记/基于 Ubuntu 搭建个人网盘/';
+  this.page.title = '';
+}
+var d = document, s = d.createElement('script');
+s.src = "https://" + 'H2O2' +".disqus.com/embed.js";
+s.setAttribute('data-timestamp', '' + +new Date());
+(d.head || d.body).appendChild(s);</script><script id="dsq-count-scr" src="https://H2O2.disqus.com/count.js" async></script></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2015 - 2018 By anan</div><div class="framework-info"><span>Driven - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file-o"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="/js/third-party/anime.min.js"></script><script src="/js/third-party/jquery.min.js"></script><script src="/js/third-party/jquery.fancybox.min.js"></script><script src="/js/third-party/velocity.min.js"></script><script src="/js/third-party/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.5.6"></script><script src="/js/fancybox.js?version=1.5.6"></script><script src="/js/sidebar.js?version=1.5.6"></script><script src="/js/copy.js?version=1.5.6"></script><script src="/js/fireworks.js?version=1.5.6"></script><script src="/js/transition.js?version=1.5.6"></script><script src="/js/scroll.js?version=1.5.6"></script><script src="/js/head.js?version=1.5.6"></script></body></html>
