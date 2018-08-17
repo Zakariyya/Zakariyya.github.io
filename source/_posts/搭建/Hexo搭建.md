@@ -1,5 +1,5 @@
 ---
-title: Hexo 的搭建过程
+title: Hexo 搭建过程
 date: 2018-06-28 22:30:16
 tags: hexo 搭建
 categories: 搭建
