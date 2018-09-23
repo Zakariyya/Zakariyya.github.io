@@ -6,7 +6,7 @@ categories: backEnd
 ---
 
 ## 上传文件到 FTP 中
-```
+```java
 // 还没写
 ``` 
 
