@@ -1,10 +1,13 @@
 ---
-title: How to kill a currently using port on localhost in windows?
-date:  2019.08.16 16:37:39
+title: How to kill a currently using port on localhost in windows?[TOP]
+date:  2030.08.16 16:37:39
 tags: 电脑问题 端口 占用
 categories: 电脑问题
 ---
-# How to kill a currently using port on localhost in windows?
+you can use port 5000, no 4000 in hexo, like this
+```
+hexo s -p 5000 
+```
 
 ## Step 1
 
