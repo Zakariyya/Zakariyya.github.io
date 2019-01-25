@@ -88,7 +88,7 @@ sudo service ufw restart
 
 您可能需要bind-address在MySQL配置文件中  注释掉mysqld.cnf
 ```
-sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf
+sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf
 ```
 找到行**bind-address**  （CTRL+ W搜索）
 ```
