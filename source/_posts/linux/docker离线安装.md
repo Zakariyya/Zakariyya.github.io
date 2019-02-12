@@ -47,6 +47,10 @@ docker build .
 ```
 docker run -d -p 49161:1521 -e ORACLE_DISABLE_ASYNCH_IO=true wnameless/oracle-xe-11g
 ```
+或者(参考[dragonbest520](https://github.com/wnameless/docker-oracle-xe-11g/issues/64)这位大佬的回答)
+```
+docker run --name oracle11g -d -p 49161:22 -p 1522:1521 -p 49163:8080 -v /oracle11g-data/:/u01/app/oracle/oradata/oracle11g-data/ -e ORACLE_ALLOW_REMOTE=true --restart=always wnameless/oracle-xe-11g
+```
 
 By default, the password verification is disable(password never expired)
 Connect database with following setting:
