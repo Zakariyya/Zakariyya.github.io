@@ -32,12 +32,8 @@ eureka:
 
 ### eureka 集群
 
-在搭建 Eureka 集群时，需要添加多个配置文件，并且使用Springboot的多环境配置方式，集群中需要多少节点就添加多个配置文件
-
-#### 注意：
-1. 与单节点不同，配置文件属性**defaultZone**会指向另外一个节点，使得自己跑到指定的节点下注册自己
-1. instance.hostname：是自己的主机名，多个节点都有自己的主机名。
-1. hostname: eureka1 和 defaultZone 中的 eureka2 
+在搭建 Eureka 集群时，需要添加多个配置文件，并且使用Springboot的多环境配置方式，集群中需要多少节点就添加多个配置文件。
+根据不同的配置文件到不同的节点进行部署即可
 
 ```yml
 eureka:
@@ -47,6 +43,11 @@ eureka:
     service-url:
       defaultZone: http://eureka2:8761/eureka/  # 设置服务注册中心地址，指向另一个注册中心
 ```
+#### 注意：
+1. 与单节点不同，配置文件属性**defaultZone**会指向另外一个节点，使得自己跑到指定的节点下注册自己
+1. instance.hostname：是自己的主机名，多个节点都有自己的主机名。
+1. hostname: eureka1 和 defaultZone 中的 eureka2 
+
 
 ## Application Server(Service Provider)
 服务提供方，把自身的服务实例注册到 **Eureka Server** 中
