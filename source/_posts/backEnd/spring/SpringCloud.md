@@ -36,17 +36,59 @@ eureka:
 根据不同的配置文件到不同的节点进行部署即可
 
 ```yml
+server:
+  port: 8761
+  servlet:
+    context-path: /  # 集群 这里 非/ 的话会出现eureka中没有互相注册，没有服务注册的情况
+
 eureka:
   instance:
-    hostname: eureka1  # 设置eureka实例名称，建议与配置文件的变量为主
+    hostname: eureka1  # 设置eureka实例名称，与配置文件的变量为主
   client:
     service-url:
-      defaultZone: http://eureka2:8761/eureka/  # 设置服务注册中心地址，指向另一个注册中心
+      defaultZone: http://eureka2:8761/eureka/  # 设置服务注册中心地址，指向另一个注册中心 ，结构是一定的：http://{hostname}:{port}/eureka/
 ```
 #### 注意：
 1. 与单节点不同，配置文件属性**defaultZone**会指向另外一个节点，使得自己跑到指定的节点下注册自己
 1. instance.hostname：是自己的主机名，多个节点都有自己的主机名。
 1. hostname: eureka1 和 defaultZone 中的 eureka2 
+
+### provider 服务
+#### pom 文件需要
+```xml
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-netflix-eureka-client</artifactId>
+      <version>2.1.1.RELEASE</version>
+      <scope>compile</scope>
+    </dependency>
+<dependencyManagement>
+  <dependencies>
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-dependencies</artifactId>
+      <version>${spring-cloud.version}</version>
+      <type>pom</type>
+      <scope>import</scope>
+    </dependency>
+  </dependencies>
+</dependencyManagement>
+```
+#### 修改配置文件
+
+```yml
+server:
+  port: 9090
+  servlet:
+    context-path: /eureka-provider
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka1:8761/eureka/,http://eureka2:8761/eureka/  # 设置服务注册中心地址，指向另一个注册中心，用逗号分割
+```
+
+> 域名 修改 hosts ，略
 
 
 ## Application Server(Service Provider)
