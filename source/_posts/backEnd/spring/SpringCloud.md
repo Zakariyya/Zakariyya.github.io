@@ -53,8 +53,10 @@ eureka:
 1. instance.hostname：是自己的主机名，多个节点都有自己的主机名。
 1. hostname: eureka1 和 defaultZone 中的 eureka2 
 
-### provider 服务
-#### pom 文件需要
+## Application Server(Service Provider)
+> 服务提供方，把自身的服务实例注册到 **Eureka Server** 中
+
+### pom 文件需要
 ```xml
     <dependency>
       <groupId>org.springframework.cloud</groupId>
@@ -74,7 +76,7 @@ eureka:
   </dependencies>
 </dependencyManagement>
 ```
-#### 修改配置文件
+### 修改配置文件
 
 ```yml
 server:
@@ -91,9 +93,7 @@ eureka:
 > 域名 修改 hosts ，略
 
 
-## Application Server(Service Provider)
-服务提供方，把自身的服务实例注册到 **Eureka Server** 中
-
 ## Application Client(Service Consumer)
-服务调用方，通过**Eureka Server**获取服务列表，消费服务
+> 服务调用方，通过**Eureka Server**获取服务列表，消费服务
+
 
