@@ -5,6 +5,8 @@ tags: teamviewer 电脑问题
 categories: windows电脑问题
 ---
 
+[工具下载](/file/TVTools_AlterID.exe)
+
 当 TeamViewer 使用率超过 TeamViewer 所认定久会被锁定限时，这时候除了有license或破解TeamViewer，还有一种方式，那就是用**TVTools Alter 2.0**将TeamViewer ID reset 就可以展示解决被限时间的情况。
 
 如果TeamViewer已经执行状态，只要执行**TVTools AlterID.exe**工具，点选**[start]**钮，等待Progress 100%之后点选**[end]**钮即可。
