@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>
+    Shadowsocks搭建过程(客户端) | Anan
+  </title>
+  <meta name="description" content="BLACKPINK&#39;s Fans">
+  
+  <meta name="keywords" content="
+  翻墙 Shadowsocks
+  ">
+  
+  <meta name="author" content="anan">
+
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="theme-color" content="#1e2327">
+  <link rel="apple-touch-icon" href="https://github.githubassets.com/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://github.githubassets.com/apple-touch-icon-180x180.png">
+
+  <link rel="icon" type="image/x-icon" href="https://github.githubassets.com/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-123397569-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/vue/1.0.25-csp/vue.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+</head>
+
+<body id="replica-app">
+
+<nav class="navbar-wrapper">
+  <div class="navbar">
+    <div class="container clearfix">
+      <a href="/" class="navbar-logo"><i class="fa fa-github"></i></a>
+
+      <div class="navbar-search float-left desktop-only">
+        <div class="navbar-search-form">
+          <label for="gsc-i-id1">This website</label>
+          <div id="google-search">
+            <gcse:search></gcse:search>
+          </div>
+        </div>
+      </div>
+
+      <ul class="navbar-nav float-left">
+        
+        <li><a href="/archives">Archives</a></li>
+        
+        
+        <li><a href="/categories">Categories</a></li>
+        
+        
+        <li><a href="/tags">Tags</a></li>
+        
+        
+        <li class="desktop-only"><a href="/atom.xml" target="_blank">RSS</a></li>
+        
+      </ul>
+
+      <ul class="navbar-nav user-nav float-right desktop-only">
+        <li class="user-nav-notification">
+          <a><span class="user-nav-unread"></span><i class="fa fa-bell"></i></a>
+        </li>
+        <li>
+          <a><i class="fa fa-plus"></i> <i class="fa fa-caret-down"></i></a>
+        </li>
+        <li class="user-nav-logo">
+          <a><img src="https://avatars2.githubusercontent.com/u/14139937?s=460&amp;v=4"> <i class="fa fa-caret-down"></i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="main-container">
+  <header class="header-wrapper desktop-only">
+  <div class="container header-site-detail">
+    <ul class="header-toolbar">
+      <li class="clearfix">
+        <a href="/archives" class="header-toolbar-left"><i class="fa fa-file-text"></i> Posts </a>
+        <a href="/archives" class="header-toolbar-right"> 109 </a>
+      </li>
+      <li>
+        <a href="/tags" class="header-toolbar-left"><i class="fa fa-tags"></i> Tags </a>
+        <a href="/tags" class="header-toolbar-right"> 44 </a>
+      </li>
+      <li>
+        <a href="/categories" class="header-toolbar-left"><i class="fa fa-folder-open"></i> Categories </a>
+        <a href="/categories" class="header-toolbar-right"> 18 </a>
+      </li>
+    </ul>
+    <h2 class="header-title">
+      <i class="fa fa-book text-muted"></i>
+      <a href="/">Anan</a>
+      
+      
+    </h2>
+  </div>
+
+  <div class="container">
+    <div class="header-tab-wrapper clearfix">
+      <span class="header-tab header-tab-selected"><i class="fa fa-thumbs-o-up"></i> Like</span>
+      <span class="header-tab"><i class="fa fa-share-alt"></i> Share</span>
+      <span class="header-tab"><i class="fa fa-comments-o"></i> Discussion</span>
+      <span class="header-tab"><i class="fa fa-bookmark-o"></i> Bookmark </span>
+      <span class="header-tab"><i class="fa fa-smile-o"></i> Smile <i class="fa fa-caret-down"></i></span>
+    </div>
+  </div>
+</header>
+
+
+<div class="post-container container">
+  <h3>
+    <i class="fa fa-user-o"></i>
+    anan
+
+    <span class="post-date float-right" title="{{moment(1524464243000).format('MMM DD, YYYY, h:mm:ss A')}}">
+      <i class="fa fa-pencil-square-o"></i>
+      {{moment(1524464243000).fromNow()}}
+    </span>
+  </h3>
+
+  <article class="post-content">
+    <h1>Shadowsocks搭建过程(客户端)</h1>
+    <p>这里着重介绍 <strong>macOS</strong>上的配置</p>
+<blockquote>
+<p>链接扩展<br><a href="https://shadowsocks.org/en/index.html" target="_blank" rel="noopener">shadowsocks</a><br><a href="https://github.com/shadowsocks/shadowsocks-windows/releases/tag/4.0.9" target="_blank" rel="noopener">shadowsocks-windows</a><br><a href="https://github.com/shadowsocks/shadowsocks-libev/" target="_blank" rel="noopener">shadowsocks-libev</a><br><a href="https://v2ray.com" target="_blank" rel="noopener">v2ray</a><br><a href="https://vultr.com" target="_blank" rel="noopener">vultr</a></p>
+</blockquote>
+<h2 id="一些通用的配置"><a href="#一些通用的配置" class="headerlink" title="一些通用的配置"></a>一些通用的配置</h2><h3 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h3><p>填IP和域名都可以，不过shadowsocks服务器域名的解析应该用的是本地的DNS（毕竟还没有连上代理），所以尽量填IP吧。</p>
+<h3 id="端口"><a href="#端口" class="headerlink" title="端口"></a>端口</h3><p>服务器端如果是自己搭的，尽量把端口设置为80或443这种常用端口，因为有的网络环境会限制一些端口，8080，25这种非HTTP端口也可以。</p>
+<h3 id="算法-amp-密码"><a href="#算法-amp-密码" class="headerlink" title="算法&amp;密码"></a>算法&amp;密码</h3><p>现在所有平台的客户端都支持AEAD加密算法，推荐AEAD。另外shadowsocks基本上没有什么多用户的概念，如果是多人使用多个密码的话一般就是开多个端口，每个端口设置一个密码。</p>
+<h3 id="全局-amp-自动代理"><a href="#全局-amp-自动代理" class="headerlink" title="全局 &amp; 自动代理"></a>全局 &amp; 自动代理</h3><p>全局代理指全局的SOCKS代理，所有流量都走代理端口。</p>
+<p>自动代理一般使用PAC文件，黑名单指在黑名单内域名走代理，不在黑名单内的不走代理；</p>
+<p>白名单相反，只有在白名单内的域名不走代理。如果代理流量有限制，最好使用黑名单，不限制流量的话，白名单更好一些。</p>
+<p>黑名单一般都是用著名的<a href="https://github.com/gfwlist/gfwlist" target="_blank" rel="noopener">gfwlist</a>，白名单个人推荐<a href="https://github.com/R0uter/gfw_domain_whitelist" target="_blank" rel="noopener">这个</a>。</p>
+<h2 id="Android、Windows、OpenWrt-LEDE端"><a href="#Android、Windows、OpenWrt-LEDE端" class="headerlink" title="Android、Windows、OpenWrt/LEDE端"></a>Android、Windows、OpenWrt/LEDE端</h2><p>参考<a href="https://cokebar.info/archives/978" target="_blank" rel="noopener">这篇</a></p>
+<h2 id="macOS端"><a href="#macOS端" class="headerlink" title="macOS端"></a>macOS端</h2><p>github上的GUI版本不怎么能满足我的使用需求，所以我用的是shadowocks-libev。</p>
+<h3 id="安装shadowsocks-libev"><a href="#安装shadowsocks-libev" class="headerlink" title="安装shadowsocks-libev"></a>安装shadowsocks-libev</h3><p>使用<a href="https://brew.sh/" target="_blank" rel="noopener">homebrew</a>安装即可，没必要手动编译源码。没安装 homebrew 的用户，需要先到 App Store 下载 <strong>Xcode</strong>，之后在终端运行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">local$ /usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</span><br></pre></td></tr></table></figure>
+<p>其实就是运行一个ruby脚本。用homebrew来管理macOS上的命令行工具是不错的选择，软件包更新也跟得上。安装好homebrew后就可以安装shadowsocks-libev：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">local$ brew update    #更新homebrew软件源</span><br><span class="line">local$ brew install shadowsocks-libev</span><br></pre></td></tr></table></figure>
+<h3 id="开机自动启动"><a href="#开机自动启动" class="headerlink" title="开机自动启动"></a>开机自动启动</h3><p>安装之后我们会看到终端中提示这样的信息：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">To have launchd start shadowsocks-libev now and restart at login:</span><br><span class="line">  brew services start shadowsocks-libev</span><br><span class="line">Or, if you don&apos;t want/need a background service you can just run:</span><br><span class="line">  /usr/local/opt/shadowsocks-libev/bin/ss-local -c /usr/local/etc/shadowsocks-libev.json</span><br></pre></td></tr></table></figure>
+<p>这是告诉我们开机自动运行shadowsocks的方法，和手动运行的方法。开机自动运行使用的是homebrew提供的服务，相当于执行了下面的命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">local$ ss-local -c /usr/local/etc/shadowsocks-libev.json</span><br></pre></td></tr></table></figure>
+<p>ss-local是shadowsocks-libev中的客户端命令。可以看出，homebrew安装shadowsocks时<br>在/usr/local/etc/路径下建立了配置文件，供开机启动shadowsocks服务用。<br>使用vim或是文本编辑器都可以，这可是macOS，不是没有GUI的Linux VPS了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;server&quot;:&quot;server_ip&quot;,</span><br><span class="line">    &quot;server_port&quot;:8088,</span><br><span class="line">    &quot;local_port&quot;:1080,</span><br><span class="line">    &quot;password&quot;:&quot;password&quot;,</span><br><span class="line">    &quot;timeout&quot;:5,</span><br><span class="line">    &quot;method&quot;:&quot;chacha20-ietf-poly1305&quot;,</span><br><span class="line">    &quot;mode&quot;:&quot;tcp_and_udp&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>同服务器上的配置文件基本一至，不过多了一个local_port，<br>这是因为上面说的本地要开一个端口用于把流量转发到shadowsocks服务器，<br>所以要显式地写明端口，如果不写会默认1080端口。之后就可以启用shadowsocks的homebrew服务：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">local$ brew services start shadowsocks-libev</span><br></pre></td></tr></table></figure>
+<p>可以看到成功的提示信息。</p>
+<h2 id="全局代理"><a href="#全局代理" class="headerlink" title="全局代理"></a>全局代理</h2><p>本地开启socks代理，在系统设置里填上端口就可以使用全局代理。</p>
+<h3 id="白名单"><a href="#白名单" class="headerlink" title="白名单"></a>白名单</h3><p>当然，平时我们不会使用全局代理的，所以接下来要配置上面提到过的PAC自动代理。</p>
+<p>首先下载<a href="https://github.com/R0uter/gfw_domain_whitelist" target="_blank" rel="noopener">域名白名单</a>，<br>要使用的是里面的PAC文件。</p>
+<p>如果本地代理端口不是默认的1080，下好的PAC文件还需要编辑一下脚本上使用的socks端口：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var proxy = new Array( &quot;SOCKS5 127.0.0.1:port;&quot;)</span><br></pre></td></tr></table></figure>
+<p>将代理端口改为我们上面设置的本地端口。</p>
+<p>因为10.12开始macOS不允许使用本地文件路么作为PAC文件路径，<br>所以要把PAC文件放在网络环境下才可以正常使用，使用macOS自带的网页服务器即可。</p>
+<p>将PAC文件复制到/Library/WebServer/Documents/目录下，之后启用网页服务：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">local$ sudo apachectl start</span><br></pre></td></tr></table></figure>
+<p>输入密码后，在浏览器中输入<a href="http://localhost可以看到It" target="_blank" rel="noopener">http://localhost可以看到It</a> works!字样即为启动成功，</p>
+<p>接着在网络设置中自动代理的地址填写白名单的地址即可。</p>
+<h3 id="代理切换"><a href="#代理切换" class="headerlink" title="代理切换"></a>代理切换</h3><p>可以在网络设置添加一个网络位置，通过切换网络位置来切换代理方式，不过在切换网络位置的时候会断开wifi，显得不够优雅。使用networksetup命令来切换代理，这个命令实际上就相当于我们有网络没置中进行的设置的命令行形式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 打开PAC</span><br><span class="line">local$ networksetup -setautoproxyurl Wi-Fi http://127.0.0.1:80/whitelist.pac</span><br><span class="line"></span><br><span class="line">#关闭PAC</span><br><span class="line">local$ networksetup -setautoproxystate Wi-Fi off</span><br><span class="line"></span><br><span class="line"># 打开socks</span><br><span class="line">local$ networksetup -setsocksfirewallproxy Wi-Fi localhost 1080 on</span><br><span class="line"></span><br><span class="line"># 关闭socks</span><br><span class="line">local$ networksetup -setsocksfirewallproxy Wi-Fi localhost 1080 off</span><br></pre></td></tr></table></figure>
+<p>应该一下子就能看明白怎么使用，其中Wi-Fi是网络接口的服务名称，如果用的是wifi就不用改了，可以在网络设置右边看到各个接口的名称，PAC文件的位置和socks端口对应修改就好了。</p>
+<p>可以把这几个命令写成脚本，因为我也使用Alfred，所以就写了个Alfred的workflow，用Alfred的可以直接下载使用。更改网络设置需要root权限，所以会提示输入密码。</p>
+<blockquote>
+<p>文章摘自<a href="https://shino.space/2017/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%90%AD%E5%BB%BAshadowsocks%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E7%B3%BB%E7%BB%9F-%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%AF%87/#androidwindowsopenwrtlede" target="_blank" rel="noopener">shino.space</a></p>
+</blockquote>
+
+  </article>
+</div>
+
+
+    
+<div class="container disqus-container">
+  <div id="disqus_thread"></div>
+</div>
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://zakariyya.github.io/2018/04/23/搭建-翻墙-shadowsocks搭建过程-客户端/";
+    this.page.identifier = 1524464243;
+  };
+
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://anan.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+
+
+
+
+
+</div>
+
+<div class="footer-wrapper container">
+  <footer class="footer clearfix">
+    <div class="clearfix">
+    <a href="https://zakariyya.github.io" class="footer-logo">
+      <i class="fa fa-github"></i>
+    </a>
+    <ul class="footer-social-link">
+      <li>© 2019 anan</li>
+      <li><a href="https://zakariyya.github.io">Home</a></li>
+      
+      <li><a href="https://github.com/Zakariyya">Github</a></li>
+      
+      <li><a href="http://weibo.com/">Weibo</a></li>
+      
+    </ul>
+    <div class="footer-theme-info">
+      Theme <a href="//github.com/sabrinaluo/hexo-theme-replica">Replica</a>
+      by <a href="//github.com/sabrinaluo">Hiitea</a> ❤ Powered by Hexo
+    </div>
+    </div>
+    
+    <div class="footer-pageview">
+        <a href="https://info.flagcounter.com/mx4Y">
+          <img src="//s01.flagcounter.com/count/mx4Y/bg_FFFFFF/txt_000000/border_FFFFFF/columns_3/maxflags_9/viewers_3/labels_0/pageviews_1/flags_0/percent_0/">
+        </a>
+    </div>
+    
+  </footer>
+</div>
+
+
+<script>
+  (function() {
+    var cx = '005289241570429579920:lniuufygqc8';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+      '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+
+
+
+<script src="/js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>
+    命令行下安装 oracle 11gR2 数据库 | Anan
+  </title>
+  <meta name="description" content="BLACKPINK&#39;s Fans">
+  
+  <meta name="keywords" content="
+  linux centos oracle databases
+  ">
+  
+  <meta name="author" content="anan">
+
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="theme-color" content="#1e2327">
+  <link rel="apple-touch-icon" href="https://github.githubassets.com/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://github.githubassets.com/apple-touch-icon-180x180.png">
+
+  <link rel="icon" type="image/x-icon" href="https://github.githubassets.com/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-123397569-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/vue/1.0.25-csp/vue.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+</head>
+
+<body id="replica-app">
+
+<nav class="navbar-wrapper">
+  <div class="navbar">
+    <div class="container clearfix">
+      <a href="/" class="navbar-logo"><i class="fa fa-github"></i></a>
+
+      <div class="navbar-search float-left desktop-only">
+        <div class="navbar-search-form">
+          <label for="gsc-i-id1">This website</label>
+          <div id="google-search">
+            <gcse:search></gcse:search>
+          </div>
+        </div>
+      </div>
+
+      <ul class="navbar-nav float-left">
+        
+        <li><a href="/archives">Archives</a></li>
+        
+        
+        <li><a href="/categories">Categories</a></li>
+        
+        
+        <li><a href="/tags">Tags</a></li>
+        
+        
+        <li class="desktop-only"><a href="/atom.xml" target="_blank">RSS</a></li>
+        
+      </ul>
+
+      <ul class="navbar-nav user-nav float-right desktop-only">
+        <li class="user-nav-notification">
+          <a><span class="user-nav-unread"></span><i class="fa fa-bell"></i></a>
+        </li>
+        <li>
+          <a><i class="fa fa-plus"></i> <i class="fa fa-caret-down"></i></a>
+        </li>
+        <li class="user-nav-logo">
+          <a><img src="https://avatars2.githubusercontent.com/u/14139937?s=460&amp;v=4"> <i class="fa fa-caret-down"></i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="main-container">
+  <header class="header-wrapper desktop-only">
+  <div class="container header-site-detail">
+    <ul class="header-toolbar">
+      <li class="clearfix">
+        <a href="/archives" class="header-toolbar-left"><i class="fa fa-file-text"></i> Posts </a>
+        <a href="/archives" class="header-toolbar-right"> 109 </a>
+      </li>
+      <li>
+        <a href="/tags" class="header-toolbar-left"><i class="fa fa-tags"></i> Tags </a>
+        <a href="/tags" class="header-toolbar-right"> 44 </a>
+      </li>
+      <li>
+        <a href="/categories" class="header-toolbar-left"><i class="fa fa-folder-open"></i> Categories </a>
+        <a href="/categories" class="header-toolbar-right"> 18 </a>
+      </li>
+    </ul>
+    <h2 class="header-title">
+      <i class="fa fa-book text-muted"></i>
+      <a href="/">Anan</a>
+      
+      
+    </h2>
+  </div>
+
+  <div class="container">
+    <div class="header-tab-wrapper clearfix">
+      <span class="header-tab header-tab-selected"><i class="fa fa-thumbs-o-up"></i> Like</span>
+      <span class="header-tab"><i class="fa fa-share-alt"></i> Share</span>
+      <span class="header-tab"><i class="fa fa-comments-o"></i> Discussion</span>
+      <span class="header-tab"><i class="fa fa-bookmark-o"></i> Bookmark </span>
+      <span class="header-tab"><i class="fa fa-smile-o"></i> Smile <i class="fa fa-caret-down"></i></span>
+    </div>
+  </div>
+</header>
+
+
+<div class="post-container container">
+  <h3>
+    <i class="fa fa-user-o"></i>
+    anan
+
+    <span class="post-date float-right" title="{{moment(1547710560000).format('MMM DD, YYYY, h:mm:ss A')}}">
+      <i class="fa fa-pencil-square-o"></i>
+      {{moment(1547710560000).fromNow()}}
+    </span>
+  </h3>
+
+  <article class="post-content">
+    <h1>命令行下安装 oracle 11gR2 数据库</h1>
+    <h1 id="Centos-linux系统-命令行（静默）安装oracle-11gR2"><a href="#Centos-linux系统-命令行（静默）安装oracle-11gR2" class="headerlink" title="Centos linux系统 命令行（静默）安装oracle 11gR2"></a>Centos linux系统 命令行（静默）安装oracle 11gR2</h1><blockquote>
+<p><a href="http://www.cnblogs.com/yingsong/p/6031235.html?tdsourcetag=s_pctim_aiomsg" target="_blank" rel="noopener">参考</a></p>
+</blockquote>
+<h2 id="修改-hostname-db-hosts文件"><a href="#修改-hostname-db-hosts文件" class="headerlink" title="修改 hostname db / hosts文件"></a>修改 hostname db / hosts文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10.10.0.48   db</span><br></pre></td></tr></table></figure>
+<h2 id="修改内核参数"><a href="#修改内核参数" class="headerlink" title="修改内核参数"></a>修改内核参数</h2><h3 id="etc-sysctl-conf"><a href="#etc-sysctl-conf" class="headerlink" title="/etc/sysctl.conf"></a>/etc/sysctl.conf</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#vim /etc/sysctl.conf  </span></span><br><span class="line">net.ipv4.ip_local_port_range= 9000 65500 </span><br><span class="line">fs.file-max = 6815744 </span><br><span class="line">kernel.shmall = 10523004 </span><br><span class="line">kernel.shmmax = 6465333657 </span><br><span class="line">kernel.shmmni = 4096 </span><br><span class="line">kernel.sem = 250 32000 100128 </span><br><span class="line">net.core.rmem_default=262144 </span><br><span class="line">net.core.wmem_default=262144 </span><br><span class="line">net.core.rmem_max=4194304 </span><br><span class="line">net.core.wmem_max=1048576 </span><br><span class="line">fs.aio-max-nr = 1048576</span><br><span class="line"><span class="comment"># sysctl -p  #使配置生效</span></span><br></pre></td></tr></table></figure>
+<h3 id="用户的限制文件-etc-security-limits-conf"><a href="#用户的限制文件-etc-security-limits-conf" class="headerlink" title="用户的限制文件/etc/security/limits.conf"></a>用户的限制文件/etc/security/limits.conf</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">oracle           soft    nproc           2047</span><br><span class="line">oracle           hard    nproc           16384</span><br><span class="line">oracle           soft    nofile          1024</span><br><span class="line">oracle           hard    nofile          65536</span><br><span class="line">oracle           soft    stack           10240</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>修改/etc/pam.d/login文件，增加如下：</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">session  required   /lib64/security/pam_limits.so  //64为系统，千万别写成/lib/security/pam_limits.so，否则导致无法登录</span><br><span class="line">session  required   pam_limits.so</span><br></pre></td></tr></table></figure>
+<h2 id="创建用户及组"><a href="#创建用户及组" class="headerlink" title="创建用户及组"></a>创建用户及组</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">//创建用户及组</span><br><span class="line"># groupadd oinstall </span><br><span class="line"># groupadd dba</span><br><span class="line"># useradd -g oinstall -G dba -d /home/u11 oracle</span><br><span class="line"># passwd oracle</span><br><span class="line"></span><br><span class="line">//创建安装目录</span><br><span class="line"># mkdir -p /opt/app/oracle/product/11.2.0/db_1</span><br><span class="line"></span><br><span class="line">//数据文件存放目录</span><br><span class="line"># mkdir -p /opt/app/oracle/oradata</span><br><span class="line"></span><br><span class="line">//数据恢复目录</span><br><span class="line"># mkdir -p /opt/app/oracle/recovery_area</span><br><span class="line"></span><br><span class="line">//数据库创建及使用过程中的日志目录</span><br><span class="line"># mkdir -p /opt/app/oracle/oraInventory</span><br><span class="line"></span><br><span class="line">####################</span><br><span class="line"></span><br><span class="line">//修改安装目录权限</span><br><span class="line">#chown -R oracle:oinstall /opt/app/oracle</span><br><span class="line">#chmod 775 /opt/app/oracle</span><br></pre></td></tr></table></figure>
+<h2 id="登录oracle用户，设置环境变量"><a href="#登录oracle用户，设置环境变量" class="headerlink" title="登录oracle用户，设置环境变量"></a>登录oracle用户，设置环境变量</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#su - oracle</span><br></pre></td></tr></table></figure>
+<p>view .bash_profile //这里我修改为/etc/profile<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> ORACLE_BASE=/opt/app/oracle</span><br><span class="line"><span class="built_in">export</span> ORACLE_HOME=<span class="variable">$ORACLE_BASE</span>/product/11.2.0/db_1</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$ORACLE_HOME</span>/bin</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> CLASSPATH=<span class="variable">$ORACLE_HOME</span>/JRE:<span class="variable">$ORACLE_HOME</span>/jlib:<span class="variable">$ORACLE_HOME</span>/rdbms/jlib</span><br><span class="line"><span class="built_in">export</span> LD_LIBRARY_PATH=<span class="variable">$ORACLE_HOME</span>/lib:/lib64:/usr/lib64:/usr/<span class="built_in">local</span>/lib64</span><br><span class="line"><span class="built_in">export</span> ORACLE_SID=cgw</span><br><span class="line"></span><br><span class="line">//如果设置NLS_LANG，容易产生导入sql或dmp出错，因为其他环境下的不是utf8</span><br><span class="line"><span class="built_in">export</span> NLS_LANG=AMERICAN_AMERICA.AL32UTF8</span><br><span class="line"></span><br><span class="line">//监听服务创建是为了后面静默安装用的</span><br><span class="line"><span class="built_in">export</span> DISPLAY=127.0.0.1:1.0</span><br></pre></td></tr></table></figure></p>
+<p>使设置生效<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source .bash_profile // 我为 /etc/profile</span><br></pre></td></tr></table></figure></p>
+<h2 id="安装oracle"><a href="#安装oracle" class="headerlink" title="安装oracle"></a>安装oracle</h2><h3 id="安装依赖包"><a href="#安装依赖包" class="headerlink" title="安装依赖包"></a>安装依赖包</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># yum -y install gcc gcc-c++ make binutilscompat-libstdc++-33 elfutils-libelf elfutils-libelf-develglibc glibc-commonglibc-devel libaio libaio-devel libgcclibstdc++libstdc++-devel unixODBC unixODBC-devel ksh</span><br></pre></td></tr></table></figure>
+<p>或<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># yum -y installbinutils compat-libstdc++-33 compat-libstdc++-33.i686 </span><br><span class="line">elfutils-libelfelfutils-libelf-devel gcc gcc-c++ glibc glibc.i686 glibc-common </span><br><span class="line">glibc-devel glibc-devel.i686glibc-headers ksh libaio libaio.i686 libaio-devel </span><br><span class="line">libaio-devel.i686 libgcclibgcc.i686 libstdc++ libstdc++.i686 libstdc++-devel make </span><br><span class="line">sysstat unixODBC unixODBC-devel</span><br></pre></td></tr></table></figure></p>
+<h3 id="解压安装包"><a href="#解压安装包" class="headerlink" title="解压安装包"></a>解压安装包</h3><blockquote>
+<p>unzip 两个包，在oracle用户下在 /home/u11 下面</p>
+</blockquote>
+<h3 id="数据库安装"><a href="#数据库安装" class="headerlink" title="数据库安装"></a>数据库安装</h3><blockquote>
+<p>路径： /databases/response</p>
+</blockquote>
+<ul>
+<li>db_install.rsp 安装应答配置文件</li>
+<li>dbca.rsp 创建数据库应答</li>
+<li>netca.rsp 建立监听、本地服务名等网络设置应答</li>
+</ul>
+<h4 id="修改配置文件db-install-rsp，并安装"><a href="#修改配置文件db-install-rsp，并安装" class="headerlink" title="修改配置文件db_install.rsp，并安装"></a>修改配置文件db_install.rsp，并安装</h4><blockquote>
+<p>下面把主要修改的地方贴出来，具体详细文件，请查看另一篇文章：<a href="http://www.cnblogs.com/yingsong/p/6031452.html" target="_blank" rel="noopener">Oracle 11gR2 db_install.rsp详解</a></p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">oracle.install.option=INSTALL_DB_SWONLY</span><br><span class="line">ORACLE_HOSTNAME=db</span><br><span class="line">UNIX_GROUP_NAME=oinstall</span><br><span class="line">INVENTORY_LOCATION=/opt/app/oracle/oraInventory</span><br><span class="line">SELECTED_LANGUAGES=en,zh_CN</span><br><span class="line">ORACLE_HOME=/opt/app/oracle/product/11.2.0/db_1</span><br><span class="line">ORACLE_BASE=/opt/app/oracle</span><br><span class="line">oracle.install.db.InstallEdition=EE</span><br><span class="line">oracle.install.db.DBA_GROUP=dba</span><br><span class="line">oracle.install.db.OPER_GROUP=oinstall</span><br><span class="line">oracle.install.db.config.starterdb.characterSet=AL32UTF8</span><br><span class="line">oracle.install.db.config.starterdb.storageType=FILE_SYSTEM_STORAGE</span><br><span class="line">oracle.install.db.config.starterdb.fileSystemStorage.dataLocation=/opt/app/oracle/oradata</span><br><span class="line">oracle.install.db.config.starterdb.fileSystemStorage.recoveryLocation=/opt/app/oracle/recovery_data</span><br><span class="line">DECLINE_SECURITY_UPDATES=<span class="literal">true</span>    //一定要设为<span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>报错：<a href="http://blog.51cto.com/linuxzqdn/1751651" target="_blank" rel="noopener">DISPLAY environment variable not set! Oracle Net Configuration Assistan</a> .处理：export DISPLAY=127.0.0.1:1.0 (上面已经处理了)</p>
+</blockquote>
+<h3 id="登录oracle用户，执行安装"><a href="#登录oracle用户，执行安装" class="headerlink" title="登录oracle用户，执行安装"></a>登录oracle用户，执行安装</h3><p>在解压路径下：/database/response路径下<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">./runInstaller -silent -responseFile /home/u11/database/response/db_install.rsp </span><br><span class="line"><span class="comment">## 安装过程中，如果提示[WARNING]不必理会，此时安装程序仍在进行，如果出现[FATAL]，则安装程序已经停止了。</span></span><br><span class="line"><span class="comment">## 打开另一个终端，执行命令</span></span><br><span class="line">tail -100 f /u01/app/oracle/oraInventory/logs/installActions......log</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"><span class="comment">## 可以实时跟踪查看安装日志，了解安装的进度。</span></span><br><span class="line"><span class="comment">## 当出现</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  以下配置脚本需要以 <span class="string">"root"</span> 用户的身份执行。</span><br><span class="line">   <span class="comment">#!/bin/sh</span></span><br><span class="line">   <span class="comment">#要运行的 Root 脚本</span></span><br><span class="line"></span><br><span class="line">  /u01/app/oracle/oraInventory/orainstRoot.sh</span><br><span class="line">  /u01/app/oracle/product/11.2.0/db_1/root.sh</span><br><span class="line">  要执行配置脚本, 请执行以下操作:</span><br><span class="line">     1. 打开一个终端窗口</span><br><span class="line">     2. 以 <span class="string">"root"</span> 身份登录</span><br><span class="line">     3. 运行脚本</span><br><span class="line">     4. 返回此窗口并按 <span class="string">"Enter"</span> 键继续</span><br><span class="line"></span><br><span class="line">  Successfully Setup Software.</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"><span class="comment">## 出现这个的话，说明已安装成功，则需要按提示操作，操作完返回Enter成功</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="缺包"><a href="#缺包" class="headerlink" title="缺包"></a>缺包</h4><blockquote>
+<p><a href="https://stackoverflow.com/questions/29741518/error-libxext-so-6-cannot-open-shared-object-file-no-such-file-or-directory" target="_blank" rel="noopener">Error: libXext.so.6: cannot open shared object file: No such file or directory</a></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install libXext.x86_64 libXrender.x86_64 libXtst.x86_64</span><br></pre></td></tr></table></figure>
+<h4 id="静默安装Oracle-11g过程中提示：Exception-in-thread-“main”-java-lang-NoClassDefFoundError"><a href="#静默安装Oracle-11g过程中提示：Exception-in-thread-“main”-java-lang-NoClassDefFoundError" class="headerlink" title="静默安装Oracle 11g过程中提示：Exception in thread “main” java.lang.NoClassDefFoundError"></a>静默安装Oracle 11g过程中提示：Exception in thread “main” java.lang.NoClassDefFoundError</h4><blockquote>
+<p><a href="https://my.oschina.net/siiiso/blog/809173" target="_blank" rel="noopener">https://my.oschina.net/siiiso/blog/809173</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unset DISPLAY</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="配置监听配置文件-response-netca-rsp"><a href="#配置监听配置文件-response-netca-rsp" class="headerlink" title="配置监听配置文件 response/netca.rsp"></a>配置监听配置文件 response/netca.rsp</h3><ul>
+<li>命令netca path：$ORACLE_HOME/bin</li>
+<li>netca.rsp path: /home/u11/database/response/netca.rsp</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">netca -silent -responsefile response/netca.rsp</span><br><span class="line"></span><br><span class="line">正在对命令行参数进行语法分析:</span><br><span class="line"> 参数<span class="string">"silent"</span> = <span class="literal">true</span></span><br><span class="line"> 参数<span class="string">"responsefile"</span> = /home/oracle/response/netca.rsp</span><br><span class="line"> 完成对命令行参数进行语法分析。</span><br><span class="line"> Oracle Net Services 配置:</span><br><span class="line"> 完成概要文件配置。</span><br><span class="line"> Oracle Net 监听程序启动:</span><br><span class="line">  正在运行监听程序控制:</span><br><span class="line">    /opt/oracle/11.2.0/bin/lsnrctl start LISTENER</span><br><span class="line">  监听程序控制完成。</span><br><span class="line">  监听程序已成功启动。</span><br><span class="line"> 监听程序配置完成。</span><br><span class="line"> 成功完成 Oracle Net Services 配置</span><br><span class="line"></span><br><span class="line"><span class="comment">## 成功运行后，在/opt/oracle/11.2.0/network/admin目录下生成sqlnet.ora和listener.ora两个文件。</span></span><br><span class="line"><span class="comment">## 完成后通过命令“netstat -tlnp”可以查看到1521端口已开</span></span><br><span class="line">tcp  0   0 :::1521        :::*      LISTEN      5477/tnslsnr</span><br></pre></td></tr></table></figure>
+<h3 id="修改配置文件response-dbca-rsp，静默建立新库"><a href="#修改配置文件response-dbca-rsp，静默建立新库" class="headerlink" title="修改配置文件response/dbca.rsp，静默建立新库"></a>修改配置文件response/dbca.rsp，静默建立新库</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">RESPONSEFILE_VERSION = <span class="string">"11.2.0"</span>  <span class="comment">## 不能更改</span></span><br><span class="line">OPERATION_TYPE = <span class="string">"createDatabase"</span></span><br><span class="line">GDBNAME = <span class="string">"hello.dlxg.gov.cn"</span>  <span class="comment">## 全局数据库的名字=SID+主机域名</span></span><br><span class="line">SID = <span class="string">"hello"</span>    <span class="comment">## 对应的实例名字</span></span><br><span class="line">TEMPLATENAME = <span class="string">"General_Purpose.dbc"</span> <span class="comment">## 建库用的模板文件</span></span><br><span class="line">DATAFILEDESTINATION = /opt/oracle/oradata <span class="comment">## 数据文件存放目录</span></span><br><span class="line">RECOVERYAREADESTINATION=/opt/oracle/recovery_data <span class="comment">## 恢复数据存放目录</span></span><br><span class="line">CHARACTERSET = <span class="string">"AL32UTF8"</span>   <span class="comment">## 字符集，重要!!! 建库后一般不能更改，所以建库前要确定清楚。</span></span><br><span class="line">TOTALMEMORY = <span class="string">"5120"</span>    <span class="comment">## oracle内存5120MB</span></span><br></pre></td></tr></table></figure>
+<h4 id="配置完之后，执行命令"><a href="#配置完之后，执行命令" class="headerlink" title="配置完之后，执行命令"></a>配置完之后，执行命令</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">dbca -silent -responseFile /etc/dbca.rsp </span><br><span class="line"><span class="comment">## 注意，这里我用的时候很奇怪，界面光标往回走的，我改用这个，这个就没有使用上面的配置文件</span></span><br><span class="line">dbca -silent -createDatabase -templateName General_Purpose.dbc -gdbName <span class="built_in">test</span> -sysPassword oracle -systemPassword oracl</span><br><span class="line"></span><br><span class="line">1% 已完成</span><br><span class="line">3% 已完成</span><br><span class="line">11% 已完成</span><br><span class="line">18% 已完成</span><br><span class="line">26% 已完成</span><br><span class="line">37% 已完成</span><br><span class="line">正在创建并启动 Oracle 实例</span><br><span class="line">40% 已完成</span><br><span class="line">45% 已完成</span><br><span class="line">50% 已完成</span><br><span class="line">55% 已完成</span><br><span class="line">56% 已完成</span><br><span class="line">60% 已完成</span><br><span class="line">62% 已完成</span><br><span class="line">正在进行数据库创建</span><br><span class="line">66% 已完成</span><br><span class="line">70% 已完成</span><br><span class="line">73% 已完成</span><br><span class="line">85% 已完成</span><br><span class="line">96% 已完成</span><br><span class="line">100% 已完成</span><br><span class="line">有关详细信息, 请参阅日志文件 <span class="string">"/u01/app/oracle/cfgtoollogs/dbca/wang/wang.log"</span>。</span><br><span class="line"> </span><br><span class="line">查看日志文件</span><br><span class="line">$ cat /u01/app/oracle/cfgtoollogs/dbca/wang/wang.log</span><br></pre></td></tr></table></figure>
+<h3 id="ORA-12528-TNS-Listener-all-appropriate-instances-are-blocking-new-connections-Instance-“CLRExtProc”-status-UNKNOWN"><a href="#ORA-12528-TNS-Listener-all-appropriate-instances-are-blocking-new-connections-Instance-“CLRExtProc”-status-UNKNOWN" class="headerlink" title="ORA-12528: TNS Listener: all appropriate instances are blocking new connections. Instance “CLRExtProc”, status UNKNOWN"></a>ORA-12528: TNS Listener: all appropriate instances are blocking new connections. Instance “CLRExtProc”, status UNKNOWN</h3><blockquote>
+<p><a href="https://stackoverflow.com/questions/23743910/ora-12528-tns-listener-all-appropriate-instances-are-blocking-new-connections" target="_blank" rel="noopener">https://stackoverflow.com/questions/23743910/ora-12528-tns-listener-all-appropriate-instances-are-blocking-new-connections</a></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">set ORACLE_SID=&lt;YOUR_SID&gt; </span><br><span class="line">sqlplus &quot;/as sysdba&quot;</span><br><span class="line">alter system disable restricted session;</span><br><span class="line"></span><br><span class="line">eg : set ORACLE_SID=oracle</span><br></pre></td></tr></table></figure>
+<p>or maybe<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shutdown abort;</span><br></pre></td></tr></table></figure></p>
+<p>or maybe<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lsnrctl stop</span><br><span class="line">lsnrctl start</span><br></pre></td></tr></table></figure></p>
+<h2 id="登陆连接"><a href="#登陆连接" class="headerlink" title="登陆连接"></a>登陆连接</h2><ul>
+<li>sid:oracle</li>
+<li>username: system</li>
+<li>password: oracle</li>
+</ul>
+<h2 id="navicat-connect-oracle-fail"><a href="#navicat-connect-oracle-fail" class="headerlink" title="navicat connect oracle fail"></a>navicat connect oracle fail</h2><blockquote>
+<p>TNS: no listen 什么鬼的没有监听到</p>
+</blockquote>
+<p>找到 listener.ora，存放位置一般在<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd $ORACLE_HOME/network/admin ## 这个目录下</span><br><span class="line">cp listener.ora listener.ora.bak</span><br><span class="line">vim listener.ora</span><br></pre></td></tr></table></figure></p>
+<p>清空内容，复制下面内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">LISTENER=</span><br><span class="line">  (DESCRIPTION=</span><br><span class="line">    (ADDRESS_LIST=</span><br><span class="line">      (ADDRESS=(PROTOCOL=tcp)(HOST=sale-server)(PORT=1521))</span><br><span class="line">      (ADDRESS=(PROTOCOL=ipc)(KEY=extproc))))</span><br><span class="line">SID_LIST_LISTENER=</span><br><span class="line">  (SID_LIST=</span><br><span class="line">    (SID_DESC=</span><br><span class="line">      (GLOBAL_DBNAME=sales.us.acme.com)</span><br><span class="line">      (ORACLE_HOME=/oracle10g)</span><br><span class="line">      (SID_NAME=sales))</span><br><span class="line">    (SID_DESC=</span><br><span class="line">      (SID_NAME=plsextproc)</span><br><span class="line">      (ORACLE_HOME=/oracle10g)</span><br><span class="line">      (PROGRAM=extproc)))</span><br></pre></td></tr></table></figure></p>
+<h3 id="文件组成部分"><a href="#文件组成部分" class="headerlink" title="文件组成部分"></a>文件组成部分</h3><ul>
+<li>listener的名称</li>
+<li>listener接受连接的协议地址</li>
+<li>数据库服务名</li>
+<li>Oracle8之后的版本有动态监听注册，可以不需要配置静态监听。但是Oracle官网说如果想要使用em需要配置静态监听</li>
+<li>控制参数</li>
+</ul>
+<h3 id="监听参数说明"><a href="#监听参数说明" class="headerlink" title="监听参数说明"></a>监听参数说明</h3><h4 id="协议地址部分"><a href="#协议地址部分" class="headerlink" title="协议地址部分"></a>协议地址部分</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">listener_name=</span><br><span class="line">(DESCRIPTION=</span><br><span class="line">(ADDRESS=(PROTOCOL=tcp)(HOST=hr-server)(PORT=1521))</span><br><span class="line">(ADDRESS=(PROTOCOL=tcp)(HOST=sales-server)(PORT=1521)))</span><br></pre></td></tr></table></figure>
+<h5 id="可选参数"><a href="#可选参数" class="headerlink" title="可选参数"></a>可选参数</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">QUEUESIZE：并发请求连接数</span><br><span class="line">RECV_BUF_SIZE，SEND_BUF_SIZE</span><br></pre></td></tr></table></figure>
+<h5 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">listener_name=</span><br><span class="line">(DESCRIPTION=</span><br><span class="line">(ADDRESS=(PROTOCOL=tcp)(HOST=hr-server)(PORT=1521)(RECV_BUF_SIZE=11784)(SEND_BUF_SIZE=11280))</span><br><span class="line">(ADDRESS=(PROTOCOL=tcp)(HOST=sales-server)(PORT=1521)(QUEUESIZE=20)))</span><br></pre></td></tr></table></figure>
+<h4 id="静态监听部分"><a href="#静态监听部分" class="headerlink" title="静态监听部分"></a>静态监听部分</h4><p>静态监听就是SID_LIST_xxx节点下的配置，最简单的配置如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SID_LIST_listener_name=</span><br><span class="line">(SID_LIST= </span><br><span class="line">(SID_DESC=...)</span><br><span class="line">(SID_DESC=...))</span><br></pre></td></tr></table></figure></p>
+<h5 id="可允许的参数"><a href="#可允许的参数" class="headerlink" title="可允许的参数"></a>可允许的参数</h5><ul>
+<li>ENVS环境变量键值对</li>
+<li>GLOBAL_DBNAME：对外提供的网络服务名</li>
+<li>ORACLE_HOME</li>
+<li>PROGRAM：用来标识服务可执行程序，最常用的PROGRAM=extproc</li>
+<li>SID_NAME： Oracle System Identifier (SID)</li>
+<li>SDU： session data unit </li>
+</ul>
+<h5 id="示例配置"><a href="#示例配置" class="headerlink" title="示例配置"></a>示例配置</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SID_LIST_listener_name=</span><br><span class="line">(SID_LIST= </span><br><span class="line">(SID_DESC=</span><br><span class="line">(SDU=2085)</span><br><span class="line">(GLOBAL_DBNAME=sales.us.acme.com)</span><br><span class="line">(SID_NAME=sales)</span><br><span class="line">(ORACLE_HOME=/usr/oracle)(ENVS=&quot;LD_LIBRARY_PATH=/private/xpm/lib:/private/mylibs,MYPATH=/usr/ucb:/usr/local/packages,APL_ENV_FILE=/apl/conf/env.txt&quot;)))</span><br></pre></td></tr></table></figure>
+<h4 id="控制参数部分（基本不需要配置）"><a href="#控制参数部分（基本不需要配置）" class="headerlink" title="控制参数部分（基本不需要配置）"></a>控制参数部分（基本不需要配置）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"> - ADMIN_RESTRICTIONS_listener_name #主要用来保护lsnrctl命令下，对没有使用密码保护的listener的更改，设置了on之后，就不允许在命令行动态的更改参数配置，只有stop，start才行。</span><br><span class="line"> - INBOUND_CONNECT_TIMEOUT_listener_name #连接超时</span><br><span class="line"> - LOG_DIRECTORY_listener_name #日志路径</span><br><span class="line"> - LOG_FILE_listener_name #日志名称</span><br><span class="line"> - LOGGING_listener_name #是否记录日志</span><br><span class="line"> - PASSWORDS_listener_name #listener的密码</span><br><span class="line"> - SAVE_CONFIG_ON_STOP_listener_name # 关闭监听的时候是否保存配置</span><br><span class="line"> - SSL_CLIENT_AUTHENTICATION #ssl认证</span><br><span class="line"></span><br><span class="line">STARTUP_WAIT_TIME_listener_name</span><br><span class="line">TRACE_DIRECTORY_listener_name</span><br><span class="line">TRACE_FILE_listener_name</span><br><span class="line">TRACE_FILELEN_listener_name</span><br><span class="line">TRACE_FILENO_listener_name</span><br><span class="line">TRACE_LEVEL_listener_name</span><br><span class="line">TRACE_TIMESTAMP_listener_name</span><br><span class="line">WALLET_LOCATION</span><br></pre></td></tr></table></figure>
+<ul>
+<li><a href="https://blog.csdn.net/wang77777/article/details/84369248" target="_blank" rel="noopener">Oracle listener.ora配置</a></li>
+<li><a href="https://hub.docker.com/r/wnameless/oracle-xe-11g/" target="_blank" rel="noopener">docker wnameless/oracle-xe-11g</a></li>
+<li><a href="https://github.com/wnameless/docker-oracle-xe-11g" target="_blank" rel="noopener">github wnameless</a></li>
+</ul>
+
+  </article>
+</div>
+
+
+    
+<div class="container disqus-container">
+  <div id="disqus_thread"></div>
+</div>
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://zakariyya.github.io/2019/01/17/linux-命令行下安装-oracle-11gR2-数据库/";
+    this.page.identifier = 1547710560;
+  };
+
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://anan.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+
+
+
+
+
+</div>
+
+<div class="footer-wrapper container">
+  <footer class="footer clearfix">
+    <div class="clearfix">
+    <a href="https://zakariyya.github.io" class="footer-logo">
+      <i class="fa fa-github"></i>
+    </a>
+    <ul class="footer-social-link">
+      <li>© 2019 anan</li>
+      <li><a href="https://zakariyya.github.io">Home</a></li>
+      
+      <li><a href="https://github.com/Zakariyya">Github</a></li>
+      
+      <li><a href="http://weibo.com/">Weibo</a></li>
+      
+    </ul>
+    <div class="footer-theme-info">
+      Theme <a href="//github.com/sabrinaluo/hexo-theme-replica">Replica</a>
+      by <a href="//github.com/sabrinaluo">Hiitea</a> ❤ Powered by Hexo
+    </div>
+    </div>
+    
+    <div class="footer-pageview">
+        <a href="https://info.flagcounter.com/mx4Y">
+          <img src="//s01.flagcounter.com/count/mx4Y/bg_FFFFFF/txt_000000/border_FFFFFF/columns_3/maxflags_9/viewers_3/labels_0/pageviews_1/flags_0/percent_0/">
+        </a>
+    </div>
+    
+  </footer>
+</div>
+
+
+<script>
+  (function() {
+    var cx = '005289241570429579920:lniuufygqc8';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+      '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+
+
+
+<script src="/js/main.js"></script>
+
+</body>
+</html>

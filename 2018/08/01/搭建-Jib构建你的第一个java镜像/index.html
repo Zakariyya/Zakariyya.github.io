@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>
+    Jib构建java镜像 | Anan
+  </title>
+  <meta name="description" content="BLACKPINK&#39;s Fans">
+  
+  <meta name="keywords" content="
+  搭建
+  ">
+  
+  <meta name="author" content="anan">
+
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="theme-color" content="#1e2327">
+  <link rel="apple-touch-icon" href="https://github.githubassets.com/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://github.githubassets.com/apple-touch-icon-180x180.png">
+
+  <link rel="icon" type="image/x-icon" href="https://github.githubassets.com/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-123397569-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/vue/1.0.25-csp/vue.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+</head>
+
+<body id="replica-app">
+
+<nav class="navbar-wrapper">
+  <div class="navbar">
+    <div class="container clearfix">
+      <a href="/" class="navbar-logo"><i class="fa fa-github"></i></a>
+
+      <div class="navbar-search float-left desktop-only">
+        <div class="navbar-search-form">
+          <label for="gsc-i-id1">This website</label>
+          <div id="google-search">
+            <gcse:search></gcse:search>
+          </div>
+        </div>
+      </div>
+
+      <ul class="navbar-nav float-left">
+        
+        <li><a href="/archives">Archives</a></li>
+        
+        
+        <li><a href="/categories">Categories</a></li>
+        
+        
+        <li><a href="/tags">Tags</a></li>
+        
+        
+        <li class="desktop-only"><a href="/atom.xml" target="_blank">RSS</a></li>
+        
+      </ul>
+
+      <ul class="navbar-nav user-nav float-right desktop-only">
+        <li class="user-nav-notification">
+          <a><span class="user-nav-unread"></span><i class="fa fa-bell"></i></a>
+        </li>
+        <li>
+          <a><i class="fa fa-plus"></i> <i class="fa fa-caret-down"></i></a>
+        </li>
+        <li class="user-nav-logo">
+          <a><img src="https://avatars2.githubusercontent.com/u/14139937?s=460&amp;v=4"> <i class="fa fa-caret-down"></i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="main-container">
+  <header class="header-wrapper desktop-only">
+  <div class="container header-site-detail">
+    <ul class="header-toolbar">
+      <li class="clearfix">
+        <a href="/archives" class="header-toolbar-left"><i class="fa fa-file-text"></i> Posts </a>
+        <a href="/archives" class="header-toolbar-right"> 109 </a>
+      </li>
+      <li>
+        <a href="/tags" class="header-toolbar-left"><i class="fa fa-tags"></i> Tags </a>
+        <a href="/tags" class="header-toolbar-right"> 44 </a>
+      </li>
+      <li>
+        <a href="/categories" class="header-toolbar-left"><i class="fa fa-folder-open"></i> Categories </a>
+        <a href="/categories" class="header-toolbar-right"> 18 </a>
+      </li>
+    </ul>
+    <h2 class="header-title">
+      <i class="fa fa-book text-muted"></i>
+      <a href="/">Anan</a>
+      
+      
+    </h2>
+  </div>
+
+  <div class="container">
+    <div class="header-tab-wrapper clearfix">
+      <span class="header-tab header-tab-selected"><i class="fa fa-thumbs-o-up"></i> Like</span>
+      <span class="header-tab"><i class="fa fa-share-alt"></i> Share</span>
+      <span class="header-tab"><i class="fa fa-comments-o"></i> Discussion</span>
+      <span class="header-tab"><i class="fa fa-bookmark-o"></i> Bookmark </span>
+      <span class="header-tab"><i class="fa fa-smile-o"></i> Smile <i class="fa fa-caret-down"></i></span>
+    </div>
+  </div>
+</header>
+
+
+<div class="post-container container">
+  <h3>
+    <i class="fa fa-user-o"></i>
+    anan
+
+    <span class="post-date float-right" title="{{moment(1533132060000).format('MMM DD, YYYY, h:mm:ss A')}}">
+      <i class="fa fa-pencil-square-o"></i>
+      {{moment(1533132060000).fromNow()}}
+    </span>
+  </h3>
+
+  <article class="post-content">
+    <h1>Jib构建java镜像</h1>
+    <blockquote>
+<p>参考<br>jib Official：<a href="https://link.juejin.im/?target=https%3A%2F%2Fgithub.com%2FGoogleContainerTools%2Fjib" target="_blank" rel="noopener">GoogleContainerTools/jib</a><br>本文示例完整 demo github地址 <a href="https://link.juejin.im/?target=https%3A%2F%2Fgithub.com%2Fmoxingwang%2Fjib" target="_blank" rel="noopener">github.com/moxingwang/…</a></p>
+</blockquote>
+<h2 id="想要了解并且使用jib，首先你得知道或者使用过docker，在这个基础上才能够明白jib是干什么得，解决了什么问题。"><a href="#想要了解并且使用jib，首先你得知道或者使用过docker，在这个基础上才能够明白jib是干什么得，解决了什么问题。" class="headerlink" title="想要了解并且使用jib，首先你得知道或者使用过docker，在这个基础上才能够明白jib是干什么得，解决了什么问题。"></a>想要了解并且使用jib，首先你得知道或者使用过docker，在这个基础上才能够明白jib是干什么得，解决了什么问题。</h2><p>首先我们先看一个例子，如何将一个spring-boot项目简单容器化，如果你从未操作过，可以动手自己实现，或者仔细阅读这篇文章<a href="https://blog.csdn.net/u010046908/article/details/56008445" target="_blank" rel="noopener">第一个 spring Boot 应用通过Docker 来实现构建、运行、发布</a>。你可能发现如果需要把一个java项目容器化这是一个麻烦和相对复杂的过程，首先你需要编写dockerfile，然后在build dockefile，如过需要push到registries，还需要经过push操作。虽然build和push还是非常简单得。但是写一个dockerfile真的比较麻烦，学习成本也高，看看官网<a href="https://docs.docker.com/engine/reference/builder/#usage" target="_blank" rel="noopener">Dockerfile reference</a>就不想学了。那么有没有简单得办法呢，记住几个简单得命令就可以运行了，如同</p>
+<blockquote>
+<p>mvn spring-boot:run</p>
+</blockquote>
+<h2 id="这么简单得命令，这个时候jib出场了，他就是来完成这个伟大得使命。"><a href="#这么简单得命令，这个时候jib出场了，他就是来完成这个伟大得使命。" class="headerlink" title="这么简单得命令，这个时候jib出场了，他就是来完成这个伟大得使命。"></a>这么简单得命令，这个时候jib出场了，他就是来完成这个伟大得使命。</h2><p>如果你还没明白jib是用来做什么事情得，推荐你阅读<a href="http://www.infoq.com/cn/news/2018/07/google-opensource-Jib#" target="_blank" rel="noopener">谷歌开源Java镜像构建工具Jib</a>的前半部分，或者阅读<a href="https://github.com/GoogleContainerTools/jib" target="_blank" rel="noopener">jib Official：GoogleContainerTools/jib</a>。<br>接下来主要介绍具体如何使用(maven的方式)。<br>将java项目容器化push到registries<br>jib的引入非常简单，已maven plugin的方式集成到项目中，只需要在你的项目中引入下面代码即可<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.google.cloud.tools<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jib-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.9.6<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">from</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!--base image--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">image</span>&gt;</span>openjdk:alpine<span class="tag">&lt;/<span class="name">image</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">from</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">to</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!--&lt;image&gt;registry.cn-hangzhou.aliyuncs.com/m65536/jibtest&lt;/image&gt;--&gt;</span></span><br><span class="line">            <span class="comment">&lt;!--目标镜像registry地址，为了方便测试，你需要换成自己的地址，如果你的网络不好，可以选用国内加速器，比如阿里云的--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">image</span>&gt;</span>registry.hub.docker.com/moxingwang/jibtest<span class="tag">&lt;/<span class="name">image</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">to</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">executions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">execution</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">phase</span>&gt;</span>package<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">goals</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">goal</span>&gt;</span>build<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">execution</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">executions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>这只是一个最简单的配置，比如registry认证配置，jvm配置等等，可以参考github jib详细说明<a href="https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin#from-object" target="_blank" rel="noopener">jib/jib-maven-plugin/</a>。</p>
+<h2 id="构建你的镜像"><a href="#构建你的镜像" class="headerlink" title="构建你的镜像"></a>构建你的镜像</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn compile jib:build</span><br></pre></td></tr></table></figure>
+<p>可能你刚刚运行玩这一步就出现错误，提示Unauthorized，不用担心，这个命令需要把构建出来的image commit并且push到你远程的registry（我这里是registry.hub.docker.com），你可以按照【常见错误1】的方法解决问题。<br>如果你的网速慢一点可能会在最后步骤’Finalizing…’,不过没有关系，稍微多等一会就ok，直到’BUILD SUCCESS’出现。最终一个完整的java project被实例化成镜像并且push到了registry里。接下来你可以测试刚刚完成push的镜像。<br>打开<a href="https://hub.docker.com/" target="_blank" rel="noopener">hub.docker.com/</a>,你会发现你的image已经构建成功。</p>
+<h2 id="docker使用镜像"><a href="#docker使用镜像" class="headerlink" title="docker使用镜像"></a>docker使用镜像</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --rm -p8080:8080 registry.hub.docker.com/moxingwang/jibtest</span><br></pre></td></tr></table></figure>
+<p>一个spring-boot的image这样就被启动成功了。本文示例demo中集成了swagger-iu, 项目启动成功后我们可以通过<a href="http://localhost:8080/sw/swagger-ui.html" target="_blank" rel="noopener">http://localhost:8080/sw/swagger-ui.html</a>访问，可以成功在浏览器打开swagger。</p>
+<p>把镜像直接构建到本地docker中<br>使用这种构建方式，首先你要确保本已经安装docker并且环境变量都配置正确，因为这种方式jib依赖docker 命令执行，你还需要保证已经启动服务（在terminal中执行 docker –version 能够正确返回）。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn compile jib:dockerBuild</span><br></pre></td></tr></table></figure></p>
+<p>接下来直接操作，首先查看本地已有images<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker iamges</span><br></pre></td></tr></table></figure></p>
+<p>执行<br><figure class="highlight plain"><figcaption><span>compile jib:dockerBuild```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">可以看到本地image已经build成功。可以直接启动使用</span><br></pre></td></tr></table></figure></p>
+<p>docker run -it –rm -p8080:8080 moxingwang/jibtest<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">启动成功后同样可以直接访问[http://localhost:8080/sw/swagger-ui.htmlswagger](http://localhost:8080/sw/swagger-ui.htmlswagger)页面。</span><br><span class="line"></span><br><span class="line">## 常见错误</span><br><span class="line"></span><br><span class="line">1. Failed to execute goal com.google.cloud.tools:jib-maven-plugin:0.9.6:build (default-cli) on project jib: Build image failed, perhaps you should set a credential helper name with the configuration &apos;&apos; or set credentials for &apos;registry.hub.docker.com&apos; in your Maven settings: Unauthorized for registry.hub.docker.com/moxingwang/jibtest: 401 Unauthorized</span><br><span class="line"></span><br><span class="line">当你从私有的registries pull或者push的时候需要认证机制。阅读官方说明按照步骤操作即可。[Authentication Methods](https://github.com/GoogleContainerTools/jib/blob/master/jib-maven-plugin/README.md)。</span><br><span class="line">如果帮你本机已经按照docker，那么操作更简单，可以通过docker命令直接登陆registries，然后继续其他jib的操作。</span><br><span class="line"></span><br><span class="line">## registry.hub.docker.com</span><br></pre></td></tr></table></figure></p>
+<p>docker login –username=你的hub.docker的用户名 registry.hub.docker.com<br>registry.cn-hangzhou.aliyuncs.com<br>docker login –username=阿里云docker用户名 registry.cn-hangzhou.aliyuncs.com<br><code>`</code></p>
+<hr>
+<p>作者：m65536<br>链接：<a href="https://juejin.im/post/5b4e9c316fb9a04fa01d39d6" target="_blank" rel="noopener">https://juejin.im/post/5b4e9c316fb9a04fa01d39d6</a><br>来源：掘金<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+
+  </article>
+</div>
+
+
+    
+<div class="container disqus-container">
+  <div id="disqus_thread"></div>
+</div>
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://zakariyya.github.io/2018/08/01/搭建-Jib构建你的第一个java镜像/";
+    this.page.identifier = 1533132060;
+  };
+
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://anan.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+
+
+
+
+
+</div>
+
+<div class="footer-wrapper container">
+  <footer class="footer clearfix">
+    <div class="clearfix">
+    <a href="https://zakariyya.github.io" class="footer-logo">
+      <i class="fa fa-github"></i>
+    </a>
+    <ul class="footer-social-link">
+      <li>© 2019 anan</li>
+      <li><a href="https://zakariyya.github.io">Home</a></li>
+      
+      <li><a href="https://github.com/Zakariyya">Github</a></li>
+      
+      <li><a href="http://weibo.com/">Weibo</a></li>
+      
+    </ul>
+    <div class="footer-theme-info">
+      Theme <a href="//github.com/sabrinaluo/hexo-theme-replica">Replica</a>
+      by <a href="//github.com/sabrinaluo">Hiitea</a> ❤ Powered by Hexo
+    </div>
+    </div>
+    
+    <div class="footer-pageview">
+        <a href="https://info.flagcounter.com/mx4Y">
+          <img src="//s01.flagcounter.com/count/mx4Y/bg_FFFFFF/txt_000000/border_FFFFFF/columns_3/maxflags_9/viewers_3/labels_0/pageviews_1/flags_0/percent_0/">
+        </a>
+    </div>
+    
+  </footer>
+</div>
+
+
+<script>
+  (function() {
+    var cx = '005289241570429579920:lniuufygqc8';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+      '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+
+
+
+<script src="/js/main.js"></script>
+
+</body>
+</html>

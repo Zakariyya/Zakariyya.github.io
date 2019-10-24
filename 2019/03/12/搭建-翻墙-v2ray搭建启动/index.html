@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>
+    v2ray搭建启动 | Anan
+  </title>
+  <meta name="description" content="BLACKPINK&#39;s Fans">
+  
+  <meta name="keywords" content="
+  翻墙 v2ray
+  ">
+  
+  <meta name="author" content="anan">
+
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="theme-color" content="#1e2327">
+  <link rel="apple-touch-icon" href="https://github.githubassets.com/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://github.githubassets.com/apple-touch-icon-180x180.png">
+
+  <link rel="icon" type="image/x-icon" href="https://github.githubassets.com/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-123397569-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/vue/1.0.25-csp/vue.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+</head>
+
+<body id="replica-app">
+
+<nav class="navbar-wrapper">
+  <div class="navbar">
+    <div class="container clearfix">
+      <a href="/" class="navbar-logo"><i class="fa fa-github"></i></a>
+
+      <div class="navbar-search float-left desktop-only">
+        <div class="navbar-search-form">
+          <label for="gsc-i-id1">This website</label>
+          <div id="google-search">
+            <gcse:search></gcse:search>
+          </div>
+        </div>
+      </div>
+
+      <ul class="navbar-nav float-left">
+        
+        <li><a href="/archives">Archives</a></li>
+        
+        
+        <li><a href="/categories">Categories</a></li>
+        
+        
+        <li><a href="/tags">Tags</a></li>
+        
+        
+        <li class="desktop-only"><a href="/atom.xml" target="_blank">RSS</a></li>
+        
+      </ul>
+
+      <ul class="navbar-nav user-nav float-right desktop-only">
+        <li class="user-nav-notification">
+          <a><span class="user-nav-unread"></span><i class="fa fa-bell"></i></a>
+        </li>
+        <li>
+          <a><i class="fa fa-plus"></i> <i class="fa fa-caret-down"></i></a>
+        </li>
+        <li class="user-nav-logo">
+          <a><img src="https://avatars2.githubusercontent.com/u/14139937?s=460&amp;v=4"> <i class="fa fa-caret-down"></i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="main-container">
+  <header class="header-wrapper desktop-only">
+  <div class="container header-site-detail">
+    <ul class="header-toolbar">
+      <li class="clearfix">
+        <a href="/archives" class="header-toolbar-left"><i class="fa fa-file-text"></i> Posts </a>
+        <a href="/archives" class="header-toolbar-right"> 109 </a>
+      </li>
+      <li>
+        <a href="/tags" class="header-toolbar-left"><i class="fa fa-tags"></i> Tags </a>
+        <a href="/tags" class="header-toolbar-right"> 44 </a>
+      </li>
+      <li>
+        <a href="/categories" class="header-toolbar-left"><i class="fa fa-folder-open"></i> Categories </a>
+        <a href="/categories" class="header-toolbar-right"> 18 </a>
+      </li>
+    </ul>
+    <h2 class="header-title">
+      <i class="fa fa-book text-muted"></i>
+      <a href="/">Anan</a>
+      
+      
+    </h2>
+  </div>
+
+  <div class="container">
+    <div class="header-tab-wrapper clearfix">
+      <span class="header-tab header-tab-selected"><i class="fa fa-thumbs-o-up"></i> Like</span>
+      <span class="header-tab"><i class="fa fa-share-alt"></i> Share</span>
+      <span class="header-tab"><i class="fa fa-comments-o"></i> Discussion</span>
+      <span class="header-tab"><i class="fa fa-bookmark-o"></i> Bookmark </span>
+      <span class="header-tab"><i class="fa fa-smile-o"></i> Smile <i class="fa fa-caret-down"></i></span>
+    </div>
+  </div>
+</header>
+
+
+<div class="post-container container">
+  <h3>
+    <i class="fa fa-user-o"></i>
+    anan
+
+    <span class="post-date float-right" title="{{moment(1552394570000).format('MMM DD, YYYY, h:mm:ss A')}}">
+      <i class="fa fa-pencil-square-o"></i>
+      {{moment(1552394570000).fromNow()}}
+    </span>
+  </h3>
+
+  <article class="post-content">
+    <h1>v2ray搭建启动</h1>
+    <blockquote>
+<p><a href="https://github.com/v2ray/v2ray-core" target="_blank" rel="noopener">v2ray-core</a><br><a href="https://www.v2ray.com/chapter_00/workflow.html" target="_blank" rel="noopener">v2ray官网</a><br><a href="https://toutyrater.github.io/#" target="_blank" rel="noopener">白话文教程</a>:源码项目名:<a href="https://github.com/toutyrater/v2ray-guide" target="_blank" rel="noopener">https://github.com/toutyrater/v2ray-guide</a><br><a href="https://github.com/233boy/v2ray/wiki/V2Ray%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC" target="_blank" rel="noopener">V2Ray一键安装脚本</a><br><a href="https://github.com/shadowsocks/shadowsocks-windows/releases" target="_blank" rel="noopener">shadowsocks客户端</a></p>
+</blockquote>
+<p>本文转载自233boy的<a href="https://github.com/233boy/v2ray/wiki/V2Ray%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC" target="_blank" rel="noopener">V2Ray一键安装脚本</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">更新日志</span><br><span class="line">2018-01-28</span><br><span class="line">第一个完善版本发布…</span><br><span class="line">2018-5-2</span><br><span class="line">支持 HTTP/2 … 懒得发一个版本就在这里写一下</span><br><span class="line">2018-5-26</span><br><span class="line">支持 Socks5 …</span><br><span class="line">2019-1-5</span><br><span class="line">v3 版本，更加好用了。新年快乐！</span><br></pre></td></tr></table></figure></p>
+<p>温馨提示</p>
+<ul>
+<li>特么这个脚本没有挖矿，没有挖矿，没有挖矿。 我很抱歉……认真的开了个玩笑</li>
+<li>脚本是开源的，开源地址： <a href="https://github.com/233boy/v2ray" target="_blank" rel="noopener">https://github.com/233boy/v2ray</a></li>
+</ul>
+<p>安装或卸载</p>
+<ul>
+<li>要求：Ubuntu 16+ / Debian 8+ / CentOS 7+ 系统</li>
+<li>推荐使用 Debian 9 系统，脚本会自动启用 BBR 优化。</li>
+<li>备注：不推荐使用 Debian 8 系统，因为 Caddy 申请证书可能会出现一些莫名其妙的问题</li>
+<li>强烈推荐使用 搬瓦工VPS，稳定，快速，针对中国线路专门优化，完全无须担心跑路，服务好，30天退款保证。</li>
+<li>使用 root 用户输入下面命令安装或卸载</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(curl -s -L https://git.io/v2ray.sh)</span><br></pre></td></tr></table></figure>
+<p>如果提示 curl: command not found ，那是因为你的 VPS 没装 Curl</p>
+<ul>
+<li>ubuntu/debian 系统安装 Curl 方法: <strong>apt-get update -y &amp;&amp; apt-get install curl -y</strong></li>
+<li>centos 系统安装 Curl 方法: <strong>yum update -y &amp;&amp; yum install curl -y</strong><br>安装好 curl 之后就能安装脚本了</li>
+</ul>
+<blockquote>
+<p>备注：安装完成后，输入 <strong>v2ray</strong> 即可管理 V2Ray。如果提示你的系统不支持此脚本，那么请尝试更换系统</p>
+</blockquote>
+<h2 id="下面是此脚本的概览"><a href="#下面是此脚本的概览" class="headerlink" title="下面是此脚本的概览"></a>下面是此脚本的概览</h2><h2 id="安装选项"><a href="#安装选项" class="headerlink" title="安装选项"></a>安装选项</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">........... V2Ray 一键安装脚本 &amp; 管理脚本 by v2ray6.com ..........</span><br><span class="line"></span><br><span class="line">帮助说明: https://v2ray6.com/post/1/</span><br><span class="line"></span><br><span class="line">搭建教程: https://v2ray6.com/post/2/</span><br><span class="line"></span><br><span class="line"> 1. 安装</span><br><span class="line"></span><br><span class="line"> 2. 卸载</span><br><span class="line"></span><br><span class="line">请选择 [1-2]:1</span><br><span class="line"></span><br><span class="line">请选择 V2Ray 传输协议 [1-32]</span><br><span class="line"></span><br><span class="line">  1. TCP</span><br><span class="line">  2. TCP_HTTP</span><br><span class="line">  3. WebSocket</span><br><span class="line">  4. WebSocket + TLS</span><br><span class="line">  5. HTTP/2</span><br><span class="line">  6. mKCP</span><br><span class="line">  7. mKCP_utp</span><br><span class="line">  8. mKCP_srtp</span><br><span class="line">  9. mKCP_wechat-video</span><br><span class="line"> 10. mKCP_dtls</span><br><span class="line"> 11. mKCP_wireguard</span><br><span class="line"> 12. QUIC</span><br><span class="line"> 13. QUIC_utp</span><br><span class="line"> 14. QUIC_srtp</span><br><span class="line"> 15. QUIC_wechat-video</span><br><span class="line"> 16. QUIC_dtls</span><br><span class="line"> 17. QUIC_wireguard</span><br><span class="line"> 18. TCP_dynamicPort</span><br><span class="line"> 19. TCP_HTTP_dynamicPort</span><br><span class="line"> 20. WebSocket_dynamicPort</span><br><span class="line"> 21. mKCP_dynamicPort</span><br><span class="line"> 22. mKCP_utp_dynamicPort</span><br><span class="line"> 23. mKCP_srtp_dynamicPort</span><br><span class="line"> 24. mKCP_wechat-video_dynamicPort</span><br><span class="line"> 25. mKCP_dtls_dynamicPort</span><br><span class="line"> 26. mKCP_wireguard_dynamicPort</span><br><span class="line"> 27. QUIC_dynamicPort</span><br><span class="line"> 28. QUIC_utp_dynamicPort</span><br><span class="line"> 29. QUIC_srtp_dynamicPort</span><br><span class="line"> 30. QUIC_wechat-video_dynamicPort</span><br><span class="line"> 31. QUIC_dtls_dynamicPort</span><br><span class="line"> 32. QUIC_wireguard_dynamicPort</span><br><span class="line"></span><br><span class="line">备注1: 含有 [dynamicPort] 的即启用动态端口..</span><br><span class="line">备注2: [utp | srtp | wechat-video | dtls | wireguard] 分别伪装成 [BT下载 | 视频通话 | 微信视频通话 | DTLS 1.2 数据包 | WireGuard 数据包]</span><br><span class="line"></span><br><span class="line">(默认协议: TCP):</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> V2Ray 传输协议 = TCP</span><br><span class="line">----------------------------------------------------------------</span><br><span class="line"></span><br><span class="line">请输入 V2Ray 端口 [1-65535]</span><br><span class="line">(默认端口: 32645):32645</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> V2Ray 端口 = 32645</span><br><span class="line">----------------------------------------------------------------</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">是否开启广告拦截(会影响性能) [Y/N]</span><br><span class="line">(默认 [N]):</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> 广告拦截 = 关闭</span><br><span class="line">----------------------------------------------------------------</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">是否配置 Shadowsocks [Y/N]</span><br><span class="line">(默认 [N]):</span><br></pre></td></tr></table></figure>
+<h3 id="配置-Shadowsocks"><a href="#配置-Shadowsocks" class="headerlink" title="配置 Shadowsocks"></a>配置 Shadowsocks</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">是否配置 Shadowsocks [Y/N]</span><br><span class="line">(默认 [N]): y</span><br><span class="line"></span><br><span class="line">请输入 Shadowsocks 端口 [1-65535]，不能和 V2Ray 端口相同</span><br><span class="line">(默认端口: 21992): 21992</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> Shadowsocks 端口 = 32645</span><br><span class="line">----------------------------------------------------------------</span><br><span class="line"></span><br><span class="line">请输入 Shadowsocks 密码</span><br><span class="line">(默认密码: 233blog.com): 233blog.com</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> Shadowsocks 密码 = 233blog.com</span><br><span class="line">----------------------------------------------------------------</span><br><span class="line"></span><br><span class="line">请选择 Shadowsocks 加密协议 [1-7]</span><br><span class="line"></span><br><span class="line"> 1. aes-128-cfb</span><br><span class="line"></span><br><span class="line"> 2. aes-256-cfb</span><br><span class="line"></span><br><span class="line"> 3. chacha20</span><br><span class="line"></span><br><span class="line"> 4. chacha20-ietf</span><br><span class="line"></span><br><span class="line"> 5. aes-128-gcm</span><br><span class="line"></span><br><span class="line"> 6. aes-256-gcm</span><br><span class="line"></span><br><span class="line"> 7. chacha20-ietf-poly1305</span><br><span class="line"></span><br><span class="line">(默认加密协议: chacha20-ietf-poly1305):7</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> Shadowsocks 加密协议 = chacha20-ietf-poly1305</span><br><span class="line">----------------------------------------------------------------</span><br><span class="line"></span><br><span class="line">按 Enter 回车键 继续....或按 Ctrl + C 取消.</span><br></pre></td></tr></table></figure>
+<p>安装完成</p>
+<h3 id="管理面板"><a href="#管理面板" class="headerlink" title="管理面板"></a>管理面板</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">........... V2Ray 管理脚本 v3.09 by v2ray6.com ..........</span><br><span class="line"></span><br><span class="line"><span class="comment">## V2Ray 版本: v4.18.0  /  V2Ray 状态: 正在运行 ##</span></span><br><span class="line"></span><br><span class="line">帮助说明: https://v2ray6.com/post/1/</span><br><span class="line"></span><br><span class="line">反馈问题: https://github.com/233boy/v2ray/issues</span><br><span class="line"></span><br><span class="line">TG 群组: https://t.me/blog233</span><br><span class="line"></span><br><span class="line">捐赠脚本作者: https://v2ray6.com/donate/</span><br><span class="line"></span><br><span class="line">捐助 V2Ray: https://www.v2ray.com/chapter_00/02_donate.html</span><br><span class="line"></span><br><span class="line">  1. 查看 V2Ray 配置</span><br><span class="line"></span><br><span class="line">  2. 修改 V2Ray 配置</span><br><span class="line"></span><br><span class="line">  3. 下载 V2Ray 配置 / 生成配置信息链接 / 生成二维码链接</span><br><span class="line"></span><br><span class="line">  4. 查看 Shadowsocks 配置 / 生成二维码链接</span><br><span class="line"></span><br><span class="line">  5. 修改 Shadowsocks 配置</span><br><span class="line"></span><br><span class="line">  6. 查看 MTProto 配置 / 修改 MTProto 配置</span><br><span class="line"></span><br><span class="line">  7. 查看 Socks5 配置 / 修改 Socks5 配置</span><br><span class="line"></span><br><span class="line">  8. 启动 / 停止 / 重启 / 查看日志</span><br><span class="line"></span><br><span class="line">  9. 更新 V2Ray / 更新 V2Ray 管理脚本</span><br><span class="line"></span><br><span class="line"> 10. 卸载 V2Ray</span><br><span class="line"></span><br><span class="line"> 11. 其他</span><br><span class="line"></span><br><span class="line">温馨提示...如果你不想执行选项...按 Ctrl + C 即可退出</span><br><span class="line">请选择菜单 [1-11]:</span><br></pre></td></tr></table></figure>
+<h2 id="Telegram-专用代理"><a href="#Telegram-专用代理" class="headerlink" title="Telegram 专用代理"></a>Telegram 专用代理</h2><p>如果你在使用 Telegram 的话，你可以配置一个 Telegram 的专用代理，这样来，在某些情况下你就不需要再开一个代理软件了。<br>输入 <strong>v2ray tg</strong> 即可配置 TG 专用代理</p>
+<h3 id="配置-Telegram-MTProto"><a href="#配置-Telegram-MTProto" class="headerlink" title="配置 Telegram MTProto"></a>配置 Telegram MTProto</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">请选择菜单 [1-11]:6</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> 大佬...你没有配置 Telegram MTProto ...不过现在想要配置的话也是可以的 ^_^</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">是否配置 Telegram MTProto [Y/N]</span><br><span class="line">(默认 [N]): y</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">请输入 Telegram MTProto 端口 [1-65535]，不能和 V2Ray 端口相同</span><br><span class="line">(默认端口: 44832): </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> Telegram MTProto 端口 = 44832</span><br><span class="line">----------------------------------------------------------------</span><br><span class="line"></span><br><span class="line">按 Enter 回车键 继续....或按 Ctrl + C 取消.</span><br></pre></td></tr></table></figure>
+<h3 id="Telegram-MTProto-配置信息"><a href="#Telegram-MTProto-配置信息" class="headerlink" title="Telegram MTProto 配置信息"></a>Telegram MTProto 配置信息</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">---------- Telegram MTProto 配置信息 -------------</span><br><span class="line"></span><br><span class="line"> 主机 (Hostname) = </span><br><span class="line"></span><br><span class="line"> 端口 (Port) = </span><br><span class="line"></span><br><span class="line"> 密钥 (Secret) = </span><br><span class="line"></span><br><span class="line"> Telegram 代理配置链接 =</span><br></pre></td></tr></table></figure>
+<h2 id="快速管理"><a href="#快速管理" class="headerlink" title="快速管理"></a>快速管理</h2><ul>
+<li><strong>v2ray info</strong> 查看 V2Ray 配置信息</li>
+<li><strong>v2ray config</strong> 修改 V2Ray 配置</li>
+<li><strong>v2ray link</strong> 生成 V2Ray 配置文件链接</li>
+<li><strong>v2ray infolink</strong> 生成 V2Ray 配置信息链接</li>
+<li><strong>v2ray qr</strong> 生成 V2Ray 配置二维码链接</li>
+<li><strong>v2ray ss</strong> 修改 Shadowsocks 配置</li>
+<li><strong>v2ray ssinfo</strong> 查看 Shadowsocks 配置信息</li>
+<li><strong>v2ray ssqr</strong> 生成 Shadowsocks 配置二维码链接</li>
+<li><strong>v2ray status</strong> 查看 V2Ray 运行状态</li>
+<li><strong>v2ray start</strong> 启动 V2Ray</li>
+<li><strong>v2ray stop</strong> 停止 V2Ray</li>
+<li><strong>v2ray restart</strong> 重启 V2Ray</li>
+<li><strong>v2ray log</strong> 查看 V2Ray 运行日志</li>
+<li><strong>v2ray update</strong> 更新 V2Ray</li>
+<li><strong>v2ray update</strong>.sh 更新 V2Ray 管理脚本</li>
+<li><strong>v2ray uninstall</strong> 卸载 V2Ray</li>
+</ul>
+<h2 id="配置文件路径"><a href="#配置文件路径" class="headerlink" title="配置文件路径"></a>配置文件路径</h2><ul>
+<li>V2Ray 配置文件路径：/etc/v2ray/config.json</li>
+<li>Caddy 配置文件路径：/etc/caddy/Caddyfile</li>
+<li>脚本配置文件路径: /etc/v2ray/233blog_v2ray_backup.conf</li>
+</ul>
+<blockquote>
+<p>警告，请不要修改脚本配置文件，免得出错。<br>如果你不是有特别的需求，也不要修改 V2Ray 配置文件<br>不过也没事，若你实在想要瞎折腾，出错了的话，你就卸载，然后重装，再出错 ，再卸载，再重装，重复到自己不再想折腾为止。。</p>
+</blockquote>
+<h2 id="WS-TLS-HTTP2"><a href="#WS-TLS-HTTP2" class="headerlink" title="WS+TLS / HTTP2"></a>WS+TLS / HTTP2</h2><p>如果你使用了这两个协议，那么就会使用了脚本自带的 Caddy 集成。<br>不管如何，不建议直接去更改 Caddy 的配置：<strong>/etc/caddy/Caddyfile</strong><br>如果你需要配置其他网站相关，请将网站的配置文件放到 <strong>/etc/caddy/sites</strong> 目录下，然后重启 Caddy 进程即可，脚本默认生成的 Caddy 的配置会加载 <strong>/etc/caddy/sites</strong> 这个目录下的所有配置文件。<br>所以，请将你的网站配置文件放到 <strong>/etc/caddy/sites</strong> 目录下，完完全全不需要去更改 <strong>/etc/caddy/Caddyfile</strong><br>记得重启 Caddy 进程：<strong>service caddy restart</strong></p>
+<h2 id="Caddy-插件相关"><a href="#Caddy-插件相关" class="headerlink" title="Caddy 插件相关"></a>Caddy 插件相关</h2><p>本脚本集成了 Caddy，但不集成任何 Caddy 插件，如果你需要安装某些 Caddy 插件，你可以使用官方的 Caddy 安装脚本来一键安装。<br>本人的脚本集成的 Caddy 的安装路径，跟 Caddy 官方的安装脚本是一致的。所以可以直接安装，不会有任何问题</p>
+<p>举个例子，安装包含 filemanager 插件的 Caddy，执行如下命令即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl https://getcaddy.com | bash -s personal http.filemanager</span><br></pre></td></tr></table></figure></p>
+<p>你可以在 <strong> <a href="https://caddyserver.com/download" target="_blank" rel="noopener">https://caddyserver.com/download</a></strong> 找到 Caddy 更多插件和安装命令。</p>
+<h2 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h2><p>V2Ray 客户端配置文件 SOCKS 监听端口为 2333， HTTP 监听端口为 6666<br>可能某些 V2Ray 客户端的选项或描述略有不同，但事实上，此脚本显示的 V2Ray 配置信息已经足够详细，由于客户端的不同，请对号入座。</p>
+<h2 id="反馈问题"><a href="#反馈问题" class="headerlink" title="反馈问题"></a>反馈问题</h2><p>请先查阅：V2Ray 一键安装脚本疑问集合</p>
+<ul>
+<li>Telegram 群组： <a href="https://t.me/blog233" target="_blank" rel="noopener">https://t.me/blog233</a> </li>
+<li>Github 反馈： <a href="https://github.com/233boy/v2ray/issues" target="_blank" rel="noopener">https://github.com/233boy/v2ray/issues</a> <blockquote>
+<p>任何有关于 V2Ray 的问题，请自行到 V2Ray 官方反馈。<br>目前只支持配置一个 V2Ray 账号…一个 Shadowsocks 账号。。不支持 SSR。。<br>使用国际大厂的 VPS，请自行在安全组 (防火墙) 开放端口和 UDP 协议 (如果你要使用含有 mKCP 的传输协议)</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="备份"><a href="#备份" class="headerlink" title="备份"></a>备份</h2><p>为了避免由于不可抗拒的原因所造成本人主动删除脚本，所以建议请将本脚本 Fork 一份<br>备份地址： <a href="https://github.com/233boy/v2ray/fork" target="_blank" rel="noopener">https://github.com/233boy/v2ray/fork</a><br>安装方法，确保你已经 Fork 了脚本，将 233boy 修改成你的 Github 用户名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/233boy/v2ray</span><br><span class="line">cd v2ray</span><br><span class="line">chmod +x install.sh</span><br><span class="line">./install.sh local</span><br></pre></td></tr></table></figure></p>
+<p>如果提示 git 命令不可用，那就自己安装咯，不会安装啊？我也不知道啊。哈哈</p>
+<h2 id="及时更新脚本"><a href="#及时更新脚本" class="headerlink" title="及时更新脚本"></a>及时更新脚本</h2><p>为确保你能愉快使用，请留意使用 v2ray update.sh 命令来更新管理脚本。<br>脚本难免会有 BUG，所以建议有空就检查一下更新情况。</p>
+<h2 id="关注脚本最新动态"><a href="#关注脚本最新动态" class="headerlink" title="关注脚本最新动态"></a>关注脚本最新动态</h2><p>本人会在 <a href="https://t.me/blog2333" target="_blank" rel="noopener">本站 Telegram</a> 公告频道 推送脚本最新动态相关，如果你使用 Telegram 的话，可以关注一下。<br>当然啦，你也可以加入 <a href="https://t.me/blog233" target="_blank" rel="noopener">本站 Telegram 群组</a> 来吹水。</p>
+<h2 id="资助-V2Ray"><a href="#资助-V2Ray" class="headerlink" title="资助 V2Ray"></a>资助 V2Ray</h2><p>如果你觉得 V2Ray 很好用，能解决你的某些问题，请考虑 <a href="https://www.v2ray.com/chapter_00/02_donate.html" target="_blank" rel="noopener">资助 V2Ray</a> 发展 。</p>
+<h2 id="感谢"><a href="#感谢" class="headerlink" title="感谢"></a>感谢</h2><p>V2Ray： <a href="https://www.v2ray.com/" target="_blank" rel="noopener">https://www.v2ray.com/</a></p>
+<h2 id="版权"><a href="#版权" class="headerlink" title="版权"></a>版权</h2><p>此脚本使用 GPL v3 协议共享。</p>
+<h2 id="分享"><a href="#分享" class="headerlink" title="分享"></a>分享</h2><p>如果觉得脚本好用，记得分享给你的其他小伙伴们哦~</p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>请勿违反国家法律法规，否则后果自负！<br>使用一键脚本并不会害了你，并且会让你节省大量的时间，工具从来都是为了更快的解决问题。</p>
+
+  </article>
+</div>
+
+
+    
+<div class="container disqus-container">
+  <div id="disqus_thread"></div>
+</div>
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://zakariyya.github.io/2019/03/12/搭建-翻墙-v2ray搭建启动/";
+    this.page.identifier = 1552394570;
+  };
+
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://anan.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+
+
+
+
+
+</div>
+
+<div class="footer-wrapper container">
+  <footer class="footer clearfix">
+    <div class="clearfix">
+    <a href="https://zakariyya.github.io" class="footer-logo">
+      <i class="fa fa-github"></i>
+    </a>
+    <ul class="footer-social-link">
+      <li>© 2019 anan</li>
+      <li><a href="https://zakariyya.github.io">Home</a></li>
+      
+      <li><a href="https://github.com/Zakariyya">Github</a></li>
+      
+      <li><a href="http://weibo.com/">Weibo</a></li>
+      
+    </ul>
+    <div class="footer-theme-info">
+      Theme <a href="//github.com/sabrinaluo/hexo-theme-replica">Replica</a>
+      by <a href="//github.com/sabrinaluo">Hiitea</a> ❤ Powered by Hexo
+    </div>
+    </div>
+    
+    <div class="footer-pageview">
+        <a href="https://info.flagcounter.com/mx4Y">
+          <img src="//s01.flagcounter.com/count/mx4Y/bg_FFFFFF/txt_000000/border_FFFFFF/columns_3/maxflags_9/viewers_3/labels_0/pageviews_1/flags_0/percent_0/">
+        </a>
+    </div>
+    
+  </footer>
+</div>
+
+
+<script>
+  (function() {
+    var cx = '005289241570429579920:lniuufygqc8';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+      '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+
+
+
+<script src="/js/main.js"></script>
+
+</body>
+</html>

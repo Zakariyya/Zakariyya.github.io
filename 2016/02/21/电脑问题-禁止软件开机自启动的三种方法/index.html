@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>
+    禁止软件开机自启动的三种方法 | Anan
+  </title>
+  <meta name="description" content="BLACKPINK&#39;s Fans">
+  
+  <meta name="keywords" content="
+  电脑问题
+  ">
+  
+  <meta name="author" content="anan">
+
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="theme-color" content="#1e2327">
+  <link rel="apple-touch-icon" href="https://github.githubassets.com/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://github.githubassets.com/apple-touch-icon-180x180.png">
+
+  <link rel="icon" type="image/x-icon" href="https://github.githubassets.com/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-123397569-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/vue/1.0.25-csp/vue.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+</head>
+
+<body id="replica-app">
+
+<nav class="navbar-wrapper">
+  <div class="navbar">
+    <div class="container clearfix">
+      <a href="/" class="navbar-logo"><i class="fa fa-github"></i></a>
+
+      <div class="navbar-search float-left desktop-only">
+        <div class="navbar-search-form">
+          <label for="gsc-i-id1">This website</label>
+          <div id="google-search">
+            <gcse:search></gcse:search>
+          </div>
+        </div>
+      </div>
+
+      <ul class="navbar-nav float-left">
+        
+        <li><a href="/archives">Archives</a></li>
+        
+        
+        <li><a href="/categories">Categories</a></li>
+        
+        
+        <li><a href="/tags">Tags</a></li>
+        
+        
+        <li class="desktop-only"><a href="/atom.xml" target="_blank">RSS</a></li>
+        
+      </ul>
+
+      <ul class="navbar-nav user-nav float-right desktop-only">
+        <li class="user-nav-notification">
+          <a><span class="user-nav-unread"></span><i class="fa fa-bell"></i></a>
+        </li>
+        <li>
+          <a><i class="fa fa-plus"></i> <i class="fa fa-caret-down"></i></a>
+        </li>
+        <li class="user-nav-logo">
+          <a><img src="https://avatars2.githubusercontent.com/u/14139937?s=460&amp;v=4"> <i class="fa fa-caret-down"></i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="main-container">
+  <header class="header-wrapper desktop-only">
+  <div class="container header-site-detail">
+    <ul class="header-toolbar">
+      <li class="clearfix">
+        <a href="/archives" class="header-toolbar-left"><i class="fa fa-file-text"></i> Posts </a>
+        <a href="/archives" class="header-toolbar-right"> 109 </a>
+      </li>
+      <li>
+        <a href="/tags" class="header-toolbar-left"><i class="fa fa-tags"></i> Tags </a>
+        <a href="/tags" class="header-toolbar-right"> 44 </a>
+      </li>
+      <li>
+        <a href="/categories" class="header-toolbar-left"><i class="fa fa-folder-open"></i> Categories </a>
+        <a href="/categories" class="header-toolbar-right"> 18 </a>
+      </li>
+    </ul>
+    <h2 class="header-title">
+      <i class="fa fa-book text-muted"></i>
+      <a href="/">Anan</a>
+      
+      
+    </h2>
+  </div>
+
+  <div class="container">
+    <div class="header-tab-wrapper clearfix">
+      <span class="header-tab header-tab-selected"><i class="fa fa-thumbs-o-up"></i> Like</span>
+      <span class="header-tab"><i class="fa fa-share-alt"></i> Share</span>
+      <span class="header-tab"><i class="fa fa-comments-o"></i> Discussion</span>
+      <span class="header-tab"><i class="fa fa-bookmark-o"></i> Bookmark </span>
+      <span class="header-tab"><i class="fa fa-smile-o"></i> Smile <i class="fa fa-caret-down"></i></span>
+    </div>
+  </div>
+</header>
+
+
+<div class="post-container container">
+  <h3>
+    <i class="fa fa-user-o"></i>
+    anan
+
+    <span class="post-date float-right" title="{{moment(1456018680000).format('MMM DD, YYYY, h:mm:ss A')}}">
+      <i class="fa fa-pencil-square-o"></i>
+      {{moment(1456018680000).fromNow()}}
+    </span>
+  </h3>
+
+  <article class="post-content">
+    <h1>禁止软件开机自启动的三种方法</h1>
+    <p>随着我们的使用，电脑开机启动程序日益增多——这是电脑开机慢的原因之一<br>程序在不需要的时候启动，占用资源——这是电脑卡的原因之一</p>
+<p>目前禁止软件的自动启动常用的方法一般有三种：</p>
+<blockquote>
+<ul>
+<li>用软件禁止；</li>
+<li>用Windows命令禁止；</li>
+<li>直接修改注册表。</li>
+</ul>
+</blockquote>
+<h3 id="一、使用软件禁止软件的自动启动"><a href="#一、使用软件禁止软件的自动启动" class="headerlink" title="一、使用软件禁止软件的自动启动"></a>一、使用软件禁止软件的自动启动</h3><p>大陆常用多数是360、金山、腾讯等公司开发的软件。不太推荐这些国内所谓的优化软件。软件本身就占用大资源。这里不详谈。（<strong>相关阅读</strong>移步至“<strong><a href="http://yamida.org/2016/02/29/%e8%af%b4%e8%af%b4%e5%9c%a8win7%e4%b8%8b%e4%bc%98%e5%8c%96%e8%bd%af%e4%bb%b6%e7%9a%84%e5%bf%85%e8%a6%81%e6%80%a7/" target="_blank" rel="noopener">说说在win7下优化软件的必要性</a></strong>”）</p>
+<h3 id="二、用Windows命令禁止软件的自动启动"><a href="#二、用Windows命令禁止软件的自动启动" class="headerlink" title="二、用Windows命令禁止软件的自动启动"></a>二、用Windows命令禁止软件的自动启动</h3><p>点击“开始”—“运行”（或者直接用WIN+R也可以），接着输入“<strong>msconfig</strong>”敲回车。在系统配置实用程序的窗口中选择“启动”的页面。同样，在这里列出了很多开机时候自动启动的程序，把它们前面的小勾取消，点确定。一般重启生效</p>
+<h3 id="三、修改注册表彻底禁止软件的自动启动"><a href="#三、修改注册表彻底禁止软件的自动启动" class="headerlink" title="三、修改注册表彻底禁止软件的自动启动"></a>三、修改注册表彻底禁止软件的自动启动</h3><p>明明禁止了某软件的启动，可是它还是自动加载了（如Realplayer）。遇到这种情况可以用修改注册表来彻底禁止软件的自动启动。操作时注意，因稍有不慎就可能出错，从而使系统出错而崩溃。<br>点击“开始”—“运行”输入“<strong>regedit</strong>”打开注册表编辑器，切换到<br><strong>HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run</strong><br>先清理掉不想启动的程序,注意不要乱删，出问题就6666了。<br>然后在Run上右键—权限—高级—添加—输入everyone—确定。然后把<strong>设置数值</strong>的拒绝勾上（其他都不要勾，这样不会影响到想要启动的程序）然后确定。同样的方法把<br><strong>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run</strong><br>也搞定。这样，任何软件一般是无法自动添加到启动了。除非你想，只要删掉权限里面的everyone即可。这样还可以从一定程度上防止木马程序，因为大多数木马也是加在这里，无法随系统启动当然也无法搞破坏了。<img src="http://upload-images.jianshu.io/upload_images/1171873-0b4b37ab43f77c95.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="20150926-22"><br>不要再说“电脑慢、卡是因为装太多软件了”。我电脑就还行嘛～</p>
+<blockquote>
+<p>文章来源：中关村在线【时隔久远链接早已404】（已做部分删改）</p>
+</blockquote>
+
+  </article>
+</div>
+
+
+    
+<div class="container disqus-container">
+  <div id="disqus_thread"></div>
+</div>
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://zakariyya.github.io/2016/02/21/电脑问题-禁止软件开机自启动的三种方法/";
+    this.page.identifier = 1456018680;
+  };
+
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://anan.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+
+
+
+
+
+</div>
+
+<div class="footer-wrapper container">
+  <footer class="footer clearfix">
+    <div class="clearfix">
+    <a href="https://zakariyya.github.io" class="footer-logo">
+      <i class="fa fa-github"></i>
+    </a>
+    <ul class="footer-social-link">
+      <li>© 2019 anan</li>
+      <li><a href="https://zakariyya.github.io">Home</a></li>
+      
+      <li><a href="https://github.com/Zakariyya">Github</a></li>
+      
+      <li><a href="http://weibo.com/">Weibo</a></li>
+      
+    </ul>
+    <div class="footer-theme-info">
+      Theme <a href="//github.com/sabrinaluo/hexo-theme-replica">Replica</a>
+      by <a href="//github.com/sabrinaluo">Hiitea</a> ❤ Powered by Hexo
+    </div>
+    </div>
+    
+    <div class="footer-pageview">
+        <a href="https://info.flagcounter.com/mx4Y">
+          <img src="//s01.flagcounter.com/count/mx4Y/bg_FFFFFF/txt_000000/border_FFFFFF/columns_3/maxflags_9/viewers_3/labels_0/pageviews_1/flags_0/percent_0/">
+        </a>
+    </div>
+    
+  </footer>
+</div>
+
+
+<script>
+  (function() {
+    var cx = '005289241570429579920:lniuufygqc8';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+      '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+
+
+
+<script src="/js/main.js"></script>
+
+</body>
+</html>

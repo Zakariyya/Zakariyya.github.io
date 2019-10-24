@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>
+    Shadowsocks搭建过程(服务端) | Anan
+  </title>
+  <meta name="description" content="BLACKPINK&#39;s Fans">
+  
+  <meta name="keywords" content="
+  翻墙 Shadowsocks
+  ">
+  
+  <meta name="author" content="anan">
+
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="theme-color" content="#1e2327">
+  <link rel="apple-touch-icon" href="https://github.githubassets.com/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://github.githubassets.com/apple-touch-icon-180x180.png">
+
+  <link rel="icon" type="image/x-icon" href="https://github.githubassets.com/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-123397569-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/vue/1.0.25-csp/vue.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+</head>
+
+<body id="replica-app">
+
+<nav class="navbar-wrapper">
+  <div class="navbar">
+    <div class="container clearfix">
+      <a href="/" class="navbar-logo"><i class="fa fa-github"></i></a>
+
+      <div class="navbar-search float-left desktop-only">
+        <div class="navbar-search-form">
+          <label for="gsc-i-id1">This website</label>
+          <div id="google-search">
+            <gcse:search></gcse:search>
+          </div>
+        </div>
+      </div>
+
+      <ul class="navbar-nav float-left">
+        
+        <li><a href="/archives">Archives</a></li>
+        
+        
+        <li><a href="/categories">Categories</a></li>
+        
+        
+        <li><a href="/tags">Tags</a></li>
+        
+        
+        <li class="desktop-only"><a href="/atom.xml" target="_blank">RSS</a></li>
+        
+      </ul>
+
+      <ul class="navbar-nav user-nav float-right desktop-only">
+        <li class="user-nav-notification">
+          <a><span class="user-nav-unread"></span><i class="fa fa-bell"></i></a>
+        </li>
+        <li>
+          <a><i class="fa fa-plus"></i> <i class="fa fa-caret-down"></i></a>
+        </li>
+        <li class="user-nav-logo">
+          <a><img src="https://avatars2.githubusercontent.com/u/14139937?s=460&amp;v=4"> <i class="fa fa-caret-down"></i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="main-container">
+  <header class="header-wrapper desktop-only">
+  <div class="container header-site-detail">
+    <ul class="header-toolbar">
+      <li class="clearfix">
+        <a href="/archives" class="header-toolbar-left"><i class="fa fa-file-text"></i> Posts </a>
+        <a href="/archives" class="header-toolbar-right"> 109 </a>
+      </li>
+      <li>
+        <a href="/tags" class="header-toolbar-left"><i class="fa fa-tags"></i> Tags </a>
+        <a href="/tags" class="header-toolbar-right"> 44 </a>
+      </li>
+      <li>
+        <a href="/categories" class="header-toolbar-left"><i class="fa fa-folder-open"></i> Categories </a>
+        <a href="/categories" class="header-toolbar-right"> 18 </a>
+      </li>
+    </ul>
+    <h2 class="header-title">
+      <i class="fa fa-book text-muted"></i>
+      <a href="/">Anan</a>
+      
+      
+    </h2>
+  </div>
+
+  <div class="container">
+    <div class="header-tab-wrapper clearfix">
+      <span class="header-tab header-tab-selected"><i class="fa fa-thumbs-o-up"></i> Like</span>
+      <span class="header-tab"><i class="fa fa-share-alt"></i> Share</span>
+      <span class="header-tab"><i class="fa fa-comments-o"></i> Discussion</span>
+      <span class="header-tab"><i class="fa fa-bookmark-o"></i> Bookmark </span>
+      <span class="header-tab"><i class="fa fa-smile-o"></i> Smile <i class="fa fa-caret-down"></i></span>
+    </div>
+  </div>
+</header>
+
+
+<div class="post-container container">
+  <h3>
+    <i class="fa fa-user-o"></i>
+    anan
+
+    <span class="post-date float-right" title="{{moment(1524462170000).format('MMM DD, YYYY, h:mm:ss A')}}">
+      <i class="fa fa-pencil-square-o"></i>
+      {{moment(1524462170000).fromNow()}}
+    </span>
+  </h3>
+
+  <article class="post-content">
+    <h1>Shadowsocks搭建过程(服务端)</h1>
+    <blockquote>
+<p>链接扩展<br><a href="https://shadowsocks.org/en/index.html" target="_blank" rel="noopener">shadowsocks</a><br><a href="https://github.com/shadowsocks/shadowsocks-windows/releases/tag/4.0.9" target="_blank" rel="noopener">shadowsocks-windows</a><br><a href="https://github.com/shadowsocks/shadowsocks-libev/" target="_blank" rel="noopener">shadowsocks-libev</a><br><a href="https://v2ray.com" target="_blank" rel="noopener">v2ray</a><br><a href="https://vultr.com" target="_blank" rel="noopener">vultr</a></p>
+</blockquote>
+<h2 id="安装shadowsocks-libev"><a href="#安装shadowsocks-libev" class="headerlink" title="安装shadowsocks-libev"></a>安装shadowsocks-libev</h2><p>shadowsocks的服务端也分python版本、go版本以及C语言写的shadowsocks-libev，因为libev版更新快，而且C语言编写的运行效率更高些，所以采用libev版。</p>
+<h3 id="安装预编译包"><a href="#安装预编译包" class="headerlink" title="安装预编译包"></a>安装预编译包</h3><p>在shadowsocks-libev的github项目上有release预编译版本，可以直接安装（以目前的3.1.3版本为例）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#下载预编译文件</span><br><span class="line">wget https://github.com/shadowsocks/shadowsocks-libev/releases/download/v3.0.3/shadowsocks-libev-3.1.3.tar.gz</span><br><span class="line">tar zxf shadowsocks-libev-3.0.3.tar.gz    #解压缩</span><br><span class="line">cd shadowsocks    #进入项目文件夹</span><br><span class="line">./configure    #配置安装</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+<h3 id="编译源码安装"><a href="#编译源码安装" class="headerlink" title="编译源码安装"></a>编译源码安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/shadowsocks/shadowsocks-libev.git #下载源码</span><br><span class="line">cd shadowsocks-libev/    #进入项目目录</span><br><span class="line">git submodule update --init    #下载git子模块</span><br><span class="line">./autogen.sh    #生成配置文件</span><br><span class="line">./configure    #配置编译环境</span><br><span class="line">make     #编译</span><br><span class="line">make install    #安装</span><br></pre></td></tr></table></figure>
+<p>这样就装好了，shadowsocks-libev中常用的命令有<br><strong>ss-server</strong>、<strong>ss-local</strong>、<strong>ss-redir</strong>、<strong>ss-tunnel</strong>等，<br>服务端只用<strong>ss-server</strong>。关于使用方法，可以man shadowsocks-libev或者man ss-server来查看，下面只会提到必要用法。</p>
+<h2 id="编辑配置文件"><a href="#编辑配置文件" class="headerlink" title="编辑配置文件"></a>编辑配置文件</h2><p>一般为了方便，会将shadowsocks设置的参数写成配置文件，配置文件为json格式，服务端可以使用的key如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">key</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">server</td>
+<td style="text-align:center">服务器IP</td>
+</tr>
+<tr>
+<td style="text-align:center">server_port</td>
+<td style="text-align:center">服务端口</td>
+</tr>
+<tr>
+<td style="text-align:center">password</td>
+<td style="text-align:center">密码</td>
+</tr>
+<tr>
+<td style="text-align:center">method</td>
+<td style="text-align:center">加密算法</td>
+</tr>
+<tr>
+<td style="text-align:center">timeout</td>
+<td style="text-align:center">超时</td>
+</tr>
+<tr>
+<td style="text-align:center">mode</td>
+<td style="text-align:center">代理协议</td>
+</tr>
+</tbody>
+</table>
+<p>服务器IP如果设为0.0.0.0则绑定所有IP；代理协议指的是代理TCP还是UDP，<br>至于加密算法，3.0以上版本的shadowsocks目前支持18种算法，但推荐使用以下支持AEAD加密的：</p>
+<ul>
+<li>chacha20-ietf-poly1305</li>
+<li>aes-256-gcm</li>
+<li>aes-192-gcm</li>
+<li>aes-128-gcm</li>
+</ul>
+<p>至于原因可以参考这篇文章这里以我常用的配置文件为例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">touch config.json    #新建文件</span><br><span class="line">vim config.json    #编辑文件</span><br></pre></td></tr></table></figure>
+<p>config.json</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;server&quot;:&quot;0.0.0.0&quot;,    //服务器IP，0.0.0.0代表绑定服务器的所有IP</span><br><span class="line">    &quot;server_port&quot;:8088,    //服务端口</span><br><span class="line">    &quot;password&quot;:&quot;password&quot;,    //密码</span><br><span class="line">    &quot;timeout&quot;:&quot;5&quot;,    //超时重连</span><br><span class="line">    &quot;method&quot;:&quot;chacha20-ietf-poly1305&quot;,    //加密方式</span><br><span class="line">    &quot;mode&quot;:&quot;tcp_and_udp&quot;    //代理TCP和UDP</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>配置文件为json格式，//后为注释，方便说明加的，实际配置文件里不能写注释（看那个红色就知道不能加）。</p>
+<p>这里用的是在移动设备上性能相对效好的chacha20-ietf-poly1305。</p>
+<p>因为只有shadowsocks-libev更新了AEAD加密，所以为了兼容可以改为chacha20等非AEAD加密算法。</p>
+<h2 id="运行shadowsocks-libev"><a href="#运行shadowsocks-libev" class="headerlink" title="运行shadowsocks-libev"></a>运行shadowsocks-libev</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ss-server -c config.json</span><br></pre></td></tr></table></figure>
+<p>可以看到服务在前台运行，-c后面接配置文件。若要后台运行，可以加上-f参数，后面接一个pid文件名，运行后会生成这个pid文件，里面保存着这个后台ss-server进程的pid。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ss-server -c config.json -f proxy.pid</span><br></pre></td></tr></table></figure>
+<p>如果想开多个端口，可以使用多个配置文件+多个pid文件的方式来管理。这样服务端就完成了。</p>
+<blockquote>
+<p>文章摘自<a href="https://shino.space/2017/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%90%AD%E5%BB%BAshadowsocks%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E7%B3%BB%E7%BB%9F-%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AF%87/" target="_blank" rel="noopener">shino.space</a></p>
+</blockquote>
+
+  </article>
+</div>
+
+
+    
+<div class="container disqus-container">
+  <div id="disqus_thread"></div>
+</div>
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://zakariyya.github.io/2018/04/23/搭建-翻墙-shadowsocks搭建过程-服务端/";
+    this.page.identifier = 1524462170;
+  };
+
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://anan.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+
+
+
+
+
+</div>
+
+<div class="footer-wrapper container">
+  <footer class="footer clearfix">
+    <div class="clearfix">
+    <a href="https://zakariyya.github.io" class="footer-logo">
+      <i class="fa fa-github"></i>
+    </a>
+    <ul class="footer-social-link">
+      <li>© 2019 anan</li>
+      <li><a href="https://zakariyya.github.io">Home</a></li>
+      
+      <li><a href="https://github.com/Zakariyya">Github</a></li>
+      
+      <li><a href="http://weibo.com/">Weibo</a></li>
+      
+    </ul>
+    <div class="footer-theme-info">
+      Theme <a href="//github.com/sabrinaluo/hexo-theme-replica">Replica</a>
+      by <a href="//github.com/sabrinaluo">Hiitea</a> ❤ Powered by Hexo
+    </div>
+    </div>
+    
+    <div class="footer-pageview">
+        <a href="https://info.flagcounter.com/mx4Y">
+          <img src="//s01.flagcounter.com/count/mx4Y/bg_FFFFFF/txt_000000/border_FFFFFF/columns_3/maxflags_9/viewers_3/labels_0/pageviews_1/flags_0/percent_0/">
+        </a>
+    </div>
+    
+  </footer>
+</div>
+
+
+<script>
+  (function() {
+    var cx = '005289241570429579920:lniuufygqc8';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+      '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+
+
+
+<script src="/js/main.js"></script>
+
+</body>
+</html>

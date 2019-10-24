@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>
+    Spring Boot多数据源整合 | Anan
+  </title>
+  <meta name="description" content="BLACKPINK&#39;s Fans">
+  
+  <meta name="keywords" content="
+  spring
+  ">
+  
+  <meta name="author" content="anan">
+
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="theme-color" content="#1e2327">
+  <link rel="apple-touch-icon" href="https://github.githubassets.com/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://github.githubassets.com/apple-touch-icon-180x180.png">
+
+  <link rel="icon" type="image/x-icon" href="https://github.githubassets.com/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-123397569-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/vue/1.0.25-csp/vue.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+</head>
+
+<body id="replica-app">
+
+<nav class="navbar-wrapper">
+  <div class="navbar">
+    <div class="container clearfix">
+      <a href="/" class="navbar-logo"><i class="fa fa-github"></i></a>
+
+      <div class="navbar-search float-left desktop-only">
+        <div class="navbar-search-form">
+          <label for="gsc-i-id1">This website</label>
+          <div id="google-search">
+            <gcse:search></gcse:search>
+          </div>
+        </div>
+      </div>
+
+      <ul class="navbar-nav float-left">
+        
+        <li><a href="/archives">Archives</a></li>
+        
+        
+        <li><a href="/categories">Categories</a></li>
+        
+        
+        <li><a href="/tags">Tags</a></li>
+        
+        
+        <li class="desktop-only"><a href="/atom.xml" target="_blank">RSS</a></li>
+        
+      </ul>
+
+      <ul class="navbar-nav user-nav float-right desktop-only">
+        <li class="user-nav-notification">
+          <a><span class="user-nav-unread"></span><i class="fa fa-bell"></i></a>
+        </li>
+        <li>
+          <a><i class="fa fa-plus"></i> <i class="fa fa-caret-down"></i></a>
+        </li>
+        <li class="user-nav-logo">
+          <a><img src="https://avatars2.githubusercontent.com/u/14139937?s=460&amp;v=4"> <i class="fa fa-caret-down"></i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="main-container">
+  <header class="header-wrapper desktop-only">
+  <div class="container header-site-detail">
+    <ul class="header-toolbar">
+      <li class="clearfix">
+        <a href="/archives" class="header-toolbar-left"><i class="fa fa-file-text"></i> Posts </a>
+        <a href="/archives" class="header-toolbar-right"> 109 </a>
+      </li>
+      <li>
+        <a href="/tags" class="header-toolbar-left"><i class="fa fa-tags"></i> Tags </a>
+        <a href="/tags" class="header-toolbar-right"> 44 </a>
+      </li>
+      <li>
+        <a href="/categories" class="header-toolbar-left"><i class="fa fa-folder-open"></i> Categories </a>
+        <a href="/categories" class="header-toolbar-right"> 18 </a>
+      </li>
+    </ul>
+    <h2 class="header-title">
+      <i class="fa fa-book text-muted"></i>
+      <a href="/">Anan</a>
+      
+      
+    </h2>
+  </div>
+
+  <div class="container">
+    <div class="header-tab-wrapper clearfix">
+      <span class="header-tab header-tab-selected"><i class="fa fa-thumbs-o-up"></i> Like</span>
+      <span class="header-tab"><i class="fa fa-share-alt"></i> Share</span>
+      <span class="header-tab"><i class="fa fa-comments-o"></i> Discussion</span>
+      <span class="header-tab"><i class="fa fa-bookmark-o"></i> Bookmark </span>
+      <span class="header-tab"><i class="fa fa-smile-o"></i> Smile <i class="fa fa-caret-down"></i></span>
+    </div>
+  </div>
+</header>
+
+
+<div class="post-container container">
+  <h3>
+    <i class="fa fa-user-o"></i>
+    anan
+
+    <span class="post-date float-right" title="{{moment(1531993700000).format('MMM DD, YYYY, h:mm:ss A')}}">
+      <i class="fa fa-pencil-square-o"></i>
+      {{moment(1531993700000).fromNow()}}
+    </span>
+  </h3>
+
+  <article class="post-content">
+    <h1>Spring Boot多数据源整合</h1>
+    <h1 id="如何用Spring-Boot-整合-MyBatis-连接多种数据源-amp-Spring-Data-Jpa-如何连接多种数据源"><a href="#如何用Spring-Boot-整合-MyBatis-连接多种数据源-amp-Spring-Data-Jpa-如何连接多种数据源" class="headerlink" title="如何用Spring Boot 整合 MyBatis 连接多种数据源 &amp; Spring Data Jpa 如何连接多种数据源"></a>如何用Spring Boot 整合 MyBatis 连接多种数据源 &amp; Spring Data Jpa 如何连接多种数据源</h1><blockquote>
+<p>引入依赖项公用</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">	compile('org.mybatis.spring.boot:mybatis-spring-boot-starter:1.3.1')</span><br><span class="line">	compile('org.springframework.boot:spring-boot-starter-web')</span><br><span class="line">	runtime('mysql:mysql-connector-java')</span><br><span class="line">	runtime('com.microsoft.sqlserver:mssql-jdbc')</span><br><span class="line">	testCompile('org.springframework.boot:spring-boot-starter-test')</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="配置数据源公用"><a href="#配置数据源公用" class="headerlink" title="配置数据源公用"></a>配置数据源公用</h2><blockquote>
+<p>新建数据源配置类</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DataSourceProperties</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Bean</span>(<span class="string">"mysqlDataSource"</span>)</span><br><span class="line">	<span class="meta">@ConfigurationProperties</span>(prefix = <span class="string">"datasource.mysql"</span>)</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Primary</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> DataSource <span class="title">mysqlDataSource</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> DataSourceBuilder.create().build();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Bean</span>(<span class="string">"mssqlDataSource"</span>)</span><br><span class="line">	<span class="meta">@ConfigurationProperties</span>(prefix = <span class="string">"datasource.mssql"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> DataSource <span class="title">mssqlDataSource</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> DataSourceBuilder.create().build();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="application-properties配置数据源"><a href="#application-properties配置数据源" class="headerlink" title="application.properties配置数据源"></a>application.properties配置数据源</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">datasource.mysql.url=jdbc:mysql://xx?serverTimezone=Asia/Shanghai&amp;characterEncoding=utf8</span><br><span class="line">datasource.mysql.username=xx</span><br><span class="line">datasource.mysql.password=xx</span><br><span class="line">datasource.mysql.driver-class-name=com.mysql.jdbc.Driver</span><br><span class="line">datasource.mssql.url=jdbc:sqlserver://xx;databasename=xx</span><br><span class="line">datasource.mssql.username=xx</span><br><span class="line">datasource.mssql.password=xx</span><br><span class="line">datasource.mssql.driver-class-name=com.microsoft.sqlserver.jdbc.SQLServerDriver</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="MyBatis配置"><a href="#MyBatis配置" class="headerlink" title="MyBatis配置"></a>MyBatis配置</h2><h3 id="mssql配置"><a href="#mssql配置" class="headerlink" title="mssql配置"></a>mssql配置</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableTransactionManagement</span></span><br><span class="line"><span class="meta">@MapperScan</span>(basePackages = <span class="string">"指定mssql repository包名"</span>, sqlSessionFactoryRef = <span class="string">"mssqlSessionFactory"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MssqlConfig</span> </span>&#123;</span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	<span class="meta">@Qualifier</span>(<span class="string">"mssqlDataSource"</span>)</span><br><span class="line">	<span class="keyword">private</span> DataSource mssqlDataSource;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Bean</span>(name = <span class="string">"mssqlTransactionManager"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> DataSourceTransactionManager <span class="title">dataSourceTransactionManager</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> DataSourceTransactionManager(mssqlDataSource);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Bean</span>(name = <span class="string">"mssqlSessionFactory"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> SqlSessionFactory <span class="title">clusterSqlSessionFactory</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		<span class="keyword">final</span> SqlSessionFactoryBean sessionFactory = <span class="keyword">new</span> SqlSessionFactoryBean();</span><br><span class="line">		sessionFactory.setDataSource(mssqlDataSource);</span><br><span class="line">		sessionFactory.setMapperLocations(<span class="keyword">new</span> PathMatchingResourcePatternResolver().getResources(<span class="string">"classpath:config/mybatis/mapper/*.xml"</span>));</span><br><span class="line">		<span class="keyword">return</span> sessionFactory.getObject();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="mysql配置"><a href="#mysql配置" class="headerlink" title="mysql配置"></a>mysql配置</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableTransactionManagement</span></span><br><span class="line"><span class="meta">@MapperScan</span>(basePackages = <span class="string">"指定mysql repository包名"</span>, sqlSessionFactoryRef = <span class="string">"mysqlSessionFactory"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MySqlConfig</span> </span>&#123;</span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	<span class="meta">@Qualifier</span>(<span class="string">"mysqlDataSource"</span>)</span><br><span class="line">	<span class="keyword">private</span> DataSource mysqlDataSource;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Bean</span>(name = <span class="string">"mysqlTransactionManager"</span>)</span><br><span class="line">	<span class="meta">@Primary</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> DataSourceTransactionManager <span class="title">dataSourceTransactionManager</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> DataSourceTransactionManager(mysqlDataSource);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Bean</span>(name = <span class="string">"mysqlSessionFactory"</span>)</span><br><span class="line">	<span class="meta">@Primary</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> SqlSessionFactory <span class="title">clusterSqlSessionFactory</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		<span class="keyword">final</span> SqlSessionFactoryBean sessionFactory = <span class="keyword">new</span> SqlSessionFactoryBean();</span><br><span class="line">		sessionFactory.setDataSource(mysqlDataSource);</span><br><span class="line">		sessionFactory.setMapperLocations(<span class="keyword">new</span> PathMatchingResourcePatternResolver().getResources(<span class="string">"classpath:config/mybatis/mapper/*.xml"</span>));</span><br><span class="line">		<span class="keyword">return</span> sessionFactory.getObject();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Spring-Data-Jpa配置"><a href="#Spring-Data-Jpa配置" class="headerlink" title="Spring Data Jpa配置"></a>Spring Data Jpa配置</h2><h3 id="mssql配置-1"><a href="#mssql配置-1" class="headerlink" title="mssql配置"></a>mssql配置</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableTransactionManagement</span></span><br><span class="line"><span class="meta">@EnableJpaRepositories</span>(entityManagerFactoryRef=<span class="string">"entityManagerFactorySecondary"</span>,</span><br><span class="line">		transactionManagerRef=<span class="string">"transactionManagerSecondary"</span>,</span><br><span class="line">		basePackages= &#123; <span class="string">"指定mssql repository包名"</span> &#125;)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MSSqlConfig</span> </span>&#123;</span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	<span class="meta">@Qualifier</span>(<span class="string">"mssqlDataSource"</span>)</span><br><span class="line">	<span class="keyword">private</span> DataSource mssqlDataSource;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Bean</span>(name = <span class="string">"entityManagerSecondary"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> EntityManager <span class="title">entityManager</span><span class="params">(EntityManagerFactoryBuilder builder)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> entityManagerFactorySecondary(builder).getObject().createEntityManager();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Bean</span>(name = <span class="string">"entityManagerFactorySecondary"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> LocalContainerEntityManagerFactoryBean <span class="title">entityManagerFactorySecondary</span> <span class="params">(EntityManagerFactoryBuilder builder)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> builder.dataSource(mssqlDataSource).properties(getVendorProperties(mssqlDataSource))</span><br><span class="line">		<span class="comment">//设置实体类所在位置</span></span><br><span class="line">		.packages(<span class="string">"指定实体路径"</span>)</span><br><span class="line">		.persistenceUnit(<span class="string">"mssqlPersistenceUnit"</span>)</span><br><span class="line">		.build();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	<span class="keyword">private</span> JpaProperties jpaProperties;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">private</span> Map <span class="title">getVendorProperties</span><span class="params">(DataSource dataSource)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> jpaProperties.getHibernateProperties(dataSource);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Bean</span>(name = <span class="string">"transactionManagerSecondary"</span>)</span><br><span class="line">	<span class="function">PlatformTransactionManager <span class="title">transactionManagerSecondary</span><span class="params">(EntityManagerFactoryBuilder builder)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> JpaTransactionManager(entityManagerFactorySecondary(builder).getObject());</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Mysql配置"><a href="#Mysql配置" class="headerlink" title="Mysql配置"></a>Mysql配置</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableTransactionManagement</span></span><br><span class="line"><span class="meta">@EnableJpaRepositories</span>(entityManagerFactoryRef = <span class="string">"entityManagerFactoryPrimary"</span>,</span><br><span class="line">		transactionManagerRef = <span class="string">"transactionManagerPrimary"</span>,basePackages = &#123;<span class="string">"指定mysql repository包名"</span>&#125;)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MySqlConfig</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	<span class="meta">@Qualifier</span>(<span class="string">"mysqlDataSource"</span>)</span><br><span class="line">	<span class="keyword">private</span> DataSource mysqlDataSource;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Primary</span></span><br><span class="line">	<span class="meta">@Bean</span>(name = <span class="string">"entityManagerPrimary"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> EntityManager <span class="title">entityManager</span><span class="params">(EntityManagerFactoryBuilder builder)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> entityManagerFactoryPrimary(builder).getObject().createEntityManager();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@Primary</span></span><br><span class="line">	<span class="meta">@Bean</span>(name = <span class="string">"entityManagerFactoryPrimary"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> LocalContainerEntityManagerFactoryBean <span class="title">entityManagerFactoryPrimary</span><span class="params">(EntityManagerFactoryBuilder builder)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> builder.dataSource(mysqlDataSource).properties(getVendorProperties(mysqlDataSource))</span><br><span class="line">		<span class="comment">//设置实体类所在位置</span></span><br><span class="line">			.packages(<span class="string">"指定实体路径"</span>)</span><br><span class="line">			.persistenceUnit(<span class="string">"mysqlPersistenceUnit"</span>)</span><br><span class="line">			.build();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	<span class="keyword">private</span> JpaProperties jpaProperties;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">private</span> Map <span class="title">getVendorProperties</span><span class="params">(DataSource dataSource)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> jpaProperties.getHibernateProperties(dataSource);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Primary</span></span><br><span class="line">	<span class="meta">@Bean</span>(name = <span class="string">"transactionManagerPrimary"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> PlatformTransactionManager <span class="title">transactionManagerPrimary</span><span class="params">(EntityManagerFactoryBuilder builder)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> JpaTransactionManager(entityManagerFactoryPrimary(builder).getObject());</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="关键注解的解析"><a href="#关键注解的解析" class="headerlink" title="关键注解的解析"></a>关键注解的解析</h2><blockquote>
+<ol>
+<li>@Configuration</li>
+</ol>
+</blockquote>
+<p>相当于传统的xml配置文件，项目中如果需要依赖第三方的xml文件，仍然建议通过此配置类作为项目的配置主类，通过@ImportResource注解加载xml配置文件。</p>
+<blockquote>
+<ol start="2">
+<li>@Bean</li>
+</ol>
+</blockquote>
+<p>该注解告诉Spring这个方法将会返回一个对象，该对象要注册为Spring应用上下文中的bean</p>
+<blockquote>
+<ol start="3">
+<li>@ConfigurationProperties</li>
+</ol>
+</blockquote>
+<p>读取配置文件信息，读取并自动封装成实体类。这样在代码里使用更加方便。@Value需要单独建立xxxProperties进行映射，效果差不多</p>
+<blockquote>
+<ol start="4">
+<li>@Primary</li>
+</ol>
+</blockquote>
+<p>当系统里面出现多个数据源的时候，需要进行人为指定主数据源</p>
+<blockquote>
+<ol start="5">
+<li>@EnableTransactionManagement</li>
+</ol>
+</blockquote>
+<p>Spring Boot使用事务非常简单，使用该注解开启事务支持，然后在访问数据库的Service方法上添加注解@Transactional便可。</p>
+<blockquote>
+<ol start="6">
+<li>@MapperScan</li>
+</ol>
+</blockquote>
+<p>在数据持久层使用MyBatis时候，使用该注解配置扫描Mapper位置</p>
+<blockquote>
+<ol start="7">
+<li>@Autowired</li>
+</ol>
+</blockquote>
+<p>使用该注解进行自动注入，但是Spring 容器中匹配候选Bean数目必须有且仅有一个。当找不到一个匹配的时候，Spring容器会抛出异常</p>
+<blockquote>
+<ol start="8">
+<li>@Qualifier</li>
+</ol>
+</blockquote>
+<p>在当使用@Autowired产生歧义的时候，可以使用该注解指定对应的name来消除歧义</p>
+<blockquote>
+<ol start="9">
+<li>EnableJpaRepositories</li>
+</ol>
+</blockquote>
+<p>该注解开启对Spring Data JPA Repository的支持</p>
+<p>通过以上的配置，项目就可以同时访问多种数据源了。</p>
+<p>赶紧记下，别待会儿忘了</p>
+
+  </article>
+</div>
+
+
+    
+<div class="container disqus-container">
+  <div id="disqus_thread"></div>
+</div>
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://zakariyya.github.io/2018/07/19/backEnd-spring-Spring-Boot多数据源整合/";
+    this.page.identifier = 1531993700;
+  };
+
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://anan.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+
+
+
+
+
+</div>
+
+<div class="footer-wrapper container">
+  <footer class="footer clearfix">
+    <div class="clearfix">
+    <a href="https://zakariyya.github.io" class="footer-logo">
+      <i class="fa fa-github"></i>
+    </a>
+    <ul class="footer-social-link">
+      <li>© 2019 anan</li>
+      <li><a href="https://zakariyya.github.io">Home</a></li>
+      
+      <li><a href="https://github.com/Zakariyya">Github</a></li>
+      
+      <li><a href="http://weibo.com/">Weibo</a></li>
+      
+    </ul>
+    <div class="footer-theme-info">
+      Theme <a href="//github.com/sabrinaluo/hexo-theme-replica">Replica</a>
+      by <a href="//github.com/sabrinaluo">Hiitea</a> ❤ Powered by Hexo
+    </div>
+    </div>
+    
+    <div class="footer-pageview">
+        <a href="https://info.flagcounter.com/mx4Y">
+          <img src="//s01.flagcounter.com/count/mx4Y/bg_FFFFFF/txt_000000/border_FFFFFF/columns_3/maxflags_9/viewers_3/labels_0/pageviews_1/flags_0/percent_0/">
+        </a>
+    </div>
+    
+  </footer>
+</div>
+
+
+<script>
+  (function() {
+    var cx = '005289241570429579920:lniuufygqc8';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+      '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+
+
+
+<script src="/js/main.js"></script>
+
+</body>
+</html>

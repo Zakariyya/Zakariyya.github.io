@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>
+    Offline Installation Docker | Anan
+  </title>
+  <meta name="description" content="BLACKPINK&#39;s Fans">
+  
+  <meta name="keywords" content="
+  linux docker Oracle Ubuntu
+  ">
+  
+  <meta name="author" content="anan">
+
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="theme-color" content="#1e2327">
+  <link rel="apple-touch-icon" href="https://github.githubassets.com/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://github.githubassets.com/apple-touch-icon-180x180.png">
+
+  <link rel="icon" type="image/x-icon" href="https://github.githubassets.com/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-123397569-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/vue/1.0.25-csp/vue.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+</head>
+
+<body id="replica-app">
+
+<nav class="navbar-wrapper">
+  <div class="navbar">
+    <div class="container clearfix">
+      <a href="/" class="navbar-logo"><i class="fa fa-github"></i></a>
+
+      <div class="navbar-search float-left desktop-only">
+        <div class="navbar-search-form">
+          <label for="gsc-i-id1">This website</label>
+          <div id="google-search">
+            <gcse:search></gcse:search>
+          </div>
+        </div>
+      </div>
+
+      <ul class="navbar-nav float-left">
+        
+        <li><a href="/archives">Archives</a></li>
+        
+        
+        <li><a href="/categories">Categories</a></li>
+        
+        
+        <li><a href="/tags">Tags</a></li>
+        
+        
+        <li class="desktop-only"><a href="/atom.xml" target="_blank">RSS</a></li>
+        
+      </ul>
+
+      <ul class="navbar-nav user-nav float-right desktop-only">
+        <li class="user-nav-notification">
+          <a><span class="user-nav-unread"></span><i class="fa fa-bell"></i></a>
+        </li>
+        <li>
+          <a><i class="fa fa-plus"></i> <i class="fa fa-caret-down"></i></a>
+        </li>
+        <li class="user-nav-logo">
+          <a><img src="https://avatars2.githubusercontent.com/u/14139937?s=460&amp;v=4"> <i class="fa fa-caret-down"></i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="main-container">
+  <header class="header-wrapper desktop-only">
+  <div class="container header-site-detail">
+    <ul class="header-toolbar">
+      <li class="clearfix">
+        <a href="/archives" class="header-toolbar-left"><i class="fa fa-file-text"></i> Posts </a>
+        <a href="/archives" class="header-toolbar-right"> 109 </a>
+      </li>
+      <li>
+        <a href="/tags" class="header-toolbar-left"><i class="fa fa-tags"></i> Tags </a>
+        <a href="/tags" class="header-toolbar-right"> 44 </a>
+      </li>
+      <li>
+        <a href="/categories" class="header-toolbar-left"><i class="fa fa-folder-open"></i> Categories </a>
+        <a href="/categories" class="header-toolbar-right"> 18 </a>
+      </li>
+    </ul>
+    <h2 class="header-title">
+      <i class="fa fa-book text-muted"></i>
+      <a href="/">Anan</a>
+      
+      
+    </h2>
+  </div>
+
+  <div class="container">
+    <div class="header-tab-wrapper clearfix">
+      <span class="header-tab header-tab-selected"><i class="fa fa-thumbs-o-up"></i> Like</span>
+      <span class="header-tab"><i class="fa fa-share-alt"></i> Share</span>
+      <span class="header-tab"><i class="fa fa-comments-o"></i> Discussion</span>
+      <span class="header-tab"><i class="fa fa-bookmark-o"></i> Bookmark </span>
+      <span class="header-tab"><i class="fa fa-smile-o"></i> Smile <i class="fa fa-caret-down"></i></span>
+    </div>
+  </div>
+</header>
+
+
+<div class="post-container container">
+  <h3>
+    <i class="fa fa-user-o"></i>
+    anan
+
+    <span class="post-date float-right" title="{{moment(1547174760000).format('MMM DD, YYYY, h:mm:ss A')}}">
+      <i class="fa fa-pencil-square-o"></i>
+      {{moment(1547174760000).fromNow()}}
+    </span>
+  </h3>
+
+  <article class="post-content">
+    <h1>Offline Installation Docker</h1>
+    <h2 id="Offline-Installation-Docker"><a href="#Offline-Installation-Docker" class="headerlink" title="Offline Installation Docker"></a>Offline Installation Docker</h2><p><a href="https://download.docker.com/linux/static/stable/x86_64/" target="_blank" rel="noopener">download docker .tar.gz</a> and follow  the doucment</p>
+<ol>
+<li>Download the statis binary archive. Go to <a href="http://download.docker.com/linux/static/stabl" target="_blank" rel="noopener">http://download.docker.com/linux/static/stabl</a><br>(or change stable to edge or test), choose your hardware platform, and download the <strong>.taz</strong> file relating to the version of Docker CE you want to install.</li>
+<li><p>Extract the archive using the tar utility. The dockerd and docker binaries are ectracted.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar zxvf /path/to/&lt;FILE&gt;.tar.gz</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Optional: Move the biaries to a directory on your executable path, such as <strong> /usr/bin/ </strong> . If you skip this step, you must provide the path to the executable when you invoke <strong> docker </strong> or  <strong> dockerd </strong> commands.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp docker/* /usr/bin/</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Start the Docker daremon:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dockerd &amp;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>If you need to start the daemon with additional options, modify the above command accordingly or create and edit the file <strong> /etc/docker/daemon.json </strong> to add the custom configuration options.</p>
+<h2 id="DockerHub-sreach-oracle"><a href="#DockerHub-sreach-oracle" class="headerlink" title="DockerHub sreach oracle"></a>DockerHub sreach oracle</h2><blockquote>
+<p>warning: Step1 is online , Step2 is offline install docker</p>
+</blockquote>
+<h3 id="Step-1-docker-pull"><a href="#Step-1-docker-pull" class="headerlink" title="Step 1 docker pull"></a>Step 1 docker pull</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull wnameless/oracle-xe-11g</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><a href="https://hub.docker.com/r/wnameless/oracle-xe-11g/" target="_blank" rel="noopener">wnameless/oracle-xe-11g</a></p>
+</blockquote>
+<p>Just being bored like this, here is “offline install “ </p>
+<h3 id="Step-2-cloning-the-project-wnameless-oracle-xe-11g-on-github"><a href="#Step-2-cloning-the-project-wnameless-oracle-xe-11g-on-github" class="headerlink" title="Step 2 cloning the project wnameless/oracle-xe-11g on github"></a>Step 2 cloning the project <a href="https://github.com/wnameless/docker-oracle-xe-11g" target="_blank" rel="noopener">wnameless/oracle-xe-11g</a> on github</h3><ol>
+<li><p>find the file( <strong> dockerfile </strong> )location, exec command then waiting</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build .</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>start command (in github readme)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 49161:1521 -e ORACLE_DISABLE_ASYNCH_IO=true wnameless/oracle-xe-11g</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>或者(参考<a href="https://github.com/wnameless/docker-oracle-xe-11g/issues/64" target="_blank" rel="noopener">dragonbest520</a>这位大佬的回答)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name oracle11g -d -p 49161:22 -p 1522:1521 -p 49163:8080 -v /oracle11g-data/:/u01/app/oracle/oradata/oracle11g-data/ -e ORACLE_ALLOW_REMOTE=true --restart=always wnameless/oracle-xe-11g</span><br></pre></td></tr></table></figure></p>
+<p>By default, the password verification is disable(password never expired)<br>Connect database with following setting:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hostname: localhost</span><br><span class="line">port: 49161</span><br><span class="line">sid: xe</span><br><span class="line">username: system</span><br><span class="line">password: oracle</span><br></pre></td></tr></table></figure></p>
+<h3 id="Step-3-copy-the-image-with-other-PC"><a href="#Step-3-copy-the-image-with-other-PC" class="headerlink" title="Step 3 copy the image with other PC"></a>Step 3 copy the image with other PC</h3><p>you can exec the Step1 and then save the image with other PC, copy into the target PC, save the image<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker images ## show the images list</span><br><span class="line">docker save -o &lt;save /path/file name.tar&gt;  &lt;image name&gt; </span><br><span class="line"></span><br><span class="line">eg : docker save -o /opt/oracle.tar  wnameless/-oracle-xe-11g:v1</span><br></pre></td></tr></table></figure></p>
+<p>Target PC<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker load &lt; /home/save.tar&gt;</span><br><span class="line"></span><br><span class="line">eg: docker load /opt/oracle.tar</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>docker command <strong> save </strong> and <strong> load </strong> ,<br> <strong> export </strong> and <strong> import </strong> ,<br>save is used for image, no container.<br>export is used for container, no image.</p>
+</blockquote>
+<h2 id="Docker-modify-the-default-path"><a href="#Docker-modify-the-default-path" class="headerlink" title="Docker modify the default path"></a>Docker modify the default path</h2><blockquote>
+<p>use yum install the docker ,the default path is: /var/lib/docker . In fact, we need custom path into save and install it. </p>
+</blockquote>
+<p>在硬盘上开一个100g大小的空间，并格式化，参考命令：mkfs.ext4 /dev/sda2 ，然后挂载。如果不明白如何分区格式化并且挂载，请看考<a href="https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Disks" target="_blank" rel="noopener">这里</a>。这篇文章可以说是我见过关于初级磁盘管理最好的一篇文章了。<br>挂载之后复制文件夹/var/lib/docker/ 到挂载的位置，再软连接回去。（然后docker images就可以持久化放到硬盘里面了重启不会丢失）。参考操作如下：</p>
+<h3 id="查看docker的基本信息"><a href="#查看docker的基本信息" class="headerlink" title="查看docker的基本信息"></a>查看docker的基本信息</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker info  #查看docker的基本信息</span><br></pre></td></tr></table></figure>
+<h3 id="更改安装路径"><a href="#更改安装路径" class="headerlink" title="更改安装路径"></a>更改安装路径</h3><h4 id="停止docker服务"><a href="#停止docker服务" class="headerlink" title="停止docker服务"></a>停止docker服务</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop docker</span><br></pre></td></tr></table></figure>
+<h4 id="备份原目录"><a href="#备份原目录" class="headerlink" title="备份原目录"></a>备份原目录</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cp -r /var/lib/docker  /data/app/docker</span><br><span class="line">mv /var/lib/docker /var/lib/docker.bak</span><br><span class="line">ln -s /data/app/docker /var/lib/docker</span><br></pre></td></tr></table></figure>
+<p>或者<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cp -rf /var/lib/docker /mnt/</span><br><span class="line">rm -rf /var/lib/docker</span><br><span class="line">ln -s /mnt/docker /var/lib/docker</span><br></pre></td></tr></table></figure></p>
+<h4 id="重启docker服务"><a href="#重启docker服务" class="headerlink" title="重启docker服务"></a>重启docker服务</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start docker</span><br></pre></td></tr></table></figure>
+<h4 id="查看docker信息"><a href="#查看docker信息" class="headerlink" title="查看docker信息"></a>查看docker信息</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker info</span><br></pre></td></tr></table></figure>
+<h2 id="Docker-持久化"><a href="#Docker-持久化" class="headerlink" title="Docker 持久化"></a>Docker 持久化</h2><h3 id="容器中数据持久化主要有两种方式："><a href="#容器中数据持久化主要有两种方式：" class="headerlink" title="容器中数据持久化主要有两种方式："></a>容器中数据持久化主要有两种方式：</h3><ul>
+<li>数据卷（Data Volumes）</li>
+<li>数据卷容器（Data Volumes Dontainers）</li>
+</ul>
+<h4 id="数据卷"><a href="#数据卷" class="headerlink" title="数据卷"></a>数据卷</h4><p>数据卷是一个可供一个或多个容器使用的特殊目录，可以绕过UFS（Unix File System）。</p>
+<ul>
+<li>数据卷可以在容器之间共享和重用</li>
+<li>对数据卷的修改会立马生效</li>
+<li>对数据卷的更新，不会影响镜像</li>
+<li>数据卷默认会一直存在，即使容器被删除</li>
+<li>一个容器可以挂载多个数据卷</li>
+</ul>
+<blockquote>
+<p>注意：数据卷的使用，类似于 Linux 下对目录或文件进行 mount。</p>
+</blockquote>
+<h5 id="创建数据卷"><a href="#创建数据卷" class="headerlink" title="创建数据卷"></a>创建数据卷</h5><p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name nginx-data -v /mydir nginx</span><br></pre></td></tr></table></figure>
+<p>执行如下命令即可查看容器构造的详情：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect 容器ID</span><br></pre></td></tr></table></figure></p>
+<p>由测试可知</p>
+<ul>
+<li>Docker会自动生成一个目录作为挂载的目录。</li>
+<li>即使容器被删除，宿主机中的目录也不会被删除。</li>
+</ul>
+<h5 id="删除数据卷"><a href="#删除数据卷" class="headerlink" title="删除数据卷"></a>删除数据卷</h5><p>数据卷是被设计来持久化数据的，因此，删除容器并不会删除数据卷。如果想要在删除容器时同时删除数据卷，可使用如下命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rm -v 容器ID</span><br></pre></td></tr></table></figure></p>
+<p>这样既可在删除容器的同时也将数据卷删除。</p>
+<h5 id="挂载宿主机目录作为数据卷"><a href="#挂载宿主机目录作为数据卷" class="headerlink" title="挂载宿主机目录作为数据卷"></a>挂载宿主机目录作为数据卷</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name nginx-data2 -v /host-dir:/container-dir nginx</span><br></pre></td></tr></table></figure>
+<p>这样既可将宿主机的/host-dir路径加载到容器的/container-dir中。</p>
+<p>需要注意的是：</p>
+<ul>
+<li>宿主机路径尽量设置绝对路径——如果使用相对路径会怎样？<ul>
+<li>测试给答案</li>
+</ul>
+</li>
+<li>如果宿主机路径不存在，Docker会自动创建</li>
+</ul>
+<h5 id="TIPS"><a href="#TIPS" class="headerlink" title="TIPS"></a>TIPS</h5><blockquote>
+<p>Dockerfile暂时不支持这种形式。</p>
+</blockquote>
+<h5 id="挂载宿主机文件作为数据卷"><a href="#挂载宿主机文件作为数据卷" class="headerlink" title="挂载宿主机文件作为数据卷"></a>挂载宿主机文件作为数据卷</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name nginx-data3 -v /文件路径:/container路径 nginx</span><br></pre></td></tr></table></figure>
+<h4 id="指定权限"><a href="#指定权限" class="headerlink" title="指定权限"></a>指定权限</h4><blockquote>
+<p>默认情况下，挂载的权限是读写权限。也可使用:ro 参数指定只读权限。</p>
+</blockquote>
+<p>示例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name nginx-data4 -v /host-dir:/container-dir:ro nginx</span><br></pre></td></tr></table></figure></p>
+<p>这样，在容器中就只能读取/container-dir中的文件，而不能修改了。</p>
+<h3 id="数据卷容器"><a href="#数据卷容器" class="headerlink" title="数据卷容器"></a>数据卷容器</h3><blockquote>
+<p>如果有数据需要在多个容器之间共享，此时可考虑使用数据卷容器。</p>
+</blockquote>
+<p>创建数据卷容器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name nginx-volume -v /data nginx</span><br></pre></td></tr></table></figure></p>
+<p>在其他容器中使用<strong> -volumes-from </strong> 来挂载<strong> nginx-volume </strong> 容器中的数据卷。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker run --name v1 --volumes-from nginx-volume nginx</span><br><span class="line">docker run --name v2 --volumes-from nginx-volume nginx</span><br></pre></td></tr></table></figure></p>
+<p>这样</p>
+<ul>
+<li>v1、v2两个容器即可共享nginx-volume这个容器中的文件。</li>
+<li>即使nginx-volume停止，也不会有任何影响。</li>
+</ul>
+<hr>
+<h2 id="Tips-Reference-docker-离线安装-centos-ubuntu-linux"><a href="#Tips-Reference-docker-离线安装-centos-ubuntu-linux" class="headerlink" title="Tips / Reference: docker, 离线安装, centos, ubuntu, linux"></a>Tips / Reference: docker, 离线安装, centos, ubuntu, linux</h2><ul>
+<li><a href="https://blog.csdn.net/ghui23/article/details/82185037?tdsourcetag=s_pctim_aiomsg" target="_blank" rel="noopener">简单离线安装docker</a></li>
+<li><p><a href="https://docs.docker.com/install/linux/docker-ce/binaries/" target="_blank" rel="noopener">从二进制文件安装Docker CE</a></p>
+</li>
+<li><p><a href="https://www.jianshu.com/p/5a2ff266b6e9" target="_blank" rel="noopener">Docker 修改默认存储位置</a></p>
+</li>
+<li><a href="http://www.runoob.com/w3cnote/coreos-setup-pc.html" target="_blank" rel="noopener">CoreOS 在 PC 上快速安装方法指南</a></li>
+<li><p><a href="https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Disks" target="_blank" rel="noopener">Preparing the disks</a></p>
+</li>
+<li><p><a href="https://hub.docker.com/r/wnameless/oracle-xe-11g/" target="_blank" rel="noopener">docker wnameless/oracle-xe-11g</a></p>
+</li>
+<li><p><a href="https://github.com/wnameless/docker-oracle-xe-11g" target="_blank" rel="noopener">github wnameless</a></p>
+</li>
+<li><p><a href="https://blog.csdn.net/guizaijianchic/article/details/78324646" target="_blank" rel="noopener">docker save load export import的区别</a></p>
+</li>
+<li><p><a href="http://www.itmuch.com/docker/14-docker-volume/" target="_blank" rel="noopener">Docker系列教程14-Docker数据持久化</a></p>
+</li>
+</ul>
+
+  </article>
+</div>
+
+
+    
+<div class="container disqus-container">
+  <div id="disqus_thread"></div>
+</div>
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://zakariyya.github.io/2019/01/11/linux-docker离线安装/";
+    this.page.identifier = 1547174760;
+  };
+
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://anan.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+
+
+
+
+
+</div>
+
+<div class="footer-wrapper container">
+  <footer class="footer clearfix">
+    <div class="clearfix">
+    <a href="https://zakariyya.github.io" class="footer-logo">
+      <i class="fa fa-github"></i>
+    </a>
+    <ul class="footer-social-link">
+      <li>© 2019 anan</li>
+      <li><a href="https://zakariyya.github.io">Home</a></li>
+      
+      <li><a href="https://github.com/Zakariyya">Github</a></li>
+      
+      <li><a href="http://weibo.com/">Weibo</a></li>
+      
+    </ul>
+    <div class="footer-theme-info">
+      Theme <a href="//github.com/sabrinaluo/hexo-theme-replica">Replica</a>
+      by <a href="//github.com/sabrinaluo">Hiitea</a> ❤ Powered by Hexo
+    </div>
+    </div>
+    
+    <div class="footer-pageview">
+        <a href="https://info.flagcounter.com/mx4Y">
+          <img src="//s01.flagcounter.com/count/mx4Y/bg_FFFFFF/txt_000000/border_FFFFFF/columns_3/maxflags_9/viewers_3/labels_0/pageviews_1/flags_0/percent_0/">
+        </a>
+    </div>
+    
+  </footer>
+</div>
+
+
+<script>
+  (function() {
+    var cx = '005289241570429579920:lniuufygqc8';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+      '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+
+
+
+<script src="/js/main.js"></script>
+
+</body>
+</html>

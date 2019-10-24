@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>
+    arch安装笔记 | Anan
+  </title>
+  <meta name="description" content="BLACKPINK&#39;s Fans">
+  
+  <meta name="keywords" content="
+  arch
+  ">
+  
+  <meta name="author" content="anan">
+
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="theme-color" content="#1e2327">
+  <link rel="apple-touch-icon" href="https://github.githubassets.com/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://github.githubassets.com/apple-touch-icon-180x180.png">
+
+  <link rel="icon" type="image/x-icon" href="https://github.githubassets.com/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-123397569-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/vue/1.0.25-csp/vue.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+</head>
+
+<body id="replica-app">
+
+<nav class="navbar-wrapper">
+  <div class="navbar">
+    <div class="container clearfix">
+      <a href="/" class="navbar-logo"><i class="fa fa-github"></i></a>
+
+      <div class="navbar-search float-left desktop-only">
+        <div class="navbar-search-form">
+          <label for="gsc-i-id1">This website</label>
+          <div id="google-search">
+            <gcse:search></gcse:search>
+          </div>
+        </div>
+      </div>
+
+      <ul class="navbar-nav float-left">
+        
+        <li><a href="/archives">Archives</a></li>
+        
+        
+        <li><a href="/categories">Categories</a></li>
+        
+        
+        <li><a href="/tags">Tags</a></li>
+        
+        
+        <li class="desktop-only"><a href="/atom.xml" target="_blank">RSS</a></li>
+        
+      </ul>
+
+      <ul class="navbar-nav user-nav float-right desktop-only">
+        <li class="user-nav-notification">
+          <a><span class="user-nav-unread"></span><i class="fa fa-bell"></i></a>
+        </li>
+        <li>
+          <a><i class="fa fa-plus"></i> <i class="fa fa-caret-down"></i></a>
+        </li>
+        <li class="user-nav-logo">
+          <a><img src="https://avatars2.githubusercontent.com/u/14139937?s=460&amp;v=4"> <i class="fa fa-caret-down"></i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="main-container">
+  <header class="header-wrapper desktop-only">
+  <div class="container header-site-detail">
+    <ul class="header-toolbar">
+      <li class="clearfix">
+        <a href="/archives" class="header-toolbar-left"><i class="fa fa-file-text"></i> Posts </a>
+        <a href="/archives" class="header-toolbar-right"> 109 </a>
+      </li>
+      <li>
+        <a href="/tags" class="header-toolbar-left"><i class="fa fa-tags"></i> Tags </a>
+        <a href="/tags" class="header-toolbar-right"> 44 </a>
+      </li>
+      <li>
+        <a href="/categories" class="header-toolbar-left"><i class="fa fa-folder-open"></i> Categories </a>
+        <a href="/categories" class="header-toolbar-right"> 18 </a>
+      </li>
+    </ul>
+    <h2 class="header-title">
+      <i class="fa fa-book text-muted"></i>
+      <a href="/">Anan</a>
+      
+      
+    </h2>
+  </div>
+
+  <div class="container">
+    <div class="header-tab-wrapper clearfix">
+      <span class="header-tab header-tab-selected"><i class="fa fa-thumbs-o-up"></i> Like</span>
+      <span class="header-tab"><i class="fa fa-share-alt"></i> Share</span>
+      <span class="header-tab"><i class="fa fa-comments-o"></i> Discussion</span>
+      <span class="header-tab"><i class="fa fa-bookmark-o"></i> Bookmark </span>
+      <span class="header-tab"><i class="fa fa-smile-o"></i> Smile <i class="fa fa-caret-down"></i></span>
+    </div>
+  </div>
+</header>
+
+
+<div class="post-container container">
+  <h3>
+    <i class="fa fa-user-o"></i>
+    anan
+
+    <span class="post-date float-right" title="{{moment(1450695356000).format('MMM DD, YYYY, h:mm:ss A')}}">
+      <i class="fa fa-pencil-square-o"></i>
+      {{moment(1450695356000).fromNow()}}
+    </span>
+  </h3>
+
+  <article class="post-content">
+    <h1>arch安装笔记</h1>
+    <p> ——(2)为解决问题(不定期更新)</p>
+<p>2015年1月29日</p>
+<p>下午，心血来潮，决定试着在装一次arch。<br>基本装完界面后，找到竹子。在大神的帮助下，开始解决之前不能解决的问题以下的出现的问题，及解决办法：</p>
+<p><strong>Q：pacman -S sudo后，发现 sudo 不能用。出现提示：“不在SUDOERS文件中，此事将被报告。”</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nano /etc/sudoers  找到 </span><br><span class="line">## Same thing without a password#  %wheel ALL=(ALL) NOPASSWD:ALL</span><br></pre></td></tr></table></figure>
+<p>取消“ #  %wheel ALL=(ALL) NOPASSWD:ALL”前面的“#”。</p>
+<blockquote>
+<p>%wheel：表示一个组的名称</p>
+</blockquote>
+<p>前提是你必须在这个用户组，如果不是过不确定，那就改成“你的名字”</p>
+<p><strong>eg： “rabbit ALL=(ALL) NOPASSWD:ALL”  ，将“%wheel”改成“rabbit”，“%wheel”是一个用户组。</strong></p>
+<p><strong>重启ARCH后不能上网</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dhcpcd wlp3s0   ##（wlp3s0是我的无线网卡）。</span><br></pre></td></tr></table></figure></p>
+<p>【前提是你在重启前安装了dialog，“pacman -S  dialog”】<br>若提示 NetworkManager的问题，意为“启动网络管理器”。则<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl enable NetworkManager</span><br><span class="line">sudo systemctl start NetworkManager</span><br></pre></td></tr></table></figure></p>
+<p><strong>Q：添加ARCHLINUXCN源</strong><br>可参考  <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/archlinuxcn" target="_blank" rel="noopener">Archlinux CN 镜像源使用帮助</a>，<a href="https://www.archlinuxcn.org/archlinux-cn-repo-and-mirror/" target="_blank" rel="noopener">Arch Linux 中文社区仓库 / 镜像加速源</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">nano /etc/pacman.conf</span><br><span class="line">在 /etc/pacman.conf 文件末尾添加两行：</span><br><span class="line"></span><br><span class="line">[archlinuxcn]SigLevel = Optional TrustAll</span><br><span class="line">Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch</span><br></pre></td></tr></table></figure>
+<p>然后请安装 archlinuxcn-keyring 包以导入 GPG key。<br>具体做法为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pacman -Syu   （刷新源）</span><br><span class="line">pacman -S archlinuxcn-keyring　（安装archlinuxcn-keyring）</span><br></pre></td></tr></table></figure>
+<p><strong>Q：安装YAOURT  （前提，建议先添加ARCHLINUXCN源）</strong></p>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S yaourt</span><br></pre></td></tr></table></figure>
+<p><strong>注：</strong>若是找不到wine软件，则<strong>nano /etc/pacman.conf</strong> 找到</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Include = /etc/pacman.d/mirrorlist</span><br></pre></td></tr></table></figure>
+<p>取消注释，再刷新一下，如果想找软件，yaourt  描述如果想安装软件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yaourt -Ｓ 包名</span><br></pre></td></tr></table></figure>
+<p>记得“<strong>yaourt -Syu</strong>”一下</p>
+<p><strong>Q： 安装CHROME　（前提，已安装YAOURT）</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yaourt -S google-chrome</span><br></pre></td></tr></table></figure></p>
+<p><strong>Q：安装搜狗输入法</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yaourt sogou</span><br></pre></td></tr></table></figure>
+<p>安装过程中遇到编辑 ，回车忽略。一般来说，aur的内容不需要编辑。</p>
+<p>然后安装“fcitx-qt5”和　kcm-fcitx（如果不是kde桌面，就不用安装kcm-fcitx）<br><strong>注：</strong>记得卸载ibus　命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yaourt -Rscn　ibus</span><br></pre></td></tr></table></figure>
+<p>附带依赖和配置文件，都删除</p>
+<hr>
+<p>启动输入法：<br>记得安装“<strong>ttf-dejavu</strong>”<br>配置：参考“wiki.archlinux.org”，<strong>nano /.xprofile</strong>     文尾加入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export GTK_IM_MODULE=fcitx</span><br><span class="line">export QT_IM_MODULE=fcitx</span><br><span class="line">export XMODIFIERS=”@im=fcitx”</span><br></pre></td></tr></table></figure></p>
+<p>重启电脑，完成</p>
+<p><strong>Q：安装WINE</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yaourt -S wine-staging ##（听说目前的测试版比较稳定）</span><br></pre></td></tr></table></figure></p>
+<p><strong>Q：安装WINEQQ（这里使用“百度  清风博主 WINEQQ”）参考“<a href="http://phpcj.org/wineqq/" target="_blank" rel="noopener">https://phpcj.org/wineqq/</a>”</strong></p>
+<hr>
+<p>第一步，安装wine<br>第二步，找到下载的安装包（tar.xz）的路径<br>终端使用“cd”一直不断进入到安装包所在的文件夹下，在该文件夹下输入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar xvf wineQQ8.1O17216.tar.xz -C ~/</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p><strong><em>原文为：“~ $tar xvf wineQQ8.1O17216.tar.xz -C ~/” 中的“～$”为普通用户，“～#”为root下。</em></strong></p>
+<p><strong>Q： 安装深度影音，深度影院</strong></p>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yaourt deepin</span><br></pre></td></tr></table></figure>
+<p>在里面自己找，有music 、moive就是了。安装多个可以用空格隔开，如：1 3 5 52</p>
+<hr>
+<p>深度影院安装后会出现打不开现象，终端执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">deepin-movie</span><br></pre></td></tr></table></figure></p>
+<p>查看里面什么没有组建没安装，如“XXXX is not installed”下图：</p>
+<p>google了一下这个module，加上了arch。然后搜到arch的仓库。<br>可得，执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yaourt -S qt5-quickcontrols</span><br></pre></td></tr></table></figure></p>
+<p><strong>Q：修改GNOME桌面的样式，3.18已经不支持修改CSS来更换</strong></p>
+<hr>
+<p>下载gnome-tweak-tools 优化工具，然后在“扩展-user them-启动”，重启优化工具，进入“外观-主题”选择你已经下载的主题</p>
+<p><strong>Q：字体好奇怪，装完了文泉驿字体也是好奇怪。</strong></p>
+<hr>
+<p><strong>nano /etc/pacman.conf </strong>把下面的内容添加进去</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[infinality-bundle]</span><br><span class="line">SigLevel = Never</span><br><span class="line">Server= http://bohoomil.com/repo/$arch</span><br><span class="line"></span><br><span class="line">[infinality-bundle-multilib]</span><br><span class="line">SigLevel = Never</span><br><span class="line">Server= http://bohoomil.com/repo/multilib/$arch</span><br><span class="line"></span><br><span class="line">[infinality-bundle-fonts]</span><br><span class="line">SigLevel = Never</span><br><span class="line">Server= http://bohoomil.com/repo/fonts</span><br></pre></td></tr></table></figure>
+<p>然后保存，并执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -Syu infinality-bundle infinality-bundle-multilib ibfonts-meta-extended</span><br></pre></td></tr></table></figure></p>
+<p>因为是打补丁，所以会出现很多冲突，全部选择删除</p>
+<p><strong>Q：添加WIN7启动项</strong></p>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yaourt -S os-prober</span><br><span class="line">sudo grub-mkconfig -o /boot/grub/grub.cfg</span><br></pre></td></tr></table></figure>
+<p>可能出现“无法获取某些文件”，便多重试几次，这个网站是外国的，网速连接慢……（竹子说他曾经重试了十次）</p>
+<hr>
+<p>推荐将win下的字体复制到“.fonts”。路径为“/home/你的用户名/.fonts”，该文件夹默认隐藏（“.”就是隐藏的意思）然后刷新字体缓存，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo fc-cache -fsv</span><br></pre></td></tr></table></figure></p>
+<p><strong>Q：GNOME3.18的桌面，将任务放到右上角（如UBUNTU一样）</strong></p>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yaourt topicon</span><br></pre></td></tr></table></figure>
+<p>安装后，重启一下优化工具，“扩展-User themes”的上面就会出现“topicons”选项，启动它。<br>然后，键盘“alt+f2” ，输入“r”，回车。<br><strong>注：优化工具不会自动刷新的</strong></p>
+<hr>
+<p><strong>Q：安装DEEPIN桌面环境（参考“ WIKI.ARCHLINUX.ORG ”）搜索“ DEEPIN DESKTOP ENVIRONMENT ”</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S deepin deepin-extra</span><br></pre></td></tr></table></figure>
+<p><strong>注：启动Deepin 桌面环境，使用登录管理器</strong></p>
+<p>deepin默认lightdm greeter是lightdm-deepin-greeter，可通过pacman安装，安装后需编辑lightdm.conf:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/lightdm/lightdm.conf</span><br></pre></td></tr></table></figure>
+<p>然后找到，并修改<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[SeatDefaults]</span><br><span class="line">…</span><br><span class="line">greeter-session=lightdm-deepin-greeter</span><br></pre></td></tr></table></figure></p>
+<p>之后终端执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable lightdm -f</span><br></pre></td></tr></table></figure>
+<p>重启</p>
+<hr>
+<p>在进入deepin桌面后，可能出现设置部分英文现象。<br>终端执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano ~/.pam_environment</span><br></pre></td></tr></table></figure></p>
+<p>把 <strong>en_US</strong>  改成 <strong>zh_CN</strong><br>两行都要，然后注销</p>
+<p><strong>Q：安装ZSH</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yaourt -S zsh oh-my-zsh-git</span><br></pre></td></tr></table></figure>
+<p>安装完毕后会有让你cp一个文件，复制一下哪个命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp /usr/share/oh-my-zsh/zshrc ~/.zshrc</span><br></pre></td></tr></table></figure></p>
+<p>然后输入“ chsh ”<br>输入密码<br>输入“ /bin/zsh ”</p>
+<hr>
+<p>每次进入终端，输入zsh后，会出现“ ～ ” ，说明进入zsh了，双击tab可补全命令。</p>
+<p><strong>Q：删除base软件包组以外的所有软件包</strong></p>
+<p><a href="https://wiki.archlinux.org/index.php/Pacman/Tips_and_tricks_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87" target="_blank" rel="noopener">参考网址</a>#.E5.88.A0.E9.99.A4base.E8.BD.AF.E4.BB.B6.E5.8C.85.E7.BB.84.E4.BB.A5.E5.A4.96.E7.9A.84.E6.89.80.E6.9C.89.E8.BD.AF.E4.BB.B6.E5.8C.85)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -Rs $(comm -23 &lt;(pacman -Qeq|sort) &lt;((for i in $(pacman -Qqg base); do pactree -ul $i; done)|sort -u|cut -d &apos; &apos; -f 1))</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><a href="https://bbs.archlinux.org/viewtopic.php?id=130176" target="_blank" rel="noopener">帖子来源</a></p>
+</blockquote>
+<p>Q：激活“ KEYBOARD SHORTCUTS ”(传说中的魔术键)，参考“<a href="https://wiki.archlinux.org/index.php/Keyboard_shortcuts" target="_blank" rel="noopener">HTTPS://WIKI.ARCHLINUX.ORG/INDEX.PHP/KEYBOARD_SHORTCUTS</a>”**</p>
+<p>终端输入将临时启用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysctl kernel.sysrq=1</span><br></pre></td></tr></table></figure>
+<p>或是<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo “1” &gt; /proc/sys/kernel/sysrq</span><br></pre></td></tr></table></figure></p>
+<p>希望在系统启动时就开启，编辑“/etc/sysctl.d/99-sysctl.conf”文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano /etc/sysctl.d/99-sysctl.conf</span><br></pre></td></tr></table></figure></p>
+<p>文件中输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kernel.sysrq = 1</span><br></pre></td></tr></table></figure></p>
+<p>保存</p>
+<p><strong>注：</strong>记住这个激活命令的通用口诀是 “Reboot Even If System Utterly Broken” (或者”REISUB”)。</p>
+<p> 最后更新于2016年3月15日</p>
+
+  </article>
+</div>
+
+
+    
+<div class="container disqus-container">
+  <div id="disqus_thread"></div>
+</div>
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://zakariyya.github.io/2015/12/21/linux-arch-arch安装笔记/";
+    this.page.identifier = 1450695356;
+  };
+
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://anan.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+
+
+
+
+
+</div>
+
+<div class="footer-wrapper container">
+  <footer class="footer clearfix">
+    <div class="clearfix">
+    <a href="https://zakariyya.github.io" class="footer-logo">
+      <i class="fa fa-github"></i>
+    </a>
+    <ul class="footer-social-link">
+      <li>© 2019 anan</li>
+      <li><a href="https://zakariyya.github.io">Home</a></li>
+      
+      <li><a href="https://github.com/Zakariyya">Github</a></li>
+      
+      <li><a href="http://weibo.com/">Weibo</a></li>
+      
+    </ul>
+    <div class="footer-theme-info">
+      Theme <a href="//github.com/sabrinaluo/hexo-theme-replica">Replica</a>
+      by <a href="//github.com/sabrinaluo">Hiitea</a> ❤ Powered by Hexo
+    </div>
+    </div>
+    
+    <div class="footer-pageview">
+        <a href="https://info.flagcounter.com/mx4Y">
+          <img src="//s01.flagcounter.com/count/mx4Y/bg_FFFFFF/txt_000000/border_FFFFFF/columns_3/maxflags_9/viewers_3/labels_0/pageviews_1/flags_0/percent_0/">
+        </a>
+    </div>
+    
+  </footer>
+</div>
+
+
+<script>
+  (function() {
+    var cx = '005289241570429579920:lniuufygqc8';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+      '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+
+
+
+<script src="/js/main.js"></script>
+
+</body>
+</html>
