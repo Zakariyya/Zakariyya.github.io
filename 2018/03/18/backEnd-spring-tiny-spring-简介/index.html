@@ -1,19 +1,145 @@
-<!DOCTYPE html><html lang="en"><head><meta name="generator" content="Hexo 3.8.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="tiny-spring 简介"><meta name="keywords" content="spring"><meta name="author" content="anan,undefined"><meta name="copyright" content="anan"><title>tiny-spring 简介 | Anan</title><link rel="shortcut icon" href="/img/my-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.5.6"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css?version=1.5.6"><link rel="dns-prefetch" href="https://cdn.staticfile.org"><link rel="dns-prefetch" href="https://cdn.bootcss.com"><link rel="dns-prefetch" href="https://creativecommons.org"><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json"><meta name="theme-color" content="#FF667B"><meta name="msapplication-TileColor" content="#FF667B"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#FF667B"><link rel="dns-prefetch" href="https://www.google-analytics.com"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+<!DOCTYPE html>
+<html lang="zh_CN">
 
-ga('create', 'UA-123397569-1', 'auto');
-ga('send', 'pageview');</script><script>var GLOBAL_CONFIG = { 
-  root: '/',
-  algolia: undefined,
-  localSearch: undefined,
-  copy: {
-    success: 'Copy successfully',
-    error: 'Copy error',
-    noSupport: 'The browser does not support'
-  }
-} </script></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#tiny-spring-IOC构建流程"><span class="toc-number">1.</span> <span class="toc-text">tiny-spring IOC构建流程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-step1-最基本的容器"><span class="toc-number">1.1.</span> <span class="toc-text">1. step1-最基本的容器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-step2-将bean创建放入工厂"><span class="toc-number">1.2.</span> <span class="toc-text">2. step2-将bean创建放入工厂</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-step3-为bean注入属性"><span class="toc-number">1.3.</span> <span class="toc-text">3. step3-为bean注入属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-step4-读取xml配置来初始化bean"><span class="toc-number">1.4.</span> <span class="toc-text">4. step4-读取xml配置来初始化bean</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-step5-为bean注入bean"><span class="toc-number">1.5.</span> <span class="toc-text">5. step5-为bean注入bean</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-step6-ApplicationContext登场"><span class="toc-number">1.6.</span> <span class="toc-text">6. step6-ApplicationContext登场</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tiny-spring的核心类"><span class="toc-number">2.</span> <span class="toc-text">tiny-spring的核心类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Resource家族"><span class="toc-number">2.1.</span> <span class="toc-text">1. Resource家族</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Resource接口"><span class="toc-number">2.1.1.</span> <span class="toc-text">Resource接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#UrlResource"><span class="toc-number">2.1.2.</span> <span class="toc-text">UrlResource</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ResourceLoader"><span class="toc-number">2.1.3.</span> <span class="toc-text">ResourceLoader</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-BeanDefinition家族"><span class="toc-number">2.2.</span> <span class="toc-text">2. BeanDefinition家族</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#BeanDefinition"><span class="toc-number">2.2.1.</span> <span class="toc-text">BeanDefinition</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#BeanDefinitionReader"><span class="toc-number">2.2.2.</span> <span class="toc-text">BeanDefinitionReader</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#AbstractBeanDefinitionReader"><span class="toc-number">2.2.3.</span> <span class="toc-text">AbstractBeanDefinitionReader</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#XmlBeanDefinitionReader"><span class="toc-number">2.2.4.</span> <span class="toc-text">XmlBeanDefinitionReader</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-BeanFactory家族"><span class="toc-number">2.3.</span> <span class="toc-text">3. BeanFactory家族</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#BeanFactory"><span class="toc-number">2.3.1.</span> <span class="toc-text">BeanFactory</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#AbstractBeanFactory"><span class="toc-number">2.3.2.</span> <span class="toc-text">AbstractBeanFactory</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#AutowireCapableBeanFactory"><span class="toc-number">2.3.3.</span> <span class="toc-text">AutowireCapableBeanFactory</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-ApplicationContext家族"><span class="toc-number">2.4.</span> <span class="toc-text">4. ApplicationContext家族</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ApplicationContext"><span class="toc-number">2.4.1.</span> <span class="toc-text">ApplicationContext</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#AbstractApplicationContext"><span class="toc-number">2.4.2.</span> <span class="toc-text">AbstractApplicationContext</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ClassPathXmlApplicationContext"><span class="toc-number">2.4.3.</span> <span class="toc-text">ClassPathXmlApplicationContext</span></a></li></ol></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="https://avatars2.githubusercontent.com/u/14139937?s=460&amp;v=4"></div><div class="author-info__name text-center">anan</div><div class="author-info__description text-center">BLACKPINK's Fans</div><div class="follow-button"><a href="https://github.com/Zakariyya">Follow Me</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">106</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">44</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">Categories</span><span class="pull-right">18</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">Links</div><a class="author-info-links__name text-center" href="http://dblab.xmu.edu.cn/blog/category/big-data/">厦门大学数据库实验室</a><a class="author-info-links__name text-center" href="http://4dian.sinaapp.com/">四点网</a><a class="author-info-links__name text-center" href="https://www.itshouce.com.cn">IT手册</a><a class="author-info-links__name text-center" href="https://www.mangococo.cn">芒枸公社</a><a class="author-info-links__name text-center" href="http://www.jasongj.com/">郭俊 Jason</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(/img/top.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Anan</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a></span></div><div id="post-info"><div id="post-title">tiny-spring 简介</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2018-03-18</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/java-Program/">java Program</a><span class="post-meta__separator">|</span><i class="fa fa-comment-o post-meta__icon" aria-hidden="true"></i><a href="/2018/03/18/backEnd-spring-tiny-spring-简介/#disqus_thread"><span class="disqus-comment-count" data-disqus-identifier="2018/03/18/backEnd-spring-tiny-spring-简介/"></span></a><div class="post-meta-wordcount"><span>Word count: </span><span class="word-count">2,131</span><span class="post-meta__separator">|</span><span>Reading time: 8 min</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><p>tiny-spring是模拟Spring的一个简单的框架，主要包含如下设计模式：</p>
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>
+    tiny-spring 简介 | Anan
+  </title>
+  <meta name="description" content="BLACKPINK&#39;s Fans">
+  
+  <meta name="keywords" content="
+  spring
+  ">
+  
+  <meta name="author" content="anan">
+
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="theme-color" content="#1e2327">
+  <link rel="apple-touch-icon" href="https://github.githubassets.com/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://github.githubassets.com/apple-touch-icon-180x180.png">
+
+  <link rel="icon" type="image/x-icon" href="https://github.githubassets.com/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-123397569-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/vue/1.0.25-csp/vue.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+</head>
+
+<body id="replica-app">
+
+<nav class="navbar-wrapper">
+  <div class="navbar">
+    <div class="container clearfix">
+      <a href="/" class="navbar-logo"><i class="fa fa-github"></i></a>
+
+      <div class="navbar-search float-left desktop-only">
+        <div class="navbar-search-form">
+          <label for="gsc-i-id1">This website</label>
+          <div id="google-search">
+            <gcse:search></gcse:search>
+          </div>
+        </div>
+      </div>
+
+      <ul class="navbar-nav float-left">
+        
+        <li><a href="/archives">Archives</a></li>
+        
+        
+        <li><a href="/categories">Categories</a></li>
+        
+        
+        <li><a href="/tags">Tags</a></li>
+        
+        
+        <li class="desktop-only"><a href="/atom.xml" target="_blank">RSS</a></li>
+        
+      </ul>
+
+      <ul class="navbar-nav user-nav float-right desktop-only">
+        <li class="user-nav-notification">
+          <a><span class="user-nav-unread"></span><i class="fa fa-bell"></i></a>
+        </li>
+        <li>
+          <a><i class="fa fa-plus"></i> <i class="fa fa-caret-down"></i></a>
+        </li>
+        <li class="user-nav-logo">
+          <a><img src="https://avatars2.githubusercontent.com/u/14139937?s=460&amp;v=4"> <i class="fa fa-caret-down"></i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="main-container">
+  <header class="header-wrapper desktop-only">
+  <div class="container header-site-detail">
+    <ul class="header-toolbar">
+      <li class="clearfix">
+        <a href="/archives" class="header-toolbar-left"><i class="fa fa-file-text"></i> Posts </a>
+        <a href="/archives" class="header-toolbar-right"> 109 </a>
+      </li>
+      <li>
+        <a href="/tags" class="header-toolbar-left"><i class="fa fa-tags"></i> Tags </a>
+        <a href="/tags" class="header-toolbar-right"> 44 </a>
+      </li>
+      <li>
+        <a href="/categories" class="header-toolbar-left"><i class="fa fa-folder-open"></i> Categories </a>
+        <a href="/categories" class="header-toolbar-right"> 18 </a>
+      </li>
+    </ul>
+    <h2 class="header-title">
+      <i class="fa fa-book text-muted"></i>
+      <a href="/">Anan</a>
+      
+      
+    </h2>
+  </div>
+
+  <div class="container">
+    <div class="header-tab-wrapper clearfix">
+      <span class="header-tab header-tab-selected"><i class="fa fa-thumbs-o-up"></i> Like</span>
+      <span class="header-tab"><i class="fa fa-share-alt"></i> Share</span>
+      <span class="header-tab"><i class="fa fa-comments-o"></i> Discussion</span>
+      <span class="header-tab"><i class="fa fa-bookmark-o"></i> Bookmark </span>
+      <span class="header-tab"><i class="fa fa-smile-o"></i> Smile <i class="fa fa-caret-down"></i></span>
+    </div>
+  </div>
+</header>
+
+
+<div class="post-container container">
+  <h3>
+    <i class="fa fa-user-o"></i>
+    anan
+
+    <span class="post-date float-right" title="{{moment(1521373812000).format('MMM DD, YYYY, h:mm:ss A')}}">
+      <i class="fa fa-pencil-square-o"></i>
+      {{moment(1521373812000).fromNow()}}
+    </span>
+  </h3>
+
+  <article class="post-content">
+    <h1>tiny-spring 简介</h1>
+    <p>tiny-spring是模拟Spring的一个简单的框架，主要包含如下设计模式：</p>
 <ul>
 <li>模板方法模式</li>
 </ul>
@@ -61,13 +187,83 @@ ga('send', 'pageview');</script><script>var GLOBAL_CONFIG = {
 <p>注意到 BeanFactory只实现了Bean的装配、获取，并未说明Bean的来源 也就是 BeanDefinition是如何加载的。该接口把 BeanFactory 和 BeanDefinitionReader 结合在了一起。</p>
 <h4 id="AbstractApplicationContext"><a href="#AbstractApplicationContext" class="headerlink" title="AbstractApplicationContext"></a>AbstractApplicationContext</h4><p>ApplicationContext的抽象实现，内部包含一个BeanFactory类。主要方法有 getBean() 和 refresh() 方法。getBean() 直接调用了内置 BeanFactory 的 getBean() 方法，refresh() 则用于实现 BeanFactory 的刷新，也就是告诉 BeanFactory 该使用哪个资源（Resource）加载类定义（BeanDefinition）信息，该方法留给子类实现，用以实现 从不同来源的不同类型的资源加载类定义 的效果</p>
 <h4 id="ClassPathXmlApplicationContext"><a href="#ClassPathXmlApplicationContext" class="headerlink" title="ClassPathXmlApplicationContext"></a>ClassPathXmlApplicationContext</h4><p>从类路径加载资源的具体实现类。内部通过 XmlBeanDefinitionReader 解析 UrlResourceLoader 读取到的 Resource，获取 BeanDefinition 信息，然后将其保存到内置的 BeanFactory 中。</p>
-</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">anan</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://zakariyya.github.io/2018/03/18/backEnd-spring-tiny-spring-简介/">https://zakariyya.github.io/2018/03/18/backEnd-spring-tiny-spring-简介/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/spring/">spring</a></div><div class="social-share"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script><nav id="pagination"><div class="prev-post pull-left"><a href="/2018/03/24/科普-视频格式/"><i class="fa fa-chevron-left">  </i><span>常见视频格式</span></a></div><div class="next-post pull-right"><a href="/2018/03/18/backEnd-spring-tiny-spring分析/"><span>tiny-spring 分析</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="disqus_thread"></div><script>var unused = null;
-var disqus_config = function () {
-  this.page.url = 'https://zakariyya.github.io/2018/03/18/backEnd-spring-tiny-spring-简介/';
-  this.page.identifier = '2018/03/18/backEnd-spring-tiny-spring-简介/';
-  this.page.title = 'tiny-spring 简介';
-}
-var d = document, s = d.createElement('script');
-s.src = "https://" + 'H2O2' +".disqus.com/embed.js";
-s.setAttribute('data-timestamp', '' + +new Date());
-(d.head || d.body).appendChild(s);</script><script id="dsq-count-scr" src="https://H2O2.disqus.com/count.js" async></script></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2015 - 2019 By anan</div><div class="framework-info"><span>Driven - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file-o"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="/js/third-party/anime.min.js"></script><script src="/js/third-party/jquery.min.js"></script><script src="/js/third-party/jquery.fancybox.min.js"></script><script src="/js/third-party/velocity.min.js"></script><script src="/js/third-party/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.5.6"></script><script src="/js/fancybox.js?version=1.5.6"></script><script src="/js/sidebar.js?version=1.5.6"></script><script src="/js/copy.js?version=1.5.6"></script><script src="/js/fireworks.js?version=1.5.6"></script><script src="/js/transition.js?version=1.5.6"></script><script src="/js/scroll.js?version=1.5.6"></script><script src="/js/head.js?version=1.5.6"></script></body></html>
+
+  </article>
+</div>
+
+
+    
+<div class="container disqus-container">
+  <div id="disqus_thread"></div>
+</div>
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://zakariyya.github.io/2018/03/18/backEnd-spring-tiny-spring-简介/";
+    this.page.identifier = 1521373812;
+  };
+
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://anan.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+
+
+
+
+
+</div>
+
+<div class="footer-wrapper container">
+  <footer class="footer clearfix">
+    <div class="clearfix">
+    <a href="https://zakariyya.github.io" class="footer-logo">
+      <i class="fa fa-github"></i>
+    </a>
+    <ul class="footer-social-link">
+      <li>© 2019 anan</li>
+      <li><a href="https://zakariyya.github.io">Home</a></li>
+      
+      <li><a href="https://github.com/Zakariyya">Github</a></li>
+      
+      <li><a href="http://weibo.com/">Weibo</a></li>
+      
+    </ul>
+    <div class="footer-theme-info">
+      Theme <a href="//github.com/sabrinaluo/hexo-theme-replica">Replica</a>
+      by <a href="//github.com/sabrinaluo">Hiitea</a> ❤ Powered by Hexo
+    </div>
+    </div>
+    
+    <div class="footer-pageview">
+        <a href="https://info.flagcounter.com/mx4Y">
+          <img src="//s01.flagcounter.com/count/mx4Y/bg_FFFFFF/txt_000000/border_FFFFFF/columns_3/maxflags_9/viewers_3/labels_0/pageviews_1/flags_0/percent_0/">
+        </a>
+    </div>
+    
+  </footer>
+</div>
+
+
+<script>
+  (function() {
+    var cx = '005289241570429579920:lniuufygqc8';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+      '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+
+
+
+<script src="/js/main.js"></script>
+
+</body>
+</html>

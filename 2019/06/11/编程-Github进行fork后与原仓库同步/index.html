@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>
+    Github进行fork后与原仓库同步 | Anan
+  </title>
+  <meta name="description" content="BLACKPINK&#39;s Fans">
+  
+  <meta name="keywords" content="
+  git
+  ">
+  
+  <meta name="author" content="anan">
+
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="theme-color" content="#1e2327">
+  <link rel="apple-touch-icon" href="https://github.githubassets.com/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://github.githubassets.com/apple-touch-icon-180x180.png">
+
+  <link rel="icon" type="image/x-icon" href="https://github.githubassets.com/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-123397569-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/vue/1.0.25-csp/vue.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+</head>
+
+<body id="replica-app">
+
+<nav class="navbar-wrapper">
+  <div class="navbar">
+    <div class="container clearfix">
+      <a href="/" class="navbar-logo"><i class="fa fa-github"></i></a>
+
+      <div class="navbar-search float-left desktop-only">
+        <div class="navbar-search-form">
+          <label for="gsc-i-id1">This website</label>
+          <div id="google-search">
+            <gcse:search></gcse:search>
+          </div>
+        </div>
+      </div>
+
+      <ul class="navbar-nav float-left">
+        
+        <li><a href="/archives">Archives</a></li>
+        
+        
+        <li><a href="/categories">Categories</a></li>
+        
+        
+        <li><a href="/tags">Tags</a></li>
+        
+        
+        <li class="desktop-only"><a href="/atom.xml" target="_blank">RSS</a></li>
+        
+      </ul>
+
+      <ul class="navbar-nav user-nav float-right desktop-only">
+        <li class="user-nav-notification">
+          <a><span class="user-nav-unread"></span><i class="fa fa-bell"></i></a>
+        </li>
+        <li>
+          <a><i class="fa fa-plus"></i> <i class="fa fa-caret-down"></i></a>
+        </li>
+        <li class="user-nav-logo">
+          <a><img src="https://avatars2.githubusercontent.com/u/14139937?s=460&amp;v=4"> <i class="fa fa-caret-down"></i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="main-container">
+  <header class="header-wrapper desktop-only">
+  <div class="container header-site-detail">
+    <ul class="header-toolbar">
+      <li class="clearfix">
+        <a href="/archives" class="header-toolbar-left"><i class="fa fa-file-text"></i> Posts </a>
+        <a href="/archives" class="header-toolbar-right"> 109 </a>
+      </li>
+      <li>
+        <a href="/tags" class="header-toolbar-left"><i class="fa fa-tags"></i> Tags </a>
+        <a href="/tags" class="header-toolbar-right"> 44 </a>
+      </li>
+      <li>
+        <a href="/categories" class="header-toolbar-left"><i class="fa fa-folder-open"></i> Categories </a>
+        <a href="/categories" class="header-toolbar-right"> 18 </a>
+      </li>
+    </ul>
+    <h2 class="header-title">
+      <i class="fa fa-book text-muted"></i>
+      <a href="/">Anan</a>
+      
+      
+    </h2>
+  </div>
+
+  <div class="container">
+    <div class="header-tab-wrapper clearfix">
+      <span class="header-tab header-tab-selected"><i class="fa fa-thumbs-o-up"></i> Like</span>
+      <span class="header-tab"><i class="fa fa-share-alt"></i> Share</span>
+      <span class="header-tab"><i class="fa fa-comments-o"></i> Discussion</span>
+      <span class="header-tab"><i class="fa fa-bookmark-o"></i> Bookmark </span>
+      <span class="header-tab"><i class="fa fa-smile-o"></i> Smile <i class="fa fa-caret-down"></i></span>
+    </div>
+  </div>
+</header>
+
+
+<div class="post-container container">
+  <h3>
+    <i class="fa fa-user-o"></i>
+    anan
+
+    <span class="post-date float-right" title="{{moment(1560247463000).format('MMM DD, YYYY, h:mm:ss A')}}">
+      <i class="fa fa-pencil-square-o"></i>
+      {{moment(1560247463000).fromNow()}}
+    </span>
+  </h3>
+
+  <article class="post-content">
+    <h1>Github进行fork后与原仓库同步</h1>
+    <h2 id="问题场景"><a href="#问题场景" class="headerlink" title="问题场景"></a>问题场景</h2><p>新公司要求所有的代码提交都要先通过自己的库提交到主repo上去，所以先在gitlab网页上fork出一个自己的库，在本地修改完代码后提交到远程自己库上，然后在gitlab网页上发起一个merge request请求，然后等待主repo主人review，同意之后合入。</p>
+<p><strong>问题是同时也有其他同学在主repo合入代码，所以我要定期和主repo保持同步。</strong></p>
+<h3 id="开始我的想法"><a href="#开始我的想法" class="headerlink" title="开始我的想法"></a>开始我的想法</h3><p>gitlab网页上提供了git pull这样的按钮，这样点一下就能让自己fork的库和原始库保持同步。然后自己在本地git pull，就能间接和原始的库保持同步。</p>
+<p>但是我没找到这个按钮。但是我找到了下面这篇文章，照着操作之后，一步一步跟踪观察发现，每一步都能成功。</p>
+<h4 id="整体思路如下"><a href="#整体思路如下" class="headerlink" title="整体思路如下"></a>整体思路如下</h4><ol>
+<li>在自己的本地添加主repo为上游代码库，注意只是配置原仓库的路径，并没有真正clone原仓库</li>
+<li>然后将远程主repo同步到自己本地的机器</li>
+<li>然后本地的机器再push到自己的远程的fork库</li>
+<li>所有的操作都要在本地命令行完成</li>
+</ol>
+<h2 id="下面是我转载的，照着这个操作，完全没问题"><a href="#下面是我转载的，照着这个操作，完全没问题" class="headerlink" title="下面是我转载的，照着这个操作，完全没问题"></a>下面是我转载的，照着这个操作，完全没问题</h2><p>我们在进行Github协同开发的时候，往往会去fork一个仓库到自己的Github中，过一段时间以后，原仓库可能会有各种提交以及修改，很可惜，Github本身并没有自动进行同步的机制，这个需要我们手动去执行，</p>
+<p>现在我来演示一下如何进行自己的仓库和原仓库进行Gith同步的操作。</p>
+<ol>
+<li><p>我使用终端 命令行的方式在Mac中来操作。首先在终端中配置原仓库的位置。进入项目目录，执行如下命令：查看你的远程仓库的路径。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git remote -v</span><br><span class="line"></span><br><span class="line">origin  https://github.com/YOUR_USERNAME/YOUR_FORK.git (fetch)</span><br><span class="line">origin  https://github.com/YOUR_USERNAME/YOUR_FORK.git (push)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置原仓库的路径：下面这步操作即添加主repo为上游代码库。<br><strong>注意一定要cd到你自己fork出来的库里面去，比如工程名叫 luoluo，那要先 cd 到 luoluo 中去，然后才能操作</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote add upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>再次查看远程目录的位置</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git remote -v</span><br><span class="line"></span><br><span class="line">origin  https://github.com/YOUR_USERNAME/YOUR_FORK.git (fetch)</span><br><span class="line">origin  https://github.com/YOUR_USERNAME/YOUR_FORK.git (push)</span><br><span class="line">upstream  https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY (fetch)</span><br><span class="line">upstream  https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY (push)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>抓取原仓库的修改文件</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git fetch upstream</span><br><span class="line"></span><br><span class="line">From https://github.com/Zakariyya/symphony</span><br><span class="line"> * [new branch]          3.6.0-dev  -&gt; upstream/3.6.0-dev</span><br><span class="line"> * [new branch]          master     -&gt; upstream/master</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>切换到master分支</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout master</span><br><span class="line"></span><br><span class="line">Switched to branch <span class="string">'master'</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>合并远程的master分支<br><strong>下面这行代码执行结束之后，本地代码会立刻和主库保持同步，非常神奇</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ git merge upstream/master</span><br><span class="line"></span><br><span class="line">Updating a422352..5fdff0f</span><br><span class="line">Fast-forward</span><br><span class="line"> README				|	9 ------</span><br><span class="line"> REAME.md			|   7 ++++</span><br><span class="line"> 2 files changed, 7 insertions(+), 9 deletons(-)</span><br><span class="line"> delete mode 100644 REAME</span><br><span class="line"> create mode 100644 README.md</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>此时，你的本地库已经和原仓库已经完全同步了。<br>但是注意，此时只是你电脑上的本地库和远程的github原仓库同步了，你自己的github仓库还没有同步，<br>此时需要使用 <strong>git push</strong> 命令把你本地的仓库提交到github中。</p>
+</li>
+</ol>
+<hr>
+<p>其实(4)(5)(6)可以合并成一条命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull upstream master</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>第一个参数pustream 表示远程主repo</li>
+<li>第二个参数master 表示自己fork库的master分支</li>
+</ul>
+<p>这个是公司文档上写的，并不是从网上找来的<br>为了说清楚这个问题，亲自做了一张图</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">__________________________________________________________________</span><br><span class="line">| gitlab                                                          |</span><br><span class="line">|                                                                 |</span><br><span class="line">|   __________                                     __________     |</span><br><span class="line">|  |          |         fork                      |          |    |</span><br><span class="line">|  | 主 repo  |---------------------------------&gt; |  My repo |    |</span><br><span class="line">|  |__________|                                   |__________|    |</span><br><span class="line">|_______|____________________________________________| __ ^ ______|</span><br><span class="line">        |                                            |    |</span><br><span class="line">        |                                       Pull |    |</span><br><span class="line">_______ &gt; __________________________________________ &gt; __ | _________</span><br><span class="line">|                                                                    |</span><br><span class="line">| local                                                              |</span><br><span class="line">|                                                                    |</span><br><span class="line">|   __________                                       ______________  |</span><br><span class="line">|  |          |  git remote add upstream https://   |              | |</span><br><span class="line">|  | upstream | &lt;-----------------------------------| Local master | |</span><br><span class="line">|  |__________|-----------------------------------&gt; |______________| |</span><br><span class="line">|               git pull upstream master                             |</span><br><span class="line">|____________________________________________________________________|</span><br></pre></td></tr></table></figure>
+<hr>
+<p>参考：</p>
+<ul>
+<li><a href="https://blog.csdn.net/matrix_google/article/details/80676034" target="_blank" rel="noopener">Github进行fork后如何与原仓库同步</a></li>
+</ul>
+
+  </article>
+</div>
+
+
+    
+<div class="container disqus-container">
+  <div id="disqus_thread"></div>
+</div>
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://zakariyya.github.io/2019/06/11/编程-Github进行fork后与原仓库同步/";
+    this.page.identifier = 1560247463;
+  };
+
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://anan.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+
+
+
+
+
+</div>
+
+<div class="footer-wrapper container">
+  <footer class="footer clearfix">
+    <div class="clearfix">
+    <a href="https://zakariyya.github.io" class="footer-logo">
+      <i class="fa fa-github"></i>
+    </a>
+    <ul class="footer-social-link">
+      <li>© 2019 anan</li>
+      <li><a href="https://zakariyya.github.io">Home</a></li>
+      
+      <li><a href="https://github.com/Zakariyya">Github</a></li>
+      
+      <li><a href="http://weibo.com/">Weibo</a></li>
+      
+    </ul>
+    <div class="footer-theme-info">
+      Theme <a href="//github.com/sabrinaluo/hexo-theme-replica">Replica</a>
+      by <a href="//github.com/sabrinaluo">Hiitea</a> ❤ Powered by Hexo
+    </div>
+    </div>
+    
+    <div class="footer-pageview">
+        <a href="https://info.flagcounter.com/mx4Y">
+          <img src="//s01.flagcounter.com/count/mx4Y/bg_FFFFFF/txt_000000/border_FFFFFF/columns_3/maxflags_9/viewers_3/labels_0/pageviews_1/flags_0/percent_0/">
+        </a>
+    </div>
+    
+  </footer>
+</div>
+
+
+<script>
+  (function() {
+    var cx = '005289241570429579920:lniuufygqc8';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+      '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+
+
+
+<script src="/js/main.js"></script>
+
+</body>
+</html>
