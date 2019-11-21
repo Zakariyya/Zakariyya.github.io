@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>
+    多个git账号的SSH key切换 | Anan
+  </title>
+  <meta name="description" content="BLACKPINK&#39;s Fans">
+  
+  <meta name="keywords" content="
+  git ssh
+  ">
+  
+  <meta name="author" content="anan">
+
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+  <link rel="icon" type="image/x-icon" href="https://github.githubassets.com/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-123397569-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/vue/1.0.25-csp/vue.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+</head>
+
+<body id="replica-app">
+
+<nav class="navbar-wrapper">
+  <div class="navbar">
+    <div class="container clearfix">
+      <a href="/" class="navbar-logo"><i class="fa fa-github"></i></a>
+
+      <div class="navbar-search float-left desktop-only">
+        <div class="navbar-search-form">
+          <label for="gsc-i-id1">This website</label>
+          <div id="google-search">
+            <gcse:search></gcse:search>
+          </div>
+        </div>
+      </div>
+
+      <ul class="navbar-nav float-left">
+        
+        <li><a href="/archives">Archives</a></li>
+        
+        
+        <li><a href="/categories">Categories</a></li>
+        
+        
+        <li><a href="/tags">Tags</a></li>
+        
+        
+        <li><a href="/atom.xml" target="_blank">RSS</a></li>
+        
+      </ul>
+
+      <ul class="navbar-nav user-nav float-right desktop-only">
+        <li class="user-nav-notification">
+          <a><span class="user-nav-unread"></span><i class="fa fa-bell"></i></a>
+        </li>
+        <li>
+          <a><i class="fa fa-plus"></i> <i class="fa fa-caret-down"></i></a>
+        </li>
+        <li class="user-nav-logo">
+          <a><img src="https://avatars2.githubusercontent.com/u/14139937?s=460&amp;v=4"> <i class="fa fa-caret-down"></i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="main-container">
+  <header class="header-wrapper desktop-only">
+  <div class="container header-site-detail">
+    <ul class="header-toolbar">
+      <li class="clearfix">
+        <a href="/archives" class="header-toolbar-left"><i class="fa fa-file-text"></i> Posts </a>
+        <a href="/archives" class="header-toolbar-right"> 110 </a>
+      </li>
+      <li>
+        <a href="/tags" class="header-toolbar-left"><i class="fa fa-tags"></i> Tags </a>
+        <a href="/tags" class="header-toolbar-right"> 45 </a>
+      </li>
+      <li>
+        <a href="/categories" class="header-toolbar-left"><i class="fa fa-folder-open"></i> Categories </a>
+        <a href="/categories" class="header-toolbar-right"> 18 </a>
+      </li>
+    </ul>
+    <h2 class="header-title">
+      <i class="fa fa-book text-muted"></i>
+      <a href="/">Anan</a>
+      
+      
+    </h2>
+  </div>
+
+  <div class="container">
+    <div class="header-tab-wrapper clearfix">
+      <span class="header-tab header-tab-selected"><i class="fa fa-thumbs-o-up"></i> Like</span>
+      <span class="header-tab"><i class="fa fa-share-alt"></i> Share</span>
+      <span class="header-tab"><i class="fa fa-comments-o"></i> Discussion</span>
+      <span class="header-tab"><i class="fa fa-bookmark-o"></i> Bookmark </span>
+      <span class="header-tab"><i class="fa fa-smile-o"></i> Smile <i class="fa fa-caret-down"></i></span>
+    </div>
+  </div>
+</header>
+
+
+<div class="post-container container">
+  <h3>
+    <i class="fa fa-user-o"></i>
+    anan
+
+    <span class="post-date float-right" title="{{moment(1574320860000).format('MMM DD, YYYY, h:mm:ss A')}}">
+      <i class="fa fa-pencil-square-o"></i>
+      {{moment(1574320860000).fromNow()}}
+    </span>
+  </h3>
+
+  <article class="post-content">
+    <h1>多个git账号的SSH key切换</h1>
+    <blockquote>
+<p>摘自：<a href="https://www.jianshu.com/p/c596d584ed82" target="_blank" rel="noopener">多github帐号的SSH key切换</a></p>
+</blockquote>
+<h2 id="大纲"><a href="#大纲" class="headerlink" title="大纲"></a>大纲</h2><ol>
+<li>根据需要创建两个别名的<strong>ssh key</strong></li>
+<li>新密钥添加到SSH agent中</li>
+<li>创建 config 配置文件</li>
+<li>分别测试</li>
+</ol>
+<h2 id="细节"><a href="#细节" class="headerlink" title="细节"></a>细节</h2><h3 id="创建-ssh-key-时起个名字"><a href="#创建-ssh-key-时起个名字" class="headerlink" title="创建 ssh key 时起个名字"></a>创建 ssh key 时起个名字</h3><p>不要一路回车了，给这个文件起一个名字 不然默认的话就覆盖了之前生成的第一个<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -o -t rsa -b 4096 -C <span class="string">"rabbitucute@facebook.com"</span></span><br><span class="line"></span><br><span class="line">Generating public/private rsa key pair.</span><br><span class="line"></span><br><span class="line">( 起个名字 ) Enter file <span class="keyword">in</span> <span class="built_in">which</span> to save the key (/c/Users/anan/.ssh/id_rsa): facebook </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Enter passphrase (empty <span class="keyword">for</span> no passphrase):</span><br><span class="line">Enter same passphrase again:</span><br><span class="line">Your identification has been saved <span class="keyword">in</span> facebook.</span><br><span class="line">Your public key has been saved <span class="keyword">in</span> facebook.pub.</span><br><span class="line">The key fingerprint is:</span><br><span class="line">SHA256:fYY3j8+sQocxaCUw2O2AhknZhnww9RNo5dhaNUIDTs4 rabbitucute@facebook.com</span><br><span class="line">The key<span class="string">'s randomart image is:</span></span><br><span class="line"><span class="string">+---[RSA 4096]----+</span></span><br><span class="line"><span class="string">| o+O+OOoo        |</span></span><br><span class="line"><span class="string">|  **X=o*o..      |</span></span><br><span class="line"><span class="string">|   =E *o +       |</span></span><br><span class="line"><span class="string">|     o .+.o.     |</span></span><br><span class="line"><span class="string">|    .  .S o+=    |</span></span><br><span class="line"><span class="string">|          o+.+   |</span></span><br><span class="line"><span class="string">|         . .. .  |</span></span><br><span class="line"><span class="string">|          .  +   |</span></span><br><span class="line"><span class="string">|           ...+  |</span></span><br><span class="line"><span class="string">+----[SHA256]-----+</span></span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>重复操作，分别创建了 <strong>facebook</strong> 和 <strong>google</strong>，得到四个文件</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> .ssh</span><br><span class="line">$ ls</span><br><span class="line"></span><br><span class="line">  google</span><br><span class="line">  google.pub</span><br><span class="line">  facebook</span><br><span class="line">  facebook.pub</span><br></pre></td></tr></table></figure>
+<h3 id="新密钥添加到SSH-agent中"><a href="#新密钥添加到SSH-agent中" class="headerlink" title="新密钥添加到SSH agent中"></a>新密钥添加到SSH agent中</h3><p>因为默认只读取id_rsa，为了让SSH识别新的私钥，需将其添加到SSH agent中：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-add ~/.ssh/id_rsa_work</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>如果出现 <strong>Could not open a connection to your authentication agent</strong> 的错误，就试着用以下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh-agent bash</span><br><span class="line">ssh-add ~/.ssh/id_rsa_work</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="创建-config-配置文件"><a href="#创建-config-配置文件" class="headerlink" title="创建 config 配置文件"></a>创建 config 配置文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># 该文件用于配置私钥对应的服务器</span><br><span class="line"># Default github user(first@mail.com)</span><br><span class="line"></span><br><span class="line">Host facebook.com</span><br><span class="line"> HostName facebook.com</span><br><span class="line"> User git</span><br><span class="line"> IdentityFile C:/Users/Administrator/.ssh/facebook</span><br><span class="line"></span><br><span class="line"># second user(second@mail.com) # 建一个github别名，新建的帐号使用这个别名做克隆和更新</span><br><span class="line"></span><br><span class="line">Host google</span><br><span class="line"> HostName google.com</span><br><span class="line"> User git</span><br><span class="line"> IdentityFile C:/Users/Administrator/.ssh/google</span><br></pre></td></tr></table></figure>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -T git@facebook.com</span><br><span class="line">Hi anan! You&apos;ve successfully authenticated, but GitHub does not provide shell access.</span><br></pre></td></tr></table></figure>
+
+  </article>
+</div>
+
+
+    
+<div class="container disqus-container">
+  <div id="disqus_thread"></div>
+</div>
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://zakariyya.github.io/2019/11/21/编程-多个git账号的SSH-key切换/";
+    this.page.identifier = 1574320860;
+  };
+
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://anan.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+
+
+
+
+
+</div>
+
+<div class="footer-wrapper container">
+  <footer class="footer clearfix">
+    <a href="https://zakariyya.github.io" class="footer-logo">
+      <i class="fa fa-github"></i>
+    </a>
+    <ul class="footer-social-link">
+      <li>© 2016 anan</li>
+      <li><a href="https://zakariyya.github.io">Home</a></li>
+      
+      <li><a href="https://github.com/Zakariyya">Github</a></li>
+      
+      <li><a href="http://weibo.com/">Weibo</a></li>
+      
+    </ul>
+    <div class="footer-theme-info">
+      Theme <a href="//github.com/sabrinaluo/hexo-theme-replica">Replica</a>
+      by <a href="//github.com/sabrinaluo">Hiitea</a> ❤ Powered by Hexo
+    </div>
+  </footer>
+</div>
+
+
+<script>
+  (function() {
+    var cx = '005289241570429579920:lniuufygqc8';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+      '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+
+
+
+<script src="/js/main.js"></script>
+
+</body>
+</html>
