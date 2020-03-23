@@ -57,7 +57,7 @@ db_database=mindoc_db
 ```
 
 ## 第四步 配置数据库
-请将刚才解压目录下 ```conf/app.conf.example``` 重名为 ```app.conf```
+请将刚才解压目录下 **conf/app.conf.example** 重名为 **app.conf**
 ```
 cp conf/app.conf.example conf/app.conf
 ```
@@ -82,7 +82,7 @@ db_password=123456
 ```
 ./mindoc_linux_amd64 install
 ```
-稍等一分钟，程序会自动初始化数据库，并创建一个超级管理员账号：```admin``` 密码：```123456```
+稍等一分钟，程序会自动初始化数据库，并创建一个超级管理员账号：**admin** 密码：**123456**
 
 ## 第五步 启动程序
 执行如下命令启动程序：
