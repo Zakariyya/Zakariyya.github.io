@@ -99,7 +99,8 @@ chmod +x mindoc_linux_amd64
 这一步可选，如果你不想用端口号访问 MinDoc 就需要配置一个代理了。
 
 Nginx 代理的配置文件如下：
-```conf
+
+```json
 server {
 	listen       80;
 
@@ -126,6 +127,7 @@ server {
 	}
 }
 ```
+
 ***
 - github: [lifei6671.mindoc](https://github.com/lifei6671/mindoc/releases)
 - mindoc: [iminho.me](https://www.iminho.me/)
